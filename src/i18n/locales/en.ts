@@ -35,6 +35,41 @@ export const en: Translations = {
       afterText: 'We charged your account $35 because you didn\'t have enough money when you tried to make a payment. If you think this is a mistake, call us within 30 days.',
       caption: 'We turn this... into this.',
     },
+    learnMode: {
+      label: 'Learn Mode',
+      subtitle: '"The Deep Dive"',
+      sentence: 'The senator decided to throw in the towel after the polls closed.',
+      actorAction: {
+        title: 'The Actor & The Action',
+        quote: '"The senator decided..."',
+        who: 'A government official (Senator)',
+        what: 'They made a choice',
+        grammarNote: 'This sets up the subject and tells us someone is about to do something important.',
+      },
+      hiddenMeaning: {
+        title: 'The Hidden Meaning (Idiom)',
+        quote: '"...to throw in the towel..."',
+        literalMeaning: 'Throwing a piece of cloth',
+        actualMeaning: 'To quit or give up',
+        explanation: 'This comes from boxing—when a fighter\'s coach throws a towel into the ring, it means they surrender.',
+      },
+      timeline: {
+        title: 'The Timeline (Sequence)',
+        quote: '"...after the polls closed."',
+        linkWord: '"after" connects two events in time',
+        eventA: 'Voting centers finished (polls closed)',
+        eventB: 'Senator quit (threw in the towel)',
+        logic: 'The senator waited until voting was over before quitting.',
+      },
+      nativeInsight: {
+        title: 'Native Language Insight (Spanish)',
+        structure: 'La Estructura',
+        subject: 'El senador (Sujeto)',
+        action: 'decidió rendirse (Acción)',
+        time: 'después de que cerraran las urnas (Tiempo)',
+        culturalNote: '"Tirar la toalla" exists in Spanish too! Many sports metaphors cross languages because of shared sports culture.',
+      },
+    },
   },
 
   // WhyItMatters

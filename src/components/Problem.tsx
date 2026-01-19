@@ -17,6 +17,10 @@ export function Problem() {
     threshold: 0.3,
   })
 
+  const { ref: learnModeRef, isInView: learnModeInView } = useScrollReveal<HTMLDivElement>({
+    threshold: 0.2,
+  })
+
   return (
     <section
       id="problem"
@@ -171,6 +175,183 @@ export function Problem() {
           >
             "{t.problem.beforeAfter.caption}"
           </motion.p>
+        </div>
+
+        {/* Learn Mode Section */}
+        <div ref={learnModeRef} className="mt-16 md:mt-24">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{
+              opacity: learnModeInView ? 1 : 0,
+              y: learnModeInView ? 0 : 20,
+            }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-8"
+          >
+            <span className="editorial-label block mb-2">
+              {t.problem.learnMode.label}
+            </span>
+            <h3 className="font-serif text-display-sm md:text-display-md text-ink-900">
+              {t.problem.learnMode.subtitle}
+            </h3>
+          </motion.div>
+
+          {/* The Sentence */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{
+              opacity: learnModeInView ? 1 : 0,
+              y: learnModeInView ? 0 : 30,
+            }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="bg-ink-900 text-white rounded-xl p-6 md:p-8 mb-8"
+          >
+            <p className="font-serif italic text-body-lg md:text-display-xs leading-relaxed">
+              "{t.problem.learnMode.sentence}"
+            </p>
+          </motion.div>
+
+          {/* Three breakdown cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* Card 1: Actor & Action */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{
+                opacity: learnModeInView ? 1 : 0,
+                y: learnModeInView ? 0 : 40,
+              }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-xl p-6 border-t-4 border-coral-500 shadow-sm"
+            >
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-coral-100 text-coral-600 font-mono text-body-sm font-semibold mb-4">
+                1
+              </span>
+              <h4 className="font-serif text-body-lg font-semibold text-ink-900 mb-4">
+                {t.problem.learnMode.actorAction.title}
+              </h4>
+              <blockquote className="font-mono text-body-sm text-ink-700 bg-ivory-100 px-3 py-2 rounded-lg mb-4 italic">
+                {t.problem.learnMode.actorAction.quote}
+              </blockquote>
+              <dl className="space-y-2 text-body-sm mb-4">
+                <div className="flex">
+                  <dt className="font-mono font-semibold text-ink-900 w-14">Who:</dt>
+                  <dd className="font-mono text-ink-700">{t.problem.learnMode.actorAction.who}</dd>
+                </div>
+                <div className="flex">
+                  <dt className="font-mono font-semibold text-ink-900 w-14">What:</dt>
+                  <dd className="font-mono text-ink-700">{t.problem.learnMode.actorAction.what}</dd>
+                </div>
+              </dl>
+              <p className="font-mono text-caption text-ink-600 bg-coral-50 px-3 py-2 rounded-lg">
+                <span className="font-semibold">Grammar Note:</span> {t.problem.learnMode.actorAction.grammarNote}
+              </p>
+            </motion.div>
+
+            {/* Card 2: Hidden Meaning */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{
+                opacity: learnModeInView ? 1 : 0,
+                y: learnModeInView ? 0 : 40,
+              }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-xl p-6 border-t-4 border-amber-500 shadow-sm"
+            >
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-amber-100 text-amber-600 font-mono text-body-sm font-semibold mb-4">
+                2
+              </span>
+              <h4 className="font-serif text-body-lg font-semibold text-ink-900 mb-4">
+                {t.problem.learnMode.hiddenMeaning.title}
+              </h4>
+              <blockquote className="font-mono text-body-sm text-ink-700 bg-ivory-100 px-3 py-2 rounded-lg mb-4 italic">
+                {t.problem.learnMode.hiddenMeaning.quote}
+              </blockquote>
+              <dl className="space-y-2 text-body-sm mb-4">
+                <div className="flex">
+                  <dt className="font-mono font-semibold text-ink-900 w-16">Literal:</dt>
+                  <dd className="font-mono text-ink-700">{t.problem.learnMode.hiddenMeaning.literalMeaning}</dd>
+                </div>
+                <div className="flex">
+                  <dt className="font-mono font-semibold text-ink-900 w-16">Actual:</dt>
+                  <dd className="font-mono text-ink-700">{t.problem.learnMode.hiddenMeaning.actualMeaning}</dd>
+                </div>
+              </dl>
+              <p className="font-mono text-caption text-ink-600 bg-amber-50 px-3 py-2 rounded-lg">
+                <span className="font-semibold">Origin:</span> {t.problem.learnMode.hiddenMeaning.explanation}
+              </p>
+            </motion.div>
+
+            {/* Card 3: Timeline */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{
+                opacity: learnModeInView ? 1 : 0,
+                y: learnModeInView ? 0 : 40,
+              }}
+              transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-xl p-6 border-t-4 border-teal-500 shadow-sm"
+            >
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-teal-100 text-teal-600 font-mono text-body-sm font-semibold mb-4">
+                3
+              </span>
+              <h4 className="font-serif text-body-lg font-semibold text-ink-900 mb-4">
+                {t.problem.learnMode.timeline.title}
+              </h4>
+              <blockquote className="font-mono text-body-sm text-ink-700 bg-ivory-100 px-3 py-2 rounded-lg mb-4 italic">
+                {t.problem.learnMode.timeline.quote}
+              </blockquote>
+              <dl className="space-y-2 text-body-sm mb-4">
+                <div className="flex">
+                  <dt className="font-mono font-semibold text-ink-900 w-20">Link word:</dt>
+                  <dd className="font-mono text-ink-700">{t.problem.learnMode.timeline.linkWord}</dd>
+                </div>
+                <div className="flex">
+                  <dt className="font-mono font-semibold text-ink-900 w-20">Event A:</dt>
+                  <dd className="font-mono text-ink-700">{t.problem.learnMode.timeline.eventA}</dd>
+                </div>
+                <div className="flex">
+                  <dt className="font-mono font-semibold text-ink-900 w-20">Event B:</dt>
+                  <dd className="font-mono text-ink-700">{t.problem.learnMode.timeline.eventB}</dd>
+                </div>
+              </dl>
+              <p className="font-mono text-caption text-ink-600 bg-teal-50 px-3 py-2 rounded-lg">
+                <span className="font-semibold">Logic:</span> {t.problem.learnMode.timeline.logic}
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Native Language Insight */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{
+              opacity: learnModeInView ? 1 : 0,
+              y: learnModeInView ? 0 : 30,
+            }}
+            transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="bg-gradient-to-r from-coral-50 to-teal-50 rounded-xl p-6 md:p-8"
+          >
+            <span className="inline-block font-mono text-caption uppercase tracking-wider text-ink-600 mb-4">
+              {t.problem.learnMode.nativeInsight.title}
+            </span>
+            <div className="space-y-4">
+              <div>
+                <h5 className="font-serif font-semibold text-ink-900 mb-2">
+                  {t.problem.learnMode.nativeInsight.structure}:
+                </h5>
+                <div className="font-mono text-body-sm text-ink-700 space-y-1">
+                  <p>{t.problem.learnMode.nativeInsight.subject}</p>
+                  <p>{t.problem.learnMode.nativeInsight.action}</p>
+                  <p>{t.problem.learnMode.nativeInsight.time}</p>
+                </div>
+              </div>
+              <div className="border-t border-ink-900/10 pt-4">
+                <p className="font-mono text-body-sm text-ink-700">
+                  <span className="font-semibold">Nota Cultural:</span> {t.problem.learnMode.nativeInsight.culturalNote}
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
 

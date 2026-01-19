@@ -35,6 +35,41 @@ export const es: Translations = {
       afterText: 'Le cobramos $35 de su cuenta porque no tenía suficiente dinero cuando intentó hacer un pago. Si cree que es un error, llámenos dentro de 30 días.',
       caption: 'Convertimos esto... en esto.',
     },
+    learnMode: {
+      label: 'Modo Aprender',
+      subtitle: '"El Análisis Profundo"',
+      sentence: 'The senator decided to throw in the towel after the polls closed.',
+      actorAction: {
+        title: 'El Actor y La Acción',
+        quote: '"The senator decided..."',
+        who: 'Un funcionario del gobierno (Senador)',
+        what: 'Tomaron una decisión',
+        grammarNote: 'Esto establece el sujeto y nos dice que alguien está a punto de hacer algo importante.',
+      },
+      hiddenMeaning: {
+        title: 'El Significado Oculto (Modismo)',
+        quote: '"...to throw in the towel..."',
+        literalMeaning: 'Lanzar un pedazo de tela',
+        actualMeaning: 'Rendirse o abandonar',
+        explanation: 'Esto viene del boxeo—cuando el entrenador de un peleador lanza una toalla al ring, significa que se rinden.',
+      },
+      timeline: {
+        title: 'La Línea de Tiempo (Secuencia)',
+        quote: '"...after the polls closed."',
+        linkWord: '"after" conecta dos eventos en el tiempo',
+        eventA: 'Los centros de votación terminaron (polls closed)',
+        eventB: 'El senador renunció (threw in the towel)',
+        logic: 'El senador esperó hasta que terminó la votación antes de renunciar.',
+      },
+      nativeInsight: {
+        title: 'Perspectiva en Tu Idioma (Español)',
+        structure: 'La Estructura',
+        subject: 'El senador (Sujeto)',
+        action: 'decidió rendirse (Acción)',
+        time: 'después de que cerraran las urnas (Tiempo)',
+        culturalNote: '"Tirar la toalla" existe en español también! Muchas metáforas deportivas cruzan idiomas por la cultura deportiva compartida.',
+      },
+    },
   },
 
   // WhyItMatters

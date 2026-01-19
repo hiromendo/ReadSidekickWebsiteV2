@@ -35,6 +35,41 @@ export interface Translations {
       afterText: string
       caption: string
     }
+    learnMode: {
+      label: string
+      subtitle: string
+      sentence: string
+      actorAction: {
+        title: string
+        quote: string
+        who: string
+        what: string
+        grammarNote: string
+      }
+      hiddenMeaning: {
+        title: string
+        quote: string
+        literalMeaning: string
+        actualMeaning: string
+        explanation: string
+      }
+      timeline: {
+        title: string
+        quote: string
+        linkWord: string
+        eventA: string
+        eventB: string
+        logic: string
+      }
+      nativeInsight: {
+        title: string
+        structure: string
+        subject: string
+        action: string
+        time: string
+        culturalNote: string
+      }
+    }
   }
 
   // WhyItMatters
