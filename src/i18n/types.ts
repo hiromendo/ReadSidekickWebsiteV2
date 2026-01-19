@@ -1,0 +1,166 @@
+export type Language = 'en' | 'es'
+
+export interface Translations {
+  // Navigation
+  nav: {
+    problem: string
+    howItWorks: string
+    methodology: string
+    about: string
+    addToChrome: string
+    addToChromeFree: string
+  }
+
+  // Hero
+  hero: {
+    tagline: string
+    cta: string
+    installs: string
+    scrollToExplore: string
+    extensionPanel: string
+    easy: string
+    medium: string
+    hard: string
+  }
+
+  // Problem
+  problem: {
+    sectionLabel: string
+    title: string
+    subtitle: string
+    stats: {
+      adults: { stat: string; description: string }
+      deaf: { stat: string; description: string }
+      inmates: { stat: string; description: string }
+      immigrants: { stat: string; description: string }
+    }
+    economicImpact: {
+      label: string
+      title: string
+      titleHighlight: string
+      description: string
+      correlationLabel: string
+      lowestLiteracy: string
+      highestLiteracy: string
+      comparison: string
+      comparisonHighlight: string
+    }
+  }
+
+  // WhyItMatters
+  whyItMatters: {
+    sectionLabel: string
+    title: string
+    titleItalic: string
+    points: {
+      languageInterface: { title: string; description: string }
+      costMisunderstanding: { title: string; description: string }
+      structuredThinking: { title: string; description: string }
+      workforceUpskilling: { title: string; description: string }
+    }
+  }
+
+  // HowItWorks
+  howItWorks: {
+    sectionLabel: string
+    title: string
+    titleItalic: string
+    subtitle: string
+    modes: {
+      easy: { title: string; description: string; sample: string }
+      medium: { title: string; description: string; sample: string }
+      hard: { title: string; description: string; sample: string; teachNote: string }
+    }
+    sampleOutput: string
+    comingSoon: {
+      label: string
+      features: string[]
+    }
+  }
+
+  // Methodology
+  methodology: {
+    sectionLabel: string
+    title: string
+    titleItalic: string
+    subtitle: string
+    pillars: {
+      first: { title: string; description: string }
+      second: { title: string; description: string }
+      third: { title: string; description: string }
+    }
+    research: {
+      label: string
+      description: string
+    }
+  }
+
+  // ASLTranslator
+  aslTranslator: {
+    comingSoon: string
+    inDevelopment: string
+    title: string
+    subtitle: string
+    howItWorks: string
+    traditionalPhonics: string
+    aslApproach: string
+    likeKanji: string
+    seeCat: string
+    decodeSounds: string
+    recognizeMeaning: string
+    mapToASL: string
+    visualMeaning: string
+    whyAI: {
+      title: string
+      description: string
+    }
+  }
+
+  // SocialProof
+  socialProof: {
+    sectionLabel: string
+    title: string
+    titleItalic: string
+    stats: {
+      uses: { value: string; label: string; description: string }
+      words: { value: string; label: string; description: string }
+      installs: { value: string; label: string; description: string }
+      engagement: { value: string; label: string; description: string }
+    }
+    callout: string
+    calloutHighlight: string
+  }
+
+  // Founder
+  founder: {
+    sectionLabel: string
+    title: string
+    titleItalic: string
+    name: string
+    bio: string[]
+    credentials: {
+      label: string
+      mit: string
+      stanford: string
+    }
+  }
+
+  // Footer
+  footer: {
+    cta: {
+      title: string
+      titleItalic: string
+      subtitle: string
+      button: string
+      learnMore: string
+    }
+    tagline: string
+    description: string
+    navigate: string
+    connect: string
+    legal: string
+    privacy: string
+    terms: string
+    copyright: string
+  }
+}

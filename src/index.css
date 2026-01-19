@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================
+   VERSO - Sophisticated Editorial
+   Global Styles & Typography
+   ================================ */
+
+@layer base {
+  /* Smooth scroll with editorial pacing */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-ivory-100 text-ink-800 font-mono;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-crimson-500 text-ivory-50;
+  }
+
+  ::-moz-selection {
+    @apply bg-crimson-500 text-ivory-50;
+  }
+
+  /* Scrollbar styling - minimal and elegant */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-ivory-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-900;
+  }
+
+  /* Editorial heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-medium;
+    text-wrap: balance;
+  }
+
+  /* Paragraph rhythm */
+  p {
+    @apply font-mono font-light;
+    text-wrap: pretty;
+  }
+
+  /* Link base styling */
+  a {
+    @apply transition-colors duration-500 ease-editorial;
+  }
+}
+
+@layer components {
+  /* Editorial container with generous margins */
+  .editorial-container {
+    @apply mx-auto px-6 md:px-12 lg:px-20 xl:px-32;
+    max-width: 1600px;
+  }
+
+  /* Asymmetric grid system */
+  .asymmetric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Display text with architectural presence */
+  .display-text {
+    @apply font-serif font-medium tracking-tight;
+    line-height: 0.9;
+  }
+
+  /* Editorial label - small caps feel */
+  .editorial-label {
+    @apply font-mono text-caption uppercase tracking-widest text-ink-700/60;
+  }
+
+  /* Decorative line element */
+  .editorial-line {
+    @apply h-px bg-ink-800/20;
+  }
+
+  .editorial-line-vertical {
+    @apply w-px bg-ink-800/20;
+  }
+
+  /* Bold accent block */
+  .accent-block {
+    @apply absolute;
+  }
+
+  .accent-block-crimson {
+    @apply bg-crimson-500;
+  }
+
+  .accent-block-electric {
+    @apply bg-electric-500;
+  }
+
+  .accent-block-ochre {
+    @apply bg-ochre-400;
+  }
+
+  /* Hover underline animation */
+  .editorial-link {
+    @apply relative inline-block;
+  }
+
+  .editorial-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-px bg-current transition-all duration-700 ease-editorial;
+  }
+
+  .editorial-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Image container with sophisticated frame */
+  .editorial-image {
+    @apply relative overflow-hidden;
+  }
+
+  .editorial-image::before {
+    content: '';
+    @apply absolute inset-0 border border-ink-800/10 pointer-events-none z-10;
+  }
+
+  .editorial-image img {
+    @apply w-full h-full object-cover transition-transform duration-1200 ease-editorial;
+  }
+
+  .editorial-image:hover img {
+    transform: scale(1.03);
+  }
+
+  /* Pull quote styling */
+  .pull-quote {
+    @apply font-serif italic text-display-sm md:text-display-md leading-tight;
+    text-indent: -0.5em;
+  }
+
+  /* Section divider with number */
+  .section-number {
+    @apply font-mono text-body-sm text-ink-700/40;
+  }
+
+  /* Reveal animation container */
+  .reveal-container {
+    @apply overflow-hidden;
+  }
+
+  .reveal-content {
+    @apply transition-transform duration-1200 ease-editorial;
+  }
+}
+
+@layer utilities {
+  /* Text utilities for editorial rhythm */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Aspect ratios for editorial images */
+  .aspect-editorial {
+    aspect-ratio: 4/5;
+  }
+
+  .aspect-editorial-wide {
+    aspect-ratio: 16/9;
+  }
+
+  .aspect-editorial-tall {
+    aspect-ratio: 3/4;
+  }
+
+  /* Opacity utilities for layering */
+  .layer-1 {
+    z-index: 1;
+  }
+
+  .layer-2 {
+    z-index: 2;
+  }
+
+  .layer-3 {
+    z-index: 3;
+  }
+
+  .layer-4 {
+    z-index: 4;
+  }
+
+  /* Editorial margins for breathing room */
+  .mt-editorial {
+    margin-top: clamp(6rem, 15vh, 12rem);
+  }
+
+  .mb-editorial {
+    margin-bottom: clamp(6rem, 15vh, 12rem);
+  }
+
+  .py-editorial {
+    padding-top: clamp(6rem, 15vh, 12rem);
+    padding-bottom: clamp(6rem, 15vh, 12rem);
+  }
+
+  /* Negative space utility */
+  .breathing-room {
+    padding: clamp(2rem, 8vw, 6rem);
+  }
+
+  /* Grid span utilities for asymmetric layouts */
+  .col-span-editorial-narrow {
+    grid-column: span 4;
+  }
+
+  .col-span-editorial-wide {
+    grid-column: span 8;
+  }
+
+  .col-span-editorial-half {
+    grid-column: span 6;
+  }
+
+  /* Blend modes for layered visuals */
+  .blend-multiply {
+    mix-blend-mode: multiply;
+  }
+
+  .blend-overlay {
+    mix-blend-mode: overlay;
+  }
+}
+
+/* ================================
+   Custom cursor for editorial feel
+   ================================ */
+
+@media (pointer: fine) {
+  body {
+    cursor: default;
+  }
+
+  a, button, [role="button"] {
+    cursor: pointer;
+  }
+}
+
+/* ================================
+   Reduced motion support
+   ================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
