@@ -25,37 +25,15 @@ export const es: Translations = {
 
   // Problem
   problem: {
-    sectionLabel: 'El Desafío',
-    title: 'La Brecha de Alfabetización',
-    subtitle: '130 millones de adultos en EE.UU. carecen de un nivel adecuado de alfabetización, y esto les está frenando.',
-    stats: {
-      adults: {
-        stat: '130M',
-        description: 'Adultos en EE.UU. que carecen de competencia de lectura adecuada',
-      },
-      deaf: {
-        stat: '4° Grado',
-        description: 'Nivel de lectura promedio de graduados sordos de secundaria',
-      },
-      inmates: {
-        stat: '70%',
-        description: 'De los reclusos que no pueden leer por encima de un nivel de 4° grado',
-      },
-      immigrants: {
-        stat: '41%',
-        description: 'De los adultos inmigrantes con los niveles más bajos de alfabetización en inglés',
-      },
-    },
-    economicImpact: {
-      label: 'Impacto Económico',
-      title: 'en ingresos anuales potenciales',
-      titleHighlight: '$2.2 billones',
-      description: 'Esta es la cantidad que podría generarse al elevar a todos los adultos de EE.UU. al Nivel 3 de competencia de lectura.',
-      correlationLabel: 'Los niveles más altos de alfabetización se correlacionan directamente con mayores ingresos:',
-      lowestLiteracy: 'Niveles más bajos de alfabetización',
-      highestLiteracy: 'Niveles más altos de alfabetización',
-      comparison: 'Más del',
-      comparisonHighlight: 'doble',
+    sectionLabel: 'La Solución',
+    title: 'Mira la Diferencia',
+    subtitle: 'Read Sidekick transforma texto confuso en un lenguaje claro y simple.',
+    beforeAfter: {
+      beforeLabel: 'Antes',
+      afterLabel: 'Después',
+      beforeText: 'De conformidad con los términos y condiciones establecidos en su acuerdo de cuenta, le notificamos que se ha aplicado a su cuenta un cargo por fondos insuficientes por la cantidad de $35.00 debido a una transacción que excedió su saldo disponible. Este cargo ha sido debitado de su cuenta a partir de la fecha indicada arriba. Si considera que este cargo fue aplicado por error, comuníquese con nuestro departamento de servicio al cliente dentro de los treinta (30) días calendario para disputar este cargo.',
+      afterText: 'Le cobramos $35 de su cuenta porque no tenía suficiente dinero cuando intentó hacer un pago. Si cree que es un error, llámenos dentro de 30 días.',
+      caption: 'Convertimos esto... en esto.',
     },
   },
 

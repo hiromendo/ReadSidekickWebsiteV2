@@ -28,22 +28,12 @@ export interface Translations {
     sectionLabel: string
     title: string
     subtitle: string
-    stats: {
-      adults: { stat: string; description: string }
-      deaf: { stat: string; description: string }
-      inmates: { stat: string; description: string }
-      immigrants: { stat: string; description: string }
-    }
-    economicImpact: {
-      label: string
-      title: string
-      titleHighlight: string
-      description: string
-      correlationLabel: string
-      lowestLiteracy: string
-      highestLiteracy: string
-      comparison: string
-      comparisonHighlight: string
+    beforeAfter: {
+      beforeLabel: string
+      afterLabel: string
+      beforeText: string
+      afterText: string
+      caption: string
     }
   }
 
