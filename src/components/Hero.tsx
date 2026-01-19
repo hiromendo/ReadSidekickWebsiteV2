@@ -145,7 +145,7 @@ export function Hero() {
             {/* Main content */}
             <div className="editorial-container relative z-10 py-20 md:py-32">
                 {/* Main title */}
-                <div className="overflow-hidden mb-6 md:mb-8">
+                <div className="overflow-y-clip mb-6 md:mb-8">
                     <h1 className="font-serif font-medium text-ink-950">
                         <span className="flex flex-wrap gap-x-6">
                             {["Read", "Sidekick"].map((word, i) => (
@@ -155,7 +155,7 @@ export function Hero() {
                                     variants={wordVariants}
                                     initial="hidden"
                                     animate="visible"
-                                    className="text-[14vw] md:text-[12vw] lg:text-[10vw] leading-[0.9] tracking-tighter"
+                                    className="text-[14vw] md:text-[12vw] lg:text-[10vw] xl:text-[8vw] 2xl:text-[160px] leading-[0.9] tracking-tighter"
                                 >
                                     {word}
                                 </motion.span>
