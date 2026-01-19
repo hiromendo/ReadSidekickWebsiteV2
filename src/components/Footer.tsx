@@ -158,9 +158,16 @@ export function Footer() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5"
             >
-              <span className="font-serif text-3xl font-medium text-ivory-100">
-                Read Sidekick
-              </span>
+              <div className="flex items-center gap-3">
+                <img
+                  src="/logo.png"
+                  alt="Read Sidekick"
+                  className="w-10 h-10 rounded-lg"
+                />
+                <span className="font-serif text-3xl font-medium text-ivory-100">
+                  Read Sidekick
+                </span>
+              </div>
               <p className="mt-4 font-mono text-body-sm text-ivory-100/50 leading-relaxed">
                 {t.footer.tagline}
               </p>

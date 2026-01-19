@@ -252,7 +252,11 @@ export function Hero() {
                             {/* Extension panel mockup */}
                             <div className="w-full lg:w-72 bg-ivory-50 rounded-xl border border-ink-800/10 p-4">
                                 <div className="flex items-center gap-2 mb-4">
-                                    <div className="w-6 h-6 bg-coral-500 rounded" />
+                                    <img
+                                        src="/logo.png"
+                                        alt="Read Sidekick"
+                                        className="w-6 h-6 rounded"
+                                    />
                                     <span className="font-mono text-sm text-ink-900 font-medium">
                                         {t.hero.extensionPanel}
                                     </span>

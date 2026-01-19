@@ -37,11 +37,15 @@ export function Navigation() {
         <nav className="editorial-container">
           <div className="flex items-center justify-between py-6 md:py-8">
             {/* Logo */}
-            <a href="#" className="relative group flex items-center gap-2">
-              <span className="font-serif text-2xl md:text-3xl font-medium tracking-tight text-ink-900">
+            <a href="#" className="flex items-center gap-2 group">
+              <img
+                src="/logo.png"
+                alt="Read Sidekick"
+                className="w-8 h-8 md:w-10 md:h-10 rounded-lg"
+              />
+              <span className="font-serif text-xl md:text-2xl font-medium tracking-tight text-ink-900 group-hover:text-coral-500 transition-colors">
                 Read Sidekick
               </span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-coral-500 transition-all duration-500 ease-editorial group-hover:w-full" />
             </a>
 
             {/* Desktop Navigation */}
