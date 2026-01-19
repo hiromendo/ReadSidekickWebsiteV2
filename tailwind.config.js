@@ -71,7 +71,7 @@ export default {
       },
       fontFamily: {
         // Grand serifs for headlines
-        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        serif: ['"Fraunces"', 'Georgia', 'serif'],
         // Clean monospace for body
         mono: ['"JetBrains Mono"', 'Menlo', 'monospace'],
         // Geometric sans for accents
