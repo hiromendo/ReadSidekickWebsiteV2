@@ -17,18 +17,18 @@
   }
 
   body {
-    @apply bg-ivory-100 text-ink-800 font-mono;
+    @apply bg-ivory-100 text-ink-700 font-mono;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
     overflow-x: hidden;
   }
 
   /* Selection styling */
   ::selection {
-    @apply bg-crimson-500 text-ivory-50;
+    @apply bg-coral-500 text-white;
   }
 
   ::-moz-selection {
-    @apply bg-crimson-500 text-ivory-50;
+    @apply bg-coral-500 text-white;
   }
 
   /* Scrollbar styling - minimal and elegant */
@@ -171,6 +171,11 @@
 }
 
 @layer utilities {
+  /* Radial gradient utility for glow effects */
+  .bg-gradient-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
+  }
+
   /* Text utilities for editorial rhythm */
   .text-balance {
     text-wrap: balance;

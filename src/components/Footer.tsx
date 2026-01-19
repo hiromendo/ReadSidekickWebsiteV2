@@ -27,20 +27,57 @@ export function Footer() {
         ref={ctaRef}
         className="relative py-editorial bg-ivory-50 overflow-hidden"
       >
-        {/* Decorative elements */}
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: ctaInView ? 1 : 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute top-[10%] right-[5%] w-40 h-40 md:w-64 md:h-64 border border-ink-800/10 rounded-full"
-        />
+        {/* Literacy-themed decorative elements */}
 
-        <motion.div
+        {/* Open Book Silhouette (top-right) */}
+        <motion.svg
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: ctaInView ? 1 : 0, opacity: ctaInView ? 1 : 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute top-[8%] right-[3%] w-32 h-24 md:w-56 md:h-40 pointer-events-none"
+          viewBox="0 0 120 80"
+          fill="none"
+        >
+          {/* Left page */}
+          <path
+            d="M60 15 Q35 10, 10 20 L10 70 Q35 60, 60 65 Z"
+            className="fill-coral-500/15 stroke-coral-500/20"
+            strokeWidth="1"
+          />
+          {/* Right page */}
+          <path
+            d="M60 15 Q85 10, 110 20 L110 70 Q85 60, 60 65 Z"
+            className="fill-coral-500/15 stroke-coral-500/20"
+            strokeWidth="1"
+          />
+          {/* Spine */}
+          <path
+            d="M60 15 L60 65"
+            className="stroke-coral-500/25"
+            strokeWidth="1.5"
+          />
+          {/* Text lines on left page */}
+          <path d="M20 30 L50 28" className="stroke-coral-500/10" strokeWidth="1" />
+          <path d="M22 38 L48 36" className="stroke-coral-500/10" strokeWidth="1" />
+          <path d="M24 46 L46 44" className="stroke-coral-500/10" strokeWidth="1" />
+          {/* Text lines on right page */}
+          <path d="M70 28 L100 30" className="stroke-coral-500/10" strokeWidth="1" />
+          <path d="M72 36 L98 38" className="stroke-coral-500/10" strokeWidth="1" />
+          <path d="M74 44 L96 46" className="stroke-coral-500/10" strokeWidth="1" />
+        </motion.svg>
+
+        {/* Warm Glow Accent (bottom-left) - softer radial gradient */}
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: ctaInView ? 1 : 0, opacity: ctaInView ? 0.7 : 0 }}
           transition={{ duration: 1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute bottom-[15%] left-[10%] w-20 h-20 bg-coral-500 opacity-80 rounded-xl"
-        />
+          className="absolute bottom-[12%] left-[8%] w-24 h-24 md:w-40 md:h-40 pointer-events-none"
+        >
+          {/* Outer soft glow */}
+          <div className="absolute inset-0 rounded-full bg-gradient-radial from-ochre-400/30 via-ochre-400/10 to-transparent blur-xl" />
+          {/* Inner warm core */}
+          <div className="absolute inset-[30%] rounded-full bg-gradient-radial from-ochre-400/50 via-ochre-400/15 to-transparent blur-md" />
+        </motion.div>
 
         <div className="editorial-container relative z-10">
           <div className="max-w-3xl mx-auto text-center">

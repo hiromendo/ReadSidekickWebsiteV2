@@ -7,66 +7,66 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Core palette - warm ivory/cream base
+        // Backgrounds - blue-tinted (brand aligned)
         ivory: {
-          50: '#FDFCF9',
-          100: '#FAF8F3',
-          200: '#F5F1E8',
-          300: '#EDE7D9',
-          400: '#DED4C1',
+          50: '#FFFFFF',      // Pure white for cards
+          100: '#EFF2FF',     // Main background
+          200: '#E0E7FF',     // Slightly darker sections
+          300: '#C6CEEB',     // Borders
+          400: '#A3B1DB',     // Muted accents
         },
-        // Deep ink blacks
+        // Text colors - indigo-based
         ink: {
-          700: '#2C2825',
-          800: '#1F1C19',
-          900: '#141210',
-          950: '#0A0908',
+          700: '#4A5568',     // Body text
+          800: '#212D54',     // Headings
+          900: '#1A2444',     // Dark sections
+          950: '#0F1629',     // Darkest (footer)
         },
-        // Brand primary - Coral/Terracotta (warm, empowering)
+        // Primary brand - Blue/Indigo
         coral: {
-          50: '#FEF5F3',
-          100: '#FDE8E3',
-          200: '#FBD5CC',
-          300: '#F8B8A8',
-          400: '#F28B73',
-          500: '#E86F50', // Primary
-          600: '#D4533A',
-          700: '#B1432D',
-          800: '#933A29',
-          900: '#7A3427',
+          50: '#EFF2FF',
+          100: '#E0E7FF',
+          200: '#C6CEEB',
+          300: '#A3B1DB',
+          400: '#748CD0',     // Primary light
+          500: '#4259A8',     // Main CTA color
+          600: '#354A8F',     // Hover state
+          700: '#2A3D76',
+          800: '#212D54',
+          900: '#1A2444',
         },
-        // Brand secondary - Teal (accessible, growth)
+        // Secondary accent - Marigold
         teal: {
-          50: '#F0FDFA',
-          100: '#CCFBF1',
-          200: '#99F6E4',
-          300: '#5EEAD4',
-          400: '#2DD4BF',
-          500: '#14B8A6', // Primary
-          600: '#0D9488',
-          700: '#0F766E',
-          800: '#115E59',
-          900: '#134E4A',
+          50: '#FFFBEB',
+          100: '#FEF3C7',
+          200: '#FDE68A',
+          300: '#FCD34D',
+          400: '#FFB347',     // Main accent
+          500: '#F59E0B',
+          600: '#D97706',
+          700: '#B45309',
+          800: '#92400E',
+          900: '#78350F',
         },
-        // Accent - Ochre/Gold (warmth, achievement)
+        // Tertiary accent - Coral/Hot
         ochre: {
-          300: '#F4C542',
-          400: '#E5A823',
-          500: '#D4850F',
-          600: '#B8690B',
+          300: '#FFB8A5',
+          400: '#FF8C69',     // Hot accent
+          500: '#F06745',
+          600: '#DC4A25',
         },
-        // Legacy colors for compatibility
+        // Legacy - updated to blue theme
         crimson: {
-          400: '#E63946',
-          500: '#C1121F',
-          600: '#9B0D15',
-          700: '#780A10',
+          400: '#748CD0',
+          500: '#4259A8',     // Match primary
+          600: '#354A8F',
+          700: '#2A3D76',
         },
         electric: {
-          400: '#4895EF',
-          500: '#3A7BD5',
-          600: '#2563EB',
-          700: '#1D4ED8',
+          400: '#748CD0',
+          500: '#4259A8',
+          600: '#354A8F',
+          700: '#2A3D76',
         },
       },
       fontFamily: {
@@ -106,6 +106,7 @@ export default {
         'slide-in-right': 'slideInRight 1.2s ease-out forwards',
         'scale-in': 'scaleIn 1.4s ease-out forwards',
         'draw-line': 'drawLine 1.5s ease-out forwards',
+        'float': 'float 4s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -131,6 +132,10 @@ export default {
         drawLine: {
           '0%': { strokeDashoffset: '100%' },
           '100%': { strokeDashoffset: '0%' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
         },
       },
       transitionTimingFunction: {
