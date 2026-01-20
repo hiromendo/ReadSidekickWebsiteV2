@@ -96,6 +96,17 @@ export interface Translations {
       hard: { title: string; description: string; sample: string }
     }
     sampleOutput: string
+    learnMode: {
+      badge: string
+      subtitle: string
+      title: string
+      description: string
+      targetLanguage: string
+      selectedLanguage: string
+      sampleLabel: string
+      sampleEnglish: string
+      sampleExplanation: string
+    }
     comingSoon: {
       label: string
       features: string[]

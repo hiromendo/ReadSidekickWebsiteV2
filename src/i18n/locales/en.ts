@@ -120,6 +120,17 @@ export const en: Translations = {
       },
     },
     sampleOutput: 'Sample Output',
+    learnMode: {
+      badge: 'Learn Mode',
+      subtitle: '"The Deep Dive"',
+      title: 'Select Your Native Language',
+      description: 'Learn Mode breaks down text line by line, explaining grammar, idioms, and meaning in your native language for deeper understanding.',
+      targetLanguage: 'Target Language',
+      selectedLanguage: 'Spanish',
+      sampleLabel: 'Line-by-Line Breakdown',
+      sampleEnglish: 'A papal decree of 1493 had assigned all land in the New World west of 50 degrees W longitude to Spain.',
+      sampleExplanation: 'Esta oración establece el contexto histórico y geopolítico fundamental. La Bula Papal de 1493 (Inter caetera) dividió el \'Nuevo Mundo\' entre España y Portugal, una decisión que tuvo profundas implicaciones políticas y económicas.',
+    },
     comingSoon: {
       label: 'Coming Soon',
       features: [

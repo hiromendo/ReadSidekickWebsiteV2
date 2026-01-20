@@ -174,6 +174,85 @@ export function HowItWorks() {
                     </div>
                 </motion.div>
 
+                {/* Learn Mode Demo */}
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    viewport={{ once: true }}
+                    className="bg-white rounded-2xl shadow-xl border border-ink-800/10 overflow-hidden mb-16"
+                >
+                    {/* Header with Learn Mode label */}
+                    <div className="flex items-center justify-between px-6 py-4 border-b border-ink-800/10">
+                        <div className="flex items-center gap-3">
+                            <span className="px-3 py-1 bg-electric-500 text-white text-xs font-mono rounded-full">
+                                {t.howItWorks.learnMode.badge}
+                            </span>
+                            <span className="font-mono text-body-sm text-ink-700/60">
+                                {t.howItWorks.learnMode.subtitle}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className="p-6 md:p-8 lg:p-10">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            {/* Left: Feature description */}
+                            <div>
+                                <h3 className="font-serif text-xl text-ink-900 mb-4">
+                                    {t.howItWorks.learnMode.title}
+                                </h3>
+                                <p className="font-mono text-body-md text-ink-700/80 leading-relaxed mb-6">
+                                    {t.howItWorks.learnMode.description}
+                                </p>
+
+                                {/* Mock language selector */}
+                                <div className="space-y-4">
+                                    <div>
+                                        <span className="editorial-label block mb-2">
+                                            {t.howItWorks.learnMode.targetLanguage}
+                                        </span>
+                                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-ivory-50 rounded-lg border border-ink-800/10">
+                                            <span className="font-mono text-body-sm text-ink-800">
+                                                {t.howItWorks.learnMode.selectedLanguage}
+                                            </span>
+                                            <svg
+                                                className="w-4 h-4 text-ink-700/50"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M19 9l-7 7-7-7"
+                                                />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right: Sample breakdown */}
+                            <div className="bg-ivory-50 rounded-xl p-6 border border-ink-800/5">
+                                <span className="editorial-label text-ink-700/50 block mb-3">
+                                    {t.howItWorks.learnMode.sampleLabel}
+                                </span>
+
+                                {/* English sentence */}
+                                <p className="font-mono text-body-md text-ink-900 font-medium mb-4">
+                                    {t.howItWorks.learnMode.sampleEnglish}
+                                </p>
+
+                                {/* Spanish explanation */}
+                                <p className="font-mono text-body-sm text-ink-700/70 leading-relaxed">
+                                    {t.howItWorks.learnMode.sampleExplanation}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
                 {/* Feature cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                     {(Object.keys(modes) as Mode[]).map((mode, index) => (
