@@ -182,7 +182,26 @@ export function Methodology() {
             <div>
               <span className="editorial-label text-ink-700/50 block mb-2">{t.methodology.research.label}</span>
               <p className="font-mono text-body-md text-ink-700/80 leading-relaxed">
-                {t.methodology.research.description}
+                {t.methodology.research.prefix}
+                <a
+                  href="https://www.youtube.com/watch?v=9yb17y0wqfM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-teal-600 hover:text-teal-700 underline underline-offset-2"
+                >
+                  {t.methodology.research.marlonKuntze}
+                </a>
+                {t.methodology.research.marlonKuntzeDetail}
+                {t.methodology.research.and}
+                <a
+                  href="https://ul.stanford.edu/sites/default/files/resource/2021-12/06-LWF%20CJF%20Text%20Complexity%20FINAL_0.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-teal-600 hover:text-teal-700 underline underline-offset-2"
+                >
+                  {t.methodology.research.lilyWongFillmore}
+                </a>
+                {t.methodology.research.lilyWongFillmoreDetail}
               </p>
             </div>
           </div>

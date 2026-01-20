@@ -129,6 +129,18 @@ export function HowItWorks() {
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                     className="bg-white rounded-2xl shadow-xl border border-ink-800/10 overflow-hidden mb-16"
                 >
+                    {/* Header with Understand Mode label */}
+                    <div className="flex items-center justify-between px-6 py-4 border-b border-ink-800/10">
+                        <div className="flex items-center gap-3">
+                            <span className="px-3 py-1 bg-teal-500 text-white text-xs font-mono rounded-full">
+                                {t.howItWorks.understandMode.badge}
+                            </span>
+                            <span className="font-mono text-body-sm text-ink-700/60">
+                                {t.howItWorks.understandMode.subtitle}
+                            </span>
+                        </div>
+                    </div>
+
                     {/* Mode selector tabs */}
                     <div className="flex border-b border-ink-800/10">
                         {(Object.keys(modes) as Mode[]).map((mode) => (
@@ -209,11 +221,17 @@ export function HowItWorks() {
                                 <div className="space-y-4">
                                     <div>
                                         <span className="editorial-label block mb-2">
-                                            {t.howItWorks.learnMode.targetLanguage}
+                                            {
+                                                t.howItWorks.learnMode
+                                                    .targetLanguage
+                                            }
                                         </span>
                                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-ivory-50 rounded-lg border border-ink-800/10">
                                             <span className="font-mono text-body-sm text-ink-800">
-                                                {t.howItWorks.learnMode.selectedLanguage}
+                                                {
+                                                    t.howItWorks.learnMode
+                                                        .selectedLanguage
+                                                }
                                             </span>
                                             <svg
                                                 className="w-4 h-4 text-ink-700/50"
@@ -252,34 +270,6 @@ export function HowItWorks() {
                         </div>
                     </div>
                 </motion.div>
-
-                {/* Feature cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-                    {(Object.keys(modes) as Mode[]).map((mode, index) => (
-                        <motion.div
-                            key={mode}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.8,
-                                delay: index * 0.1,
-                                ease: [0.16, 1, 0.3, 1],
-                            }}
-                            viewport={{ once: true }}
-                            className="relative bg-white p-6 rounded-xl border border-ink-800/10"
-                        >
-                            <div
-                                className={`w-3 h-3 ${modes[mode].color} rounded-full mb-4`}
-                            />
-                            <h3 className="font-serif text-xl text-ink-900 mb-2">
-                                {modes[mode].title}
-                            </h3>
-                            <p className="font-mono text-body-sm text-ink-700/70 leading-relaxed">
-                                {modes[mode].description}
-                            </p>
-                        </motion.div>
-                    ))}
-                </div>
 
                 {/* Coming Soon */}
                 <motion.div

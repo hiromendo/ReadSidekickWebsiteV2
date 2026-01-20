@@ -48,7 +48,7 @@ export const en: Translations = {
       hiddenMeaning: {
         title: 'The Hidden Meaning (Idiom)',
         quote: '"...to throw in the towel..."',
-        literalMeaning: 'Throwing a piece of cloth',
+        literalMeaning: ' Throwing a piece of cloth',
         actualMeaning: 'To quit or give up',
         explanation: 'This comes from boxing—when a fighter\'s coach throws a towel into the ring, it means they surrender.',
       },
@@ -71,27 +71,23 @@ export const en: Translations = {
     },
   },
 
-  // WhyItMatters
-  whyItMatters: {
-    sectionLabel: 'Why It Matters',
-    title: 'In the Age of AI,',
-    titleItalic: 'Literacy Matters More Than Ever',
+  // Confidence
+  confidence: {
+    sectionLabel: 'Our Promise',
+    headline: 'Read with Confidence, not Confusion',
+    subheadline: 'Your judgment-free reading companion. Get instant definitions, clear explanations, and guided support right when you need it, so you can tackle any topic without fear.',
     points: {
-      languageInterface: {
-        title: 'Language is the New Interface',
-        description: 'Written language is now the primary way to access the power of AI. Understanding prompts and outputs has become an essential skill.',
+      masterMessage: {
+        title: 'Master Every Message',
+        description: 'Unlock the full power of the internet, apps, and AI tools without confusion.',
       },
-      costMisunderstanding: {
-        title: 'The Cost of Misunderstanding',
-        description: 'As AI tools proliferate, literacy becomes a safety skill—helping users catch errors and recognize incomplete or incorrect answers.',
+      boostCareer: {
+        title: 'Boost Your Career',
+        description: 'Gain the skills you need for the job you want.',
       },
-      structuredThinking: {
-        title: 'Structured Thinking',
-        description: 'Using AI effectively requires sequencing ideas, understanding nuance, and following multi-step logic—all hallmarks of strong literacy.',
-      },
-      workforceUpskilling: {
-        title: 'Workforce Upskilling',
-        description: 'As AI reshapes employment, displaced workers need robust literacy skills to transition into new roles and opportunities.',
+      readConfidence: {
+        title: 'Read with Confidence',
+        description: 'Spot mistakes instantly and never second-guess what you just read.',
       },
     },
   },
@@ -120,6 +116,10 @@ export const en: Translations = {
       },
     },
     sampleOutput: 'Sample Output',
+    understandMode: {
+      badge: 'Understand Mode',
+      subtitle: '"Simplify Any Text"',
+    },
     learnMode: {
       badge: 'Learn Mode',
       subtitle: '"The Deep Dive"',
@@ -163,7 +163,12 @@ export const en: Translations = {
     },
     research: {
       label: 'Research Foundation',
-      description: 'Inspired by the work of Marlon Kuntze (ASL literacy research) and Lily Wong Fillmore (academic language development).',
+      prefix: 'Inspired by the work of ',
+      marlonKuntze: 'Prof. Marlon Kuntze',
+      marlonKuntzeDetail: ' (ASL literacy research)',
+      and: ' and ',
+      lilyWongFillmore: 'Prof. Lily Wong Fillmore',
+      lilyWongFillmoreDetail: ' (academic language development).',
     },
   },
 

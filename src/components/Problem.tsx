@@ -202,23 +202,6 @@ export function Problem() {
                             </p>
                         </motion.div>
                     </div>
-
-                    {/* Caption */}
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{
-                            opacity: comparisonInView ? 1 : 0,
-                            y: comparisonInView ? 0 : 20,
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.5,
-                            ease: [0.16, 1, 0.3, 1],
-                        }}
-                        className="text-center font-serif text-body-lg text-ink-700/60 italic mt-8 md:mt-12"
-                    >
-                        "{t.problem.beforeAfter.caption}"
-                    </motion.p>
                 </div>
 
                 {/* Learn Mode Section */}
@@ -339,7 +322,7 @@ export function Problem() {
                                     <dt className="font-mono font-semibold text-ink-900 w-16">
                                         Literal:
                                     </dt>
-                                    <dd className="font-mono text-ink-700">
+                                    <dd className="font-mono text-ink-700 px-4">
                                         {
                                             t.problem.learnMode.hiddenMeaning
                                                 .literalMeaning

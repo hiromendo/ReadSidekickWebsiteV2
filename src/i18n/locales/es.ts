@@ -71,27 +71,23 @@ export const es: Translations = {
     },
   },
 
-  // WhyItMatters
-  whyItMatters: {
-    sectionLabel: 'Por Qué Importa',
-    title: 'En la Era de la IA,',
-    titleItalic: 'La Alfabetización Importa Más Que Nunca',
+  // Confidence
+  confidence: {
+    sectionLabel: 'Nuestra Promesa',
+    headline: 'Lee con Confianza, no con Confusión',
+    subheadline: 'Tu compañero de lectura sin juicios. Obtén definiciones instantáneas, explicaciones claras y apoyo guiado justo cuando lo necesitas, para que puedas abordar cualquier tema sin miedo.',
     points: {
-      languageInterface: {
-        title: 'El Lenguaje es la Nueva Interfaz',
-        description: 'El lenguaje escrito es ahora la forma principal de acceder al poder de la IA. Comprender indicaciones y resultados se ha convertido en una habilidad esencial.',
+      masterMessage: {
+        title: 'Domina Cada Mensaje',
+        description: 'Desbloquea todo el poder de internet, las apps y las herramientas de IA sin confusión.',
       },
-      costMisunderstanding: {
-        title: 'El Costo de Malinterpretar',
-        description: 'A medida que proliferan las herramientas de IA, la alfabetización se convierte en una habilidad de seguridad, ayudando a los usuarios a detectar errores y reconocer respuestas incompletas o incorrectas.',
+      boostCareer: {
+        title: 'Impulsa Tu Carrera',
+        description: 'Obtén las habilidades que necesitas para el trabajo que deseas.',
       },
-      structuredThinking: {
-        title: 'Pensamiento Estructurado',
-        description: 'Usar la IA de manera efectiva requiere secuenciar ideas, comprender matices y seguir lógica de múltiples pasos, todos distintivos de una alfabetización sólida.',
-      },
-      workforceUpskilling: {
-        title: 'Capacitación Laboral',
-        description: 'A medida que la IA transforma el empleo, los trabajadores desplazados necesitan habilidades de alfabetización robustas para hacer la transición a nuevos roles y oportunidades.',
+      readConfidence: {
+        title: 'Lee con Confianza',
+        description: 'Detecta errores al instante y nunca dudes de lo que acabas de leer.',
       },
     },
   },
@@ -120,6 +116,10 @@ export const es: Translations = {
       },
     },
     sampleOutput: 'Ejemplo de Resultado',
+    understandMode: {
+      badge: 'Modo Entender',
+      subtitle: '"Simplifica Cualquier Texto"',
+    },
     learnMode: {
       badge: 'Modo Aprender',
       subtitle: '"El Análisis Profundo"',
@@ -163,7 +163,12 @@ export const es: Translations = {
     },
     research: {
       label: 'Fundamento de Investigación',
-      description: 'Inspirado por el trabajo de Marlon Kuntze (investigación de alfabetización en ASL) y Lily Wong Fillmore (desarrollo del lenguaje académico).',
+      prefix: 'Inspirado por el trabajo de ',
+      marlonKuntze: 'Prof. Marlon Kuntze',
+      marlonKuntzeDetail: ' (investigación de alfabetización en ASL)',
+      and: ' y ',
+      lilyWongFillmore: 'Prof. Lily Wong Fillmore',
+      lilyWongFillmoreDetail: ' (desarrollo del lenguaje académico).',
     },
   },
 

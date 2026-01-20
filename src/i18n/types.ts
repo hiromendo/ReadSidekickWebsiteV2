@@ -71,16 +71,15 @@ export interface Translations {
     }
   }
 
-  // WhyItMatters
-  whyItMatters: {
+  // Confidence
+  confidence: {
     sectionLabel: string
-    title: string
-    titleItalic: string
+    headline: string
+    subheadline: string
     points: {
-      languageInterface: { title: string; description: string }
-      costMisunderstanding: { title: string; description: string }
-      structuredThinking: { title: string; description: string }
-      workforceUpskilling: { title: string; description: string }
+      masterMessage: { title: string; description: string }
+      boostCareer: { title: string; description: string }
+      readConfidence: { title: string; description: string }
     }
   }
 
@@ -96,6 +95,10 @@ export interface Translations {
       hard: { title: string; description: string; sample: string }
     }
     sampleOutput: string
+    understandMode: {
+      badge: string
+      subtitle: string
+    }
     learnMode: {
       badge: string
       subtitle: string
@@ -126,7 +129,12 @@ export interface Translations {
     }
     research: {
       label: string
-      description: string
+      prefix: string
+      marlonKuntze: string
+      marlonKuntzeDetail: string
+      and: string
+      lilyWongFillmore: string
+      lilyWongFillmoreDetail: string
     }
   }
 

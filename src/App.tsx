@@ -1,6 +1,6 @@
 import { Hero } from './components/Hero'
 import { Problem } from './components/Problem'
-import { WhyItMatters } from './components/WhyItMatters'
+import { Confidence } from './components/Confidence'
 import { HowItWorks } from './components/HowItWorks'
 import { Methodology } from './components/Methodology'
 import { ASLTranslator } from './components/ASLTranslator'
@@ -18,7 +18,7 @@ function App() {
         <main>
           <Hero />
           <Problem />
-          <WhyItMatters />
+          <Confidence />
           <HowItWorks />
           <Methodology />
           <ASLTranslator />
