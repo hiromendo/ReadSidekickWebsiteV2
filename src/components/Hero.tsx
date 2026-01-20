@@ -76,35 +76,6 @@ export function Hero() {
                 <div className="absolute inset-[25%] rounded-full bg-gradient-radial from-teal-300/60 via-teal-400/20 to-transparent blur-md" />
             </motion.div>
 
-            {/* Curved Page-Turn Line (left) - SVG path */}
-            <motion.svg
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                    duration: 1,
-                    delay: 1,
-                    ease: [0.16, 1, 0.3, 1],
-                }}
-                className="absolute left-[8%] top-[5%] w-16 h-48 md:w-24 md:h-64 pointer-events-none"
-                viewBox="0 0 60 200"
-                fill="none"
-            >
-                <motion.path
-                    d="M50 0 Q20 50, 30 100 Q40 150, 10 200"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    className="text-coral-500/30"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{
-                        duration: 2,
-                        delay: 1.2,
-                        ease: [0.16, 1, 0.3, 1],
-                    }}
-                />
-            </motion.svg>
-
             {/* Reading Flow Dots (right) - sequential fade animation */}
             <motion.div
                 initial={{ opacity: 0 }}

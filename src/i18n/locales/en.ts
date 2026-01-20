@@ -185,7 +185,7 @@ export const en: Translations = {
     seeCat: 'See "CAT"',
     decodeSounds: 'Decode sounds',
     recognizeMeaning: 'Recognize meaning',
-    mapToASL: 'Map to ASL sign or concept',
+    mapToASL: 'Map to ASL sign',
     visualMeaning: 'Visual form connects directly to meaning',
     whyAI: {
       title: 'Why AI Makes This Possible',
