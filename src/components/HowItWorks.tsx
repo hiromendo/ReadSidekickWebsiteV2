@@ -159,10 +159,6 @@ export function HowItWorks() {
                                 <p className="font-mono text-body-md text-ink-700/80 leading-relaxed mb-6">
                                     {modes[activeMode].description}
                                 </p>
-
-                                {activeMode === "hard" && (
-                                    <div className="bg-coral-50 border border-coral-200 rounded-lg p-4"></div>
-                                )}
                             </div>
 
                             {/* Sample output */}
