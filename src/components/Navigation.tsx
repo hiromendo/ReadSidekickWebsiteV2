@@ -68,7 +68,7 @@ export function Navigation() {
               </Link>
               <LanguageSwitcher variant="desktop" />
               <a
-                href="https://chrome.google.com/webstore"
+                href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-2.5 bg-coral-500 text-white font-mono text-body-sm tracking-wide hover:bg-coral-600 transition-colors duration-300"
@@ -178,7 +178,7 @@ export function Navigation() {
                 <LanguageSwitcher variant="mobile" />
               </motion.div>
               <motion.a
-                href="https://chrome.google.com/webstore"
+                href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 30 }}

@@ -163,7 +163,7 @@ export function Hero() {
                     className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
                 >
                     <a
-                        href="https://chrome.google.com/webstore"
+                        href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group inline-flex items-center gap-3 px-8 py-4 bg-coral-500 text-white font-mono text-body-md tracking-wide hover:bg-coral-600 transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl"

@@ -203,6 +203,24 @@ export function Methodology() {
                 </a>
                 {t.methodology.research.lilyWongFillmoreDetail}
               </p>
+              {/* University logos */}
+              <div className="flex flex-wrap items-center gap-6 md:gap-8 mt-6 pt-6 border-t border-ink-800/10">
+                <img
+                  src="/gallaudet.png"
+                  alt="Gallaudet University"
+                  className="h-8 md:h-10 w-auto opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                />
+                <img
+                  src="/berkeley.png"
+                  alt="UC Berkeley"
+                  className="h-8 md:h-10 w-auto opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                />
+                <img
+                  src="/stanford.png"
+                  alt="Stanford University"
+                  className="h-8 md:h-10 w-auto opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
             </div>
           </div>
         </motion.div>

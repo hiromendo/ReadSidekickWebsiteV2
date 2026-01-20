@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useLanguage } from '../i18n'
@@ -14,10 +15,10 @@ export function Footer() {
   })
 
   const navItems = [
-    { label: t.nav.problem, href: '#problem' },
-    { label: t.nav.howItWorks, href: '#how-it-works' },
-    { label: t.nav.methodology, href: '#methodology' },
-    { label: t.nav.about, href: '#about' },
+    { label: t.nav.problem, href: '/#problem' },
+    { label: t.nav.howItWorks, href: '/#how-it-works' },
+    { label: t.nav.methodology, href: '/#methodology' },
+    { label: t.nav.about, href: '/#about' },
   ]
 
   return (
@@ -119,7 +120,7 @@ export function Footer() {
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <a
-                href="https://chrome.google.com/webstore"
+                href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 px-8 py-4 bg-coral-500 text-white font-mono text-body-md tracking-wide hover:bg-coral-600 transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl"
@@ -131,7 +132,7 @@ export function Footer() {
               </a>
 
               <a
-                href="#methodology"
+                href="/#methodology"
                 className="font-mono text-body-md text-ink-700 hover:text-coral-500 transition-colors duration-300 underline underline-offset-4"
               >
                 {t.footer.cta.learnMore}
@@ -199,6 +200,12 @@ export function Footer() {
                     {item.label}
                   </a>
                 ))}
+                <Link
+                  to="/feedback"
+                  className="block font-mono text-body-sm text-ivory-100/60 hover:text-ivory-100 transition-colors duration-300"
+                >
+                  Contact Us
+                </Link>
               </nav>
             </motion.div>
 
@@ -217,7 +224,7 @@ export function Footer() {
               </span>
               <div className="space-y-2">
                 <a
-                  href="https://chrome.google.com/webstore"
+                  href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block font-mono text-body-sm text-ivory-100/60 hover:text-ivory-100 transition-colors duration-300"
