@@ -15,7 +15,6 @@ export interface Translations {
   hero: {
     tagline: string
     cta: string
-    installs: string
     scrollToExplore: string
     extensionPanel: string
     easy: string
@@ -94,7 +93,7 @@ export interface Translations {
     modes: {
       easy: { title: string; description: string; sample: string }
       medium: { title: string; description: string; sample: string }
-      hard: { title: string; description: string; sample: string; teachNote: string }
+      hard: { title: string; description: string; sample: string }
     }
     sampleOutput: string
     comingSoon: {

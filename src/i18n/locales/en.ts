@@ -15,7 +15,6 @@ export const en: Translations = {
   hero: {
     tagline: 'An innovative learning tool that moves beyond traditional dictionaries, empowering adult learners to understand any text and build stronger comprehension abilities.',
     cta: 'Add to Chrome - It\'s Free',
-    installs: '125+ installs',
     scrollToExplore: 'Scroll to explore',
     extensionPanel: 'Read Sidekick',
     easy: 'Easy',
@@ -116,9 +115,8 @@ export const en: Translations = {
       },
       hard: {
         title: 'Hard Mode',
-        description: 'Inspired by Dr. Fillmore\'s "Juicy Sentences" method—breaks down complex academic sentences to build deeper comprehension skills',
-        sample: 'Original: "The macroeconomic indicators suggest a robust expansion, characterized by rising employment metrics and contained inflationary pressures."\n\nBreakdown:\n- "Macroeconomic indicators" = big-picture money signs\n- "Robust expansion" = strong growth\n- "Employment metrics" = job numbers\n- "Contained inflationary pressures" = prices rising slowly',
-        teachNote: 'Hard mode doesn\'t just simplify—it teaches. It helps you notice signal words, identify subjects and predicates, understand metaphors, and rephrase complex ideas in your own words.',
+        description: 'Summarizes text at an advanced level, preserving technical terminology and nuance for readers who want sophisticated comprehension',
+        sample: 'The macroeconomic data points to sustained economic growth, with improving employment figures and inflation remaining within acceptable bounds—positive indicators for household financial stability.',
       },
     },
     sampleOutput: 'Sample Output',

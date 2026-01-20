@@ -15,7 +15,6 @@ export const es: Translations = {
   hero: {
     tagline: 'Una herramienta de aprendizaje innovadora que va más allá de los diccionarios tradicionales, empoderando a los adultos a comprender cualquier texto y desarrollar habilidades de comprensión más sólidas.',
     cta: 'Agregar a Chrome - Gratis',
-    installs: 'Más de 125 instalaciones',
     scrollToExplore: 'Desplázate para explorar',
     extensionPanel: 'Read Sidekick',
     easy: 'Fácil',
@@ -116,9 +115,8 @@ export const es: Translations = {
       },
       hard: {
         title: 'Modo Difícil',
-        description: 'Inspirado en el método "Oraciones Jugosas" de la Dra. Fillmore, descompone oraciones académicas complejas para desarrollar habilidades de comprensión más profundas',
-        sample: 'Original: "Los indicadores macroeconómicos sugieren una expansión robusta, caracterizada por métricas de empleo en aumento y presiones inflacionarias contenidas."\n\nDesglose:\n- "Indicadores macroeconómicos" = señales económicas generales\n- "Expansión robusta" = crecimiento fuerte\n- "Métricas de empleo" = números de trabajo\n- "Presiones inflacionarias contenidas" = precios subiendo lentamente',
-        teachNote: 'El modo difícil no solo simplifica, enseña. Te ayuda a notar palabras señal, identificar sujetos y predicados, entender metáforas y reformular ideas complejas con tus propias palabras.',
+        description: 'Resume el texto a un nivel avanzado, preservando la terminología técnica y los matices para lectores que buscan una comprensión sofisticada',
+        sample: 'Los datos macroeconómicos apuntan a un crecimiento económico sostenido, con cifras de empleo en mejora y una inflación que se mantiene dentro de límites aceptables—indicadores positivos para la estabilidad financiera de los hogares.',
       },
     },
     sampleOutput: 'Ejemplo de Resultado',

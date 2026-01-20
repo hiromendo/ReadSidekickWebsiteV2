@@ -206,9 +206,6 @@ export function Hero() {
                         </svg>
                         <span>{t.hero.cta}</span>
                     </a>
-                    <span className="text-ink-700/60 font-mono text-body-sm">
-                        {t.hero.installs}
-                    </span>
                 </motion.div>
 
                 {/* Hero visual placeholder */}
