@@ -1,33 +1,35 @@
-import { Hero } from "./components/Hero";
-import { Problem } from "./components/Problem";
-import { Confidence } from "./components/Confidence";
-import { HowItWorks } from "./components/HowItWorks";
-import { Methodology } from "./components/Methodology";
-import { ASLTranslator } from "./components/ASLTranslator";
-import { SocialProof } from "./components/SocialProof";
-import { Founder } from "./components/Founder";
-import { Footer } from "./components/Footer";
-import { Navigation } from "./components/Navigation";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./i18n";
+import { Layout } from "./components/Layout";
+import { ScrollToTop } from "./components/ScrollToTop";
+import { Home } from "./pages/Home";
+import { Feedback } from "./pages/Feedback";
 
 function App() {
     return (
-        <LanguageProvider>
-            <div className="relative">
-                <Navigation />
-                <main>
-                    <Hero />
-                    <Problem />
-                    <Confidence />
-                    <HowItWorks />
-                    <Methodology />
-                    <ASLTranslator />
-                    {/* <SocialProof /> */}
-                    <Founder />
-                    <Footer />
-                </main>
-            </div>
-        </LanguageProvider>
+        <BrowserRouter>
+            <ScrollToTop />
+            <LanguageProvider>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <Layout>
+                                <Home />
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/feedback"
+                        element={
+                            <Layout>
+                                <Feedback />
+                            </Layout>
+                        }
+                    />
+                </Routes>
+            </LanguageProvider>
+        </BrowserRouter>
     );
 }
 
