@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { blogPosts } from "../data/blogPosts";
+import { trackEvent } from "../utils/analytics";
 
 export function Blog() {
     const { ref: sectionRef, isInView: sectionInView } =
@@ -85,6 +86,7 @@ export function Blog() {
                             >
                                 <Link
                                     to={`/blog/${post.slug}`}
+                                    onClick={() => trackEvent('blog_post_click', { slug: post.slug, title: post.title })}
                                     className="block bg-white rounded-xl p-8 md:p-10 border-l-4 border-coral-500 shadow-sm hover:shadow-md transition-shadow duration-300 group"
                                 >
                                     {/* Tags */}

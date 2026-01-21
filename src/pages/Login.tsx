@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
+import { trackEvent } from '../utils/analytics';
 
 export function Login() {
   const { user, isLoading, isAuthorized, signInWithGoogle } = useAuth();
@@ -17,6 +18,7 @@ export function Login() {
   const handleSignIn = async () => {
     setError(null);
     setIsSigningIn(true);
+    trackEvent('sign_in_attempt', { method: 'google' });
     try {
       await signInWithGoogle();
     } catch (err) {

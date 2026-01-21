@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useMousePosition } from "../hooks/useScrollReveal";
 import { useLanguage } from "../i18n";
+import { trackEvent } from "../utils/analytics";
 
 export function Hero() {
     const mouse = useMousePosition();
@@ -166,6 +167,7 @@ export function Hero() {
                         href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackEvent('chrome_store_click', { location: 'hero' })}
                         className="group inline-flex items-center gap-3 px-8 py-4 bg-coral-500 text-white font-mono text-body-md tracking-wide hover:bg-coral-600 transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl"
                     >
                         <svg

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useLanguage } from '../i18n'
+import { trackEvent } from '../utils/analytics'
 
 interface PillarCardProps {
   number: string
@@ -187,6 +188,7 @@ export function Methodology() {
                   href="https://www.youtube.com/watch?v=9yb17y0wqfM"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent('external_link_click', { source: 'youtube' })}
                   className="text-teal-600 hover:text-teal-700 underline underline-offset-2"
                 >
                   {t.methodology.research.marlonKuntze}
@@ -197,6 +199,7 @@ export function Methodology() {
                   href="https://ul.stanford.edu/sites/default/files/resource/2021-12/06-LWF%20CJF%20Text%20Complexity%20FINAL_0.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent('external_link_click', { source: 'stanford_pdf' })}
                   className="text-teal-600 hover:text-teal-700 underline underline-offset-2"
                 >
                   {t.methodology.research.lilyWongFillmore}

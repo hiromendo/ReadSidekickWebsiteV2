@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../i18n'
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { trackEvent } from '../utils/analytics'
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -55,6 +56,7 @@ export function Navigation() {
                 <a
                   key={item.href}
                   href={item.href}
+                  onClick={() => trackEvent('nav_link_click', { label: item.label, location: 'desktop' })}
                   className="editorial-label editorial-link text-ink-700 hover:text-ink-900 transition-colors duration-500"
                 >
                   {item.label}
@@ -77,6 +79,7 @@ export function Navigation() {
                 href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('chrome_store_click', { location: 'nav_desktop' })}
                 className="px-6 py-2.5 bg-coral-500 text-white font-mono text-body-sm tracking-wide hover:bg-coral-600 transition-colors duration-300 rounded-lg"
               >
                 {t.nav.addToChrome}
@@ -138,7 +141,10 @@ export function Navigation() {
                 <motion.a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    trackEvent('nav_link_click', { label: item.label, location: 'mobile' });
+                    setIsMenuOpen(false);
+                  }}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
@@ -205,6 +211,7 @@ export function Navigation() {
                 href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('chrome_store_click', { location: 'nav_mobile' })}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}

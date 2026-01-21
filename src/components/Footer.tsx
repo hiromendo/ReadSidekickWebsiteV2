@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useLanguage } from '../i18n'
+import { trackEvent } from '../utils/analytics'
 
 export function Footer() {
   const { t } = useLanguage()
@@ -123,6 +124,7 @@ export function Footer() {
                 href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('chrome_store_click', { location: 'footer_cta' })}
                 className="group inline-flex items-center gap-3 px-8 py-4 bg-coral-500 text-white font-mono text-body-md tracking-wide hover:bg-coral-600 transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl"
               >
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
@@ -195,6 +197,7 @@ export function Footer() {
                   <a
                     key={item.href}
                     href={item.href}
+                    onClick={() => trackEvent('footer_nav_click', { label: item.label })}
                     className="block font-mono text-body-sm text-ivory-100/60 hover:text-ivory-100 transition-colors duration-300"
                   >
                     {item.label}
@@ -233,6 +236,7 @@ export function Footer() {
                   href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent('chrome_store_click', { location: 'footer_link' })}
                   className="block font-mono text-body-sm text-ivory-100/60 hover:text-ivory-100 transition-colors duration-300"
                 >
                   Chrome Web Store

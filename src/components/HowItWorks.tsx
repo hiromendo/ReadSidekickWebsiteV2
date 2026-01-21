@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useState } from "react";
 import { useLanguage } from "../i18n";
+import { trackEvent } from "../utils/analytics";
 
 type Mode = "easy" | "medium" | "hard";
 
@@ -146,7 +147,10 @@ export function HowItWorks() {
                         {(Object.keys(modes) as Mode[]).map((mode) => (
                             <button
                                 key={mode}
-                                onClick={() => setActiveMode(mode)}
+                                onClick={() => {
+                                    setActiveMode(mode);
+                                    trackEvent('mode_selection', { mode });
+                                }}
                                 className={`flex-1 px-6 py-4 font-mono text-body-sm transition-all duration-300 ${
                                     activeMode === mode
                                         ? "bg-ink-900 text-white"

@@ -5,6 +5,7 @@ import TranslationOutput from '../components/asl-translator/TranslationOutput';
 import ActionButton from '../components/asl-translator/ActionButton';
 import StatusMessage from '../components/asl-translator/StatusMessage';
 import { translateText, saveToGoogleSheets } from '../services/asl-api';
+import { trackEvent } from '../utils/analytics';
 
 export function ASLTranslator() {
   const { user, signOut } = useAuth();
@@ -22,6 +23,7 @@ export function ASLTranslator() {
     setError(null);
     setSuccessMessage(null);
     setIsTranslating(true);
+    trackEvent('translate_click', { text_length: String(sourceText.length) });
 
     const result = await translateText(sourceText);
 
@@ -41,6 +43,7 @@ export function ASLTranslator() {
     setError(null);
     setSuccessMessage(null);
     setIsSaving(true);
+    trackEvent('save_sheets_click');
 
     const result = await saveToGoogleSheets(sourceText, editedTranslation);
 
