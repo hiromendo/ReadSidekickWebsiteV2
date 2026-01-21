@@ -206,6 +206,12 @@ export function Footer() {
                 >
                   Contact Us
                 </Link>
+                <Link
+                  to="/blog"
+                  className="block font-mono text-body-sm text-ivory-100/60 hover:text-ivory-100 transition-colors duration-300"
+                >
+                  Blog
+                </Link>
               </nav>
             </motion.div>
 

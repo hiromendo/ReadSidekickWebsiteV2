@@ -61,6 +61,12 @@ export function Navigation() {
                 </a>
               ))}
               <Link
+                to="/blog"
+                className="editorial-label editorial-link text-ink-700 hover:text-ink-900 transition-colors duration-500"
+              >
+                Blog
+              </Link>
+              <Link
                 to="/feedback"
                 className="editorial-label editorial-link text-ink-700 hover:text-ink-900 transition-colors duration-500"
               >
@@ -157,6 +163,24 @@ export function Navigation() {
                 }}
               >
                 <Link
+                  to="/blog"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="font-serif text-display-sm text-ink-900 hover:text-coral-500 transition-colors duration-500"
+                >
+                  Blog
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{
+                  duration: 0.6,
+                  delay: (navItems.length + 1) * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              >
+                <Link
                   to="/feedback"
                   onClick={() => setIsMenuOpen(false)}
                   className="font-serif text-display-sm text-ink-900 hover:text-coral-500 transition-colors duration-500"
@@ -170,7 +194,7 @@ export function Navigation() {
                 exit={{ opacity: 0, y: -30 }}
                 transition={{
                   duration: 0.6,
-                  delay: (navItems.length + 1) * 0.1,
+                  delay: (navItems.length + 2) * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className="mt-4"
@@ -186,7 +210,7 @@ export function Navigation() {
                 exit={{ opacity: 0, y: -30 }}
                 transition={{
                   duration: 0.6,
-                  delay: (navItems.length + 2) * 0.1,
+                  delay: (navItems.length + 3) * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className="mt-4 px-8 py-3 bg-coral-500 text-white font-mono text-body-md tracking-wide rounded-lg"
