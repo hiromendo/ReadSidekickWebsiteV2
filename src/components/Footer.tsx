@@ -248,12 +248,12 @@ export function Footer() {
                 {t.footer.legal}
               </span>
               <div className="space-y-2">
-                <a
-                  href="#"
+                <Link
+                  to="/privacy"
                   className="block font-mono text-body-sm text-ivory-100/60 hover:text-ivory-100 transition-colors duration-300"
                 >
                   {t.footer.privacy}
-                </a>
+                </Link>
                 <a
                   href="#"
                   className="block font-mono text-body-sm text-ivory-100/60 hover:text-ivory-100 transition-colors duration-300"

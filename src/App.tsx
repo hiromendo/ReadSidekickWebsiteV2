@@ -4,6 +4,7 @@ import { Layout } from "./components/Layout";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Home } from "./pages/Home";
 import { Feedback } from "./pages/Feedback";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 
 function App() {
     return (
@@ -24,6 +25,14 @@ function App() {
                         element={
                             <Layout>
                                 <Feedback />
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/privacy"
+                        element={
+                            <Layout>
+                                <PrivacyPolicy />
                             </Layout>
                         }
                     />
