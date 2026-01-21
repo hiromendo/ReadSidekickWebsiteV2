@@ -8,7 +8,7 @@ interface UseScrollRevealOptions {
 
 export function useScrollReveal<T extends HTMLElement>({
   threshold = 0.1,
-  rootMargin = '-50px',
+  rootMargin = '0px',
   triggerOnce = true,
 }: UseScrollRevealOptions = {}) {
   const ref = useRef<T>(null)
@@ -17,6 +17,18 @@ export function useScrollReveal<T extends HTMLElement>({
   useEffect(() => {
     const element = ref.current
     if (!element) return
+
+    // Check if element is already in view on mount (fixes mobile Safari issues)
+    const rect = element.getBoundingClientRect()
+    const isAlreadyVisible =
+      rect.top < window.innerHeight &&
+      rect.bottom > 0 &&
+      rect.top < window.innerHeight * (1 - threshold)
+
+    if (isAlreadyVisible) {
+      setIsInView(true)
+      if (triggerOnce) return
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
