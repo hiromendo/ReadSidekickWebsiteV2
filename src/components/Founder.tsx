@@ -41,13 +41,14 @@ export function Founder() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-4"
           >
-            <div className="relative">
+            <div className="relative max-w-xs mx-auto lg:mx-0">
               {/* Photo frame */}
               <div className="aspect-square bg-ink-800/5 rounded-2xl overflow-hidden relative">
-                {/* Placeholder with initials */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-ink-700/10 to-ink-800/5">
-                  <span className="font-serif text-display-lg text-ink-800/20">HM</span>
-                </div>
+                <img
+                  src="/founder.jpg"
+                  alt="Hiroshi Miyamoto"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
 
                 {/* Decorative corner accent */}
                 <div className="absolute bottom-0 right-0 w-16 h-16 bg-coral-500" />
