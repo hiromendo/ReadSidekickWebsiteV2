@@ -254,12 +254,12 @@ export function Footer() {
                 >
                   {t.footer.privacy}
                 </Link>
-                <a
-                  href="#"
+                <Link
+                  to="/terms"
                   className="block font-mono text-body-sm text-ivory-100/60 hover:text-ivory-100 transition-colors duration-300"
                 >
                   {t.footer.terms}
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>

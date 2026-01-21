@@ -5,6 +5,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { Home } from "./pages/Home";
 import { Feedback } from "./pages/Feedback";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { TermsOfService } from "./pages/TermsOfService";
 
 function App() {
     return (
@@ -33,6 +34,14 @@ function App() {
                         element={
                             <Layout>
                                 <PrivacyPolicy />
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/terms"
+                        element={
+                            <Layout>
+                                <TermsOfService />
                             </Layout>
                         }
                     />

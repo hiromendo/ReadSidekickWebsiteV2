@@ -71,7 +71,7 @@ export function Navigation() {
                 href="https://chromewebstore.google.com/detail/read-sidekick/mdcekkbjfgpgobbgffmpjhpkpkgfmdpa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-2.5 bg-coral-500 text-white font-mono text-body-sm tracking-wide hover:bg-coral-600 transition-colors duration-300"
+                className="px-6 py-2.5 bg-coral-500 text-white font-mono text-body-sm tracking-wide hover:bg-coral-600 transition-colors duration-300 rounded-lg"
               >
                 {t.nav.addToChrome}
               </a>
@@ -189,7 +189,7 @@ export function Navigation() {
                   delay: (navItems.length + 2) * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="mt-4 px-8 py-3 bg-coral-500 text-white font-mono text-body-md tracking-wide"
+                className="mt-4 px-8 py-3 bg-coral-500 text-white font-mono text-body-md tracking-wide rounded-lg"
               >
                 {t.nav.addToChromeFree}
               </motion.a>
