@@ -7,6 +7,11 @@ import StatusMessage from '../components/asl-translator/StatusMessage';
 import { translateText, saveToGoogleSheets } from '../services/asl-api';
 import { trackEvent } from '../utils/analytics';
 
+const MODEL_OPTIONS = [
+  { id: 'v1', name: 'Model v1', endpoint: null },
+  { id: 'v2', name: 'Model v2', endpoint: 'https://translate-to-asl-pro-46jzpxw4ga-uc.a.run.app' },
+];
+
 export function ASLTranslator() {
   const { user, signOut } = useAuth();
   const [sourceText, setSourceText] = useState('');
@@ -16,6 +21,7 @@ export function ASLTranslator() {
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [selectedModel, setSelectedModel] = useState('v1');
 
   const handleTranslate = async () => {
     if (!sourceText.trim()) return;
@@ -23,9 +29,11 @@ export function ASLTranslator() {
     setError(null);
     setSuccessMessage(null);
     setIsTranslating(true);
-    trackEvent('translate_click', { text_length: String(sourceText.length) });
 
-    const result = await translateText(sourceText);
+    const model = MODEL_OPTIONS.find((m) => m.id === selectedModel);
+    trackEvent('translate_click', { text_length: String(sourceText.length), model: selectedModel });
+
+    const result = await translateText(sourceText, model?.endpoint ?? undefined);
 
     setIsTranslating(false);
 
@@ -127,7 +135,19 @@ export function ASLTranslator() {
               placeholder="Paste or type your English text here..."
             />
 
-            <div className="mt-4 flex justify-end">
+            <div className="mt-4 flex items-center justify-end gap-3">
+              <select
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                disabled={isTranslating}
+                className="px-3 py-2 rounded-lg border border-ink-700/20 bg-ivory-50 font-mono text-sm text-ink-800 focus:outline-none focus:ring-2 focus:ring-coral-500/50 disabled:opacity-50"
+              >
+                {MODEL_OPTIONS.map((model) => (
+                  <option key={model.id} value={model.id}>
+                    {model.name}
+                  </option>
+                ))}
+              </select>
               <ActionButton
                 onClick={handleTranslate}
                 disabled={!canTranslate}

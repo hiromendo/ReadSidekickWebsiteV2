@@ -32,13 +32,15 @@ async function mockSave(source: string, translation: string): Promise<SaveRespon
   };
 }
 
-export async function translateText(text: string): Promise<TranslationResponse> {
+export async function translateText(text: string, endpoint?: string): Promise<TranslationResponse> {
   if (USE_MOCK_TRANSLATION) {
     return mockTranslate(text);
   }
 
+  const apiUrl = endpoint || TRANSLATION_API_URL;
+
   try {
-    const response = await fetch(TRANSLATION_API_URL, {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
