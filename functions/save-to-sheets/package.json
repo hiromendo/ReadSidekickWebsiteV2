@@ -1,0 +1,12 @@
+{
+  "name": "save-to-sheets",
+  "version": "1.0.0",
+  "description": "Cloud Function to save ASL translations to Google Sheets",
+  "main": "index.js",
+  "dependencies": {
+    "googleapis": "^126.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

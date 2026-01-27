@@ -53,7 +53,7 @@ export function ASLTranslator() {
     setIsSaving(true);
     trackEvent('save_sheets_click');
 
-    const result = await saveToGoogleSheets(sourceText, editedTranslation);
+    const result = await saveToGoogleSheets(sourceText, editedTranslation, user?.email ?? undefined);
 
     setIsSaving(false);
 
