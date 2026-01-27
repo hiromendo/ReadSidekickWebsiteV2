@@ -18,7 +18,7 @@ exports.saveToSheets = async (req, res) => {
   }
 
   try {
-    const { source, translation, userEmail } = req.body;
+    const { source, translation, userEmail, modelType } = req.body;
 
     if (!source || !translation) {
       return res.status(400).json({
@@ -37,14 +37,15 @@ exports.saveToSheets = async (req, res) => {
     // Append row to sheet
     const result = await sheets.spreadsheets.values.append({
       spreadsheetId: SHEET_ID,
-      range: 'Sheet1!A:D',
+      range: 'Sheet1!A:E',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[
           new Date().toISOString(),
           source,
           translation,
-          userEmail || 'anonymous'
+          userEmail || 'anonymous',
+          modelType || 'unknown'
         ]]
       }
     });

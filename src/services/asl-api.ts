@@ -21,10 +21,10 @@ async function mockTranslate(text: string): Promise<TranslationResponse> {
   };
 }
 
-async function mockSave(source: string, translation: string, userEmail?: string): Promise<SaveResponse> {
+async function mockSave(source: string, translation: string, userEmail?: string, modelType?: string): Promise<SaveResponse> {
   await new Promise((resolve) => setTimeout(resolve, 800));
 
-  console.log('Mock save to Google Sheets:', { source, translation, userEmail });
+  console.log('Mock save to Google Sheets:', { source, translation, userEmail, modelType });
 
   return {
     success: true,
@@ -72,10 +72,11 @@ export async function translateText(text: string, endpoint?: string): Promise<Tr
 export async function saveToGoogleSheets(
   source: string,
   translation: string,
-  userEmail?: string
+  userEmail?: string,
+  modelType?: string
 ): Promise<SaveResponse> {
   if (USE_MOCK_SHEETS) {
-    return mockSave(source, translation, userEmail);
+    return mockSave(source, translation, userEmail, modelType);
   }
 
   try {
@@ -84,7 +85,7 @@ export async function saveToGoogleSheets(
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ source, translation, userEmail }),
+      body: JSON.stringify({ source, translation, userEmail, modelType }),
     });
 
     if (!response.ok) {
