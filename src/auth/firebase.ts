@@ -1,5 +1,12 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  setPersistence,
+  browserLocalPersistence
+} from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -15,3 +22,9 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const googleProvider = new GoogleAuthProvider();
+
+// Set persistence to local (survives browser restarts, similar to cookies)
+setPersistence(auth, browserLocalPersistence);
+
+// Export email/password auth functions
+export { createUserWithEmailAndPassword, signInWithEmailAndPassword };
