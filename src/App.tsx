@@ -13,6 +13,7 @@ import { Login } from "./pages/Login";
 import { ASLTranslator } from "./pages/ASLTranslator";
 import { Blog } from "./pages/Blog";
 import { BlogPost } from "./pages/BlogPost";
+import { ASLSamples } from "./pages/ASLSamples";
 import { trackPageView } from "./utils/analytics";
 
 function PageViewTracker() {
@@ -78,6 +79,14 @@ function App() {
                             element={
                                 <Layout>
                                     <BlogPost />
+                                </Layout>
+                            }
+                        />
+                        <Route
+                            path="/aslsamples"
+                            element={
+                                <Layout>
+                                    <ASLSamples />
                                 </Layout>
                             }
                         />
