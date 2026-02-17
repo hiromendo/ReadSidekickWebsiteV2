@@ -16,7 +16,7 @@ const termsSections: TermsSection[] = [
         title: "About Our Services",
         content: [
             {
-                text: "Read Sidekick is a Chrome extension designed to assist users with reading comprehension by transforming text into more accessible formats. Our Services include text simplification across multiple reading levels (Easy, Medium, Hard), and may include American Sign Language (ASL) translation features. These tools are intended to support literacy development and accessibility.",
+                text: "Read Sidekick is a Chrome extension designed to assist users with reading comprehension by transforming text into more accessible formats. Our Services include text simplification across multiple detail levels (Simple, Moderate, Detailed), and may include American Sign Language (ASL) translation features. These tools are intended to support reading comprehension and accessibility.",
             },
         ],
     },

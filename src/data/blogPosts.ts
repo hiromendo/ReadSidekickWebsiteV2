@@ -34,7 +34,7 @@ export const blogPosts: BlogPost[] = [
         readingTime: 12,
         excerpt:
             "When I moved from Mexico City to the United States at age 10, I spoke exactly zero English. Then I discovered the Animorphs series, and everything changed.",
-        tags: ["Literacy", "Personal Story", "Research", "Education"],
+        tags: ["Language", "Personal Story", "Research", "Reading Tools"],
         content: [
             { type: "heading", content: "A Kid, A Dictionary, and Some Shape-Shifting Teenagers" },
             {
@@ -90,12 +90,12 @@ export const blogPosts: BlogPost[] = [
             {
                 type: "paragraph",
                 content:
-                    "Those AI summaries were giving him the gist of things—a surface-level understanding he could regurgitate for a test. But they weren't helping him actually read better. They weren't building his capacity to wrestle with complex ideas on his own. They were a crutch, not a teacher.",
+                    "Those AI summaries were giving him the gist of things—a surface-level understanding he could regurgitate for a test. But they weren't helping him read better. They weren't building his capacity to wrestle with complex ideas on his own. They were a crutch, not a teacher.",
             },
             {
                 type: "paragraph",
                 content:
-                    "It reminded me of something I'd read in research by Dr. Lily Wong Fillmore and Dr. Charles J. Fillmore from UC Berkeley. They argued that one of the biggest problems facing struggling readers is that we keep giving them \"easy\" texts as a safeguard against failure—but those simplified texts actually prevent them from learning how sophisticated language works.",
+                    "It reminded me of something I'd read in research by Dr. Lily Wong Fillmore and Dr. Charles J. Fillmore from UC Berkeley. They argued that one of the biggest challenges readers face is that we keep giving them simplified texts as a safeguard against failure—but those simplified texts actually prevent them from learning how sophisticated language works.",
             },
             {
                 type: "paragraph",
@@ -109,22 +109,22 @@ export const blogPosts: BlogPost[] = [
             { type: "separator" },
             {
                 type: "heading",
-                content: "The 130 Million Adults Who Need a Different Approach",
+                content: "Why 130 Million Adults Deserve Better Tools",
             },
             {
                 type: "bold",
                 content:
-                    "Here's a statistic that still stops me cold: roughly 130 million adults in the U.S. lack adequate literacy proficiency.",
+                    "Here's a statistic that still stops me cold: roughly 130 million adults in the U.S. could benefit from better tools for reading complex text.",
             },
             {
                 type: "paragraph",
                 content:
-                    "That's not just people who can't read at all—it includes professionals who struggle with complex documents, parents who can't help their kids with homework, and workers who miss promotions because they can't process technical materials.",
+                    "That's not a niche audience—it includes professionals navigating complex documents, parents helping their kids with homework, and workers who need to process technical materials to advance.",
             },
             {
                 type: "paragraph",
                 content:
-                    "And yet, most literacy tools treat adults like children. Remedial. Patronizing. Focused on deficiencies rather than building capacity.",
+                    "And yet, most reading tools aren't designed with adults in mind. They feel remedial. Patronizing. Focused on deficiencies rather than building capacity.",
             },
             {
                 type: "paragraph",
@@ -135,7 +135,7 @@ export const blogPosts: BlogPost[] = [
             {
                 type: "paragraph",
                 content:
-                    "Dr. Lily Fillmore and Dr. Charles Fillmore spent years studying what makes academic texts so challenging—and more importantly, what actually works to help struggling readers.",
+                    "Dr. Lily Fillmore and Dr. Charles Fillmore spent years studying what makes academic texts so challenging—and more importantly, what actually works to help people navigate them.",
             },
             {
                 type: "bold",
@@ -230,24 +230,24 @@ export const blogPosts: BlogPost[] = [
             {
                 type: "paragraph",
                 content:
-                    'Not everyone needs the same level of support. Our Easy, Medium, and Hard modes let readers engage with content at their current level while building toward independence. Unlike simple "summarization," we preserve meaning while transforming complexity.',
+                    'Not everyone wants the same level of detail. Our Simple, Moderate, and Detailed modes let readers engage with content on their own terms. Unlike simple "summarization," we preserve meaning while transforming complexity.',
             },
-            { type: "subheading", content: "2. Sentence-Level Learning" },
+            { type: "subheading", content: "2. Sentence-Level Exploration" },
             {
                 type: "paragraph",
                 content:
-                    "Inspired directly by the Fillmores' research, our learning mode breaks down individual sentences to help users understand how meaning is constructed. We don't just tell you what something means—we show you how the language works so you can figure it out yourself next time.",
+                    "Inspired directly by the Fillmores' research, our Explore mode breaks down individual sentences to help you understand how meaning is constructed. We don't just tell you what something means—we show you how the language works so you can figure it out yourself next time.",
             },
             { type: "subheading", content: "3. Any Content You Care About" },
             {
                 type: "paragraph",
                 content:
-                    "Remember how I learned English through Animorphs? Curiosity is the engine of learning. Read Sidekick works on whatever text you want to read—news articles, work documents, course materials, that novel you've been meaning to tackle. Learning happens faster when you actually care about the content.",
+                    "Remember how I learned English through Animorphs? Curiosity is the engine. Read Sidekick works on whatever text you want to read—news articles, work documents, course materials, that novel you've been meaning to tackle. Understanding happens faster when you care about the content.",
             },
             { type: "separator" },
             {
                 type: "heading",
-                content: "The Difference Between Shortcuts and Real Learning",
+                content: "The Difference Between Shortcuts and Real Understanding",
             },
             {
                 type: "paragraph",
@@ -274,17 +274,17 @@ export const blogPosts: BlogPost[] = [
             {
                 type: "bold",
                 content:
-                    "Since launching, Read Sidekick has been used over 18,000 times, processing more than 1.2 million words for learners who just need the right kind of support to unlock their potential.",
+                    "Since launching, Read Sidekick has been used over 18,000 times, processing more than 1.2 million words for people who just need the right kind of support to unlock complex content.",
             },
             {
                 type: "paragraph",
                 content:
-                    "These aren't people with learning disabilities. They're adults with jobs and families and dreams who happen to need a different approach than what traditional education offered them.",
+                    "They're adults with jobs and families and ambitions who want a better way to engage with complex text than what traditional tools have offered.",
             },
             {
                 type: "paragraph",
                 content:
-                    "They're the kid I was, twenty-something years ago, struggling through Animorphs with a dictionary in one hand.",
+                    "They're the kid I was, twenty-something years ago, working through Animorphs with a dictionary in one hand.",
             },
             {
                 type: "paragraph",

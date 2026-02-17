@@ -3,57 +3,57 @@ import type { Translations } from '../types'
 export const en: Translations = {
   // Navigation
   nav: {
-    problem: 'Problem',
+    problem: 'Why It Works',
     howItWorks: 'How It Works',
-    methodology: 'Methodology',
+    methodology: 'Our Approach',
     about: 'About',
     addToChrome: 'Add to Chrome',
-    addToChromeFree: 'Add to Chrome - It\'s Free',
+    addToChromeFree: 'Add to Chrome — Free',
   },
 
   // Hero
   hero: {
-    tagline: 'An innovative learning tool that moves beyond traditional dictionaries, empowering adult learners to understand any text and build stronger comprehension abilities.',
-    cta: 'Add to Chrome - It\'s Free',
+    tagline: 'Understand anything you read. Turn dense articles, legal jargon, and confusing content into clear, simple language — in one click.',
+    cta: 'Add to Chrome — Free',
     scrollToExplore: 'Scroll to explore',
     extensionPanel: 'Read Sidekick',
-    easy: 'Easy',
-    medium: 'Medium',
-    hard: 'Hard',
+    easy: 'Simple',
+    medium: 'Moderate',
+    hard: 'Detailed',
   },
 
   // Problem
   problem: {
-    sectionLabel: 'The Solution',
-    title: 'See the Difference',
-    subtitle: 'Read Sidekick transforms confusing text into clear, simple language.',
+    sectionLabel: 'How It Works',
+    title: 'Complex content, made clear.',
+    subtitle: 'Read Sidekick rewrites dense, jargon-heavy text into plain language — so you get the meaning without the headache.',
     beforeAfter: {
-      beforeLabel: 'Before',
-      afterLabel: 'After',
+      beforeLabel: 'Original',
+      afterLabel: 'Simplified',
       beforeText: 'Pursuant to the terms and conditions set forth in your account agreement, we hereby notify you that your account has been assessed an insufficient funds fee in the amount of $35.00 due to a transaction that exceeded your available balance. This fee has been debited from your account as of the date indicated above. Should you believe this fee was assessed in error, please contact our customer service department within thirty (30) calendar days to dispute this charge.',
       afterText: 'We charged your account $35 because you didn\'t have enough money when you tried to make a payment. If you think this is a mistake, call us within 30 days.',
-      caption: 'We turn this... into this.',
+      caption: 'From this... to this.',
     },
     learnMode: {
-      label: 'Learn Mode',
+      label: 'Explore Mode',
       subtitle: '"The Deep Dive"',
       sentence: 'The senator decided to throw in the towel after the polls closed.',
       actorAction: {
-        title: 'The Actor & The Action',
+        title: 'Who\'s doing what',
         quote: '"The senator decided..."',
         who: 'A government official (Senator)',
         what: 'They made a choice',
-        grammarNote: 'This sets up the subject and tells us someone is about to do something important.',
+        grammarNote: '"The senator decided..." sets up the subject and tells us someone is about to do something important.',
       },
       hiddenMeaning: {
-        title: 'The Hidden Meaning (Idiom)',
+        title: 'The real meaning (Idiom)',
         quote: '"...to throw in the towel..."',
         literalMeaning: ' Throwing a piece of cloth',
         actualMeaning: 'To quit or give up',
         explanation: 'This comes from boxing—when a fighter\'s coach throws a towel into the ring, it means they surrender.',
       },
       timeline: {
-        title: 'The Timeline (Sequence)',
+        title: 'What happened when (Sequence)',
         quote: '"...after the polls closed."',
         linkWord: '"after" connects two events in time',
         eventA: 'Voting centers finished (polls closed)',
@@ -73,21 +73,21 @@ export const en: Translations = {
 
   // Confidence
   confidence: {
-    sectionLabel: 'Our Promise',
-    headline: 'Read with Confidence, not Confusion',
-    subheadline: 'Your judgment-free reading companion. Get instant definitions, clear explanations, and guided support right when you need it, so you can tackle any topic without fear.',
+    sectionLabel: 'What You Get',
+    headline: 'Your reading, supercharged.',
+    subheadline: 'Read Sidekick works quietly beside you — instant clarity for any content, right when you want it.',
     points: {
       masterMessage: {
-        title: 'Master Every Message',
-        description: 'Unlock the full power of the internet, apps, and AI tools without confusion.',
+        title: 'Understand anything online',
+        description: 'Articles, apps, documents, AI tools. If it\'s text, Read Sidekick can clarify it.',
       },
       boostCareer: {
-        title: 'Boost Your Career',
-        description: 'Gain the skills you need for the job you want.',
+        title: 'Work with confidence',
+        description: 'Handle complex documents, reports, and communications without slowing down.',
       },
       readConfidence: {
-        title: 'Read with Confidence',
-        description: 'Spot mistakes instantly and never second-guess what you just read.',
+        title: 'Go deeper when you want to',
+        description: 'Explore idioms, grammar, and meaning — on your terms, at your pace.',
       },
     },
   },
@@ -95,23 +95,23 @@ export const en: Translations = {
   // HowItWorks
   howItWorks: {
     sectionLabel: 'How It Works',
-    title: 'Read Any Content.',
-    titleItalic: 'Understand It All.',
-    subtitle: 'Read Sidekick is a Chrome extension that helps you read any content you\'re interested in—transforming complex text into something you can actually understand.',
+    title: 'Any text.',
+    titleItalic: 'Your level of detail.',
+    subtitle: 'Read Sidekick is a Chrome extension that simplifies complex content — so you spend less time decoding and more time doing.',
     modes: {
       easy: {
-        title: 'Easy Mode',
-        description: 'Transforms text into simpler language appropriate for beginning readers',
+        title: 'Simple',
+        description: 'The essentials. Clear, straightforward language that gets right to the point.',
         sample: 'The economy is growing. More people have jobs. Prices are going up slowly. This is good for most families.',
       },
       medium: {
-        title: 'Medium Mode',
-        description: 'Adjusts text complexity for intermediate comprehension levels',
+        title: 'Moderate',
+        description: 'A balanced rewrite that keeps more detail while improving clarity.',
         sample: 'The economy is expanding steadily. Employment rates have increased. Inflation remains moderate. These conditions benefit many households.',
       },
       hard: {
-        title: 'Hard Mode',
-        description: 'Summarizes text at an advanced level, preserving technical terminology and nuance for readers who want sophisticated comprehension',
+        title: 'Detailed',
+        description: 'Light edits for readability. Closest to the original.',
         sample: 'The macroeconomic data points to sustained economic growth, with improving employment figures and inflation remaining within acceptable bounds—positive indicators for household financial stability.',
       },
     },
@@ -121,10 +121,10 @@ export const en: Translations = {
       subtitle: '"Simplify Any Text"',
     },
     learnMode: {
-      badge: 'Learn Mode',
+      badge: 'Explore Mode',
       subtitle: '"The Deep Dive"',
-      title: 'Select Your Native Language',
-      description: 'Learn Mode breaks down text line by line, explaining grammar, idioms, and meaning in your native language for deeper understanding.',
+      title: 'Select Your Preferred Language',
+      description: 'Go line by line through any text. Get idioms explained, grammar decoded, and meaning unpacked — all in your preferred language.',
       targetLanguage: 'Target Language',
       selectedLanguage: 'Spanish',
       sampleLabel: 'Line-by-Line Breakdown',
@@ -134,9 +134,9 @@ export const en: Translations = {
     comingSoon: {
       label: 'Coming Soon',
       features: [
-        'Personalized feedback on vocabulary and sentence structures you find challenging',
-        'English to ASL translator',
-        'Reading comprehension level tracking',
+        'Personalized vocabulary and language insights based on what you read',
+        'English to ASL translation',
+        'Progress tracking to see how your skills grow over time',
       ],
     },
   },
@@ -144,28 +144,28 @@ export const en: Translations = {
   // Methodology
   methodology: {
     sectionLabel: 'Our Approach',
-    title: 'Built on Proven',
-    titleItalic: 'Learning Science',
-    subtitle: 'Read Sidekick is grounded in research from leading literacy scholars, challenging traditional approaches by emphasizing high-level thinking and the natural complexity of language.',
+    title: 'Built on language research,',
+    titleItalic: 'not guesswork.',
+    subtitle: 'Read Sidekick uses insights from leading researchers in language development and comprehension to make complex text genuinely accessible.',
     pillars: {
       first: {
-        title: 'Build the Cognitive Foundation',
-        description: 'We help learners develop analytical thinking in their strongest language first—preparing the brain for complex text.',
+        title: 'Think in your strongest language first',
+        description: 'Complex ideas are easier to grasp when you start from what you already know. Read Sidekick builds on your existing knowledge.',
       },
       second: {
-        title: 'Unpack the Linguistic Code',
-        description: 'Instead of avoiding difficult grammar, we explicitly break down how academic language works—showing how phrases and clauses pack meaning.',
+        title: 'See how language packs meaning',
+        description: 'Academic and professional writing hides a lot of information in dense phrasing. We unpack it so the meaning comes through clearly.',
       },
       third: {
-        title: 'Bridge to Independent Reading',
-        description: 'Through guided practice, learners see English text not as a mystery, but as a code they can crack using their existing skills.',
+        title: 'Build independence over time',
+        description: 'The more you use Read Sidekick, the more patterns you\'ll recognize on your own. The goal is for you to need us less, not more.',
       },
     },
     research: {
       label: 'Research Foundation',
       prefix: 'Inspired by the work of ',
       marlonKuntze: 'Prof. Marlon Kuntze',
-      marlonKuntzeDetail: ' (ASL literacy research)',
+      marlonKuntzeDetail: ' (ASL and language research)',
       and: ' and ',
       lilyWongFillmore: 'Prof. Lily Wong Fillmore',
       lilyWongFillmoreDetail: ' (academic language development).',
@@ -177,7 +177,7 @@ export const en: Translations = {
     comingSoon: 'Coming Soon',
     inDevelopment: 'In Development',
     title: 'English to ASL Translation',
-    subtitle: 'We\'re building an English to ASL translator designed specifically for the Deaf community. Using a logographic approach inspired by how Japanese kanji works, learners can map written English directly to ASL signs—bypassing sound entirely.',
+    subtitle: 'We\'re building a tool that maps written English directly to ASL — bypassing sound entirely. Inspired by how Japanese kanji connects visual form to meaning, this approach treats ASL as the complete language it is.',
     howItWorks: 'How It Works',
     traditionalPhonics: 'Traditional Phonics',
     aslApproach: 'ASL Approach',
@@ -197,7 +197,7 @@ export const en: Translations = {
   socialProof: {
     sectionLabel: 'Traction',
     title: 'Trusted by',
-    titleItalic: 'Thousands of Learners',
+    titleItalic: 'Thousands of People',
     stats: {
       uses: {
         value: '18,979+',
@@ -227,12 +227,12 @@ export const en: Translations = {
   // Founder
   founder: {
     sectionLabel: 'About the Founder',
-    title: 'Built by Someone',
-    titleItalic: 'Who Gets It',
+    title: 'Built from',
+    titleItalic: 'real experience.',
     name: 'Hiroshi Mendoza',
     bio: [
-      'Hiroshi is a first-generation immigrant who grew up in a Japanese and Spanish-speaking household in Mexico City before moving to Miami at age 10, where he learned English through everyday use rather than formal instruction.',
-      'With a deaf brother, he\'s proficient in American Sign Language and believes firmly in language acquisition through social practice rather than grammar study.',
+      'Hiro grew up in a Japanese and Spanish-speaking household in Mexico City before moving to the U.S. at age 10. He learned English not in a classroom, but through curiosity — reading books he loved with a dictionary beside him.',
+      'With a deaf brother, he\'s fluent in ASL and believes the best tools don\'t teach at you — they work with you.',
     ],
     credentials: {
       label: 'Credentials',
@@ -244,14 +244,14 @@ export const en: Translations = {
   // Footer
   footer: {
     cta: {
-      title: 'Start Reading with',
-      titleItalic: 'Confidence',
-      subtitle: 'Join thousands of learners using Read Sidekick to unlock any text.',
+      title: 'Simplify your',
+      titleItalic: 'next read.',
+      subtitle: 'Thousands of people use Read Sidekick every day. Try it free.',
       button: 'Add to Chrome — Free',
       learnMore: 'Learn more about our approach',
     },
-    tagline: 'Augment Career Opportunities',
-    description: 'An innovative learning tool that empowers adult learners to understand any text.',
+    tagline: 'Simplify any text. Instantly.',
+    description: 'A Chrome extension that makes complex content clear — for everyone.',
     navigate: 'Navigate',
     connect: 'Connect',
     legal: 'Legal',

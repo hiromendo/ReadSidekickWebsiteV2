@@ -63,8 +63,8 @@ export function Blog() {
                             }}
                             className="font-mono text-body-md text-ink-700/70 max-w-2xl mx-auto"
                         >
-                            Thoughts on literacy, learning, and building tools
-                            that help people read better.
+                            Thoughts on language, reading, and building tools
+                            that make complex text clear.
                         </motion.p>
                     </div>
 

@@ -3,57 +3,57 @@ import type { Translations } from '../types'
 export const es: Translations = {
   // Navigation
   nav: {
-    problem: 'Problema',
+    problem: 'Por Qué Funciona',
     howItWorks: 'Cómo Funciona',
-    methodology: 'Metodología',
+    methodology: 'Nuestro Enfoque',
     about: 'Acerca de',
     addToChrome: 'Agregar a Chrome',
-    addToChromeFree: 'Agregar a Chrome - Gratis',
+    addToChromeFree: 'Agregar a Chrome — Gratis',
   },
 
   // Hero
   hero: {
-    tagline: 'Una herramienta de aprendizaje innovadora que va más allá de los diccionarios tradicionales, empoderando a los adultos a comprender cualquier texto y desarrollar habilidades de comprensión más sólidas.',
-    cta: 'Agregar a Chrome - Gratis',
+    tagline: 'Comprende todo lo que lees. Convierte artículos densos, jerga legal y contenido confuso en un lenguaje claro y simple — con un solo clic.',
+    cta: 'Agregar a Chrome — Gratis',
     scrollToExplore: 'Desplázate para explorar',
     extensionPanel: 'Read Sidekick',
-    easy: 'Fácil',
-    medium: 'Medio',
-    hard: 'Difícil',
+    easy: 'Simple',
+    medium: 'Moderado',
+    hard: 'Detallado',
   },
 
   // Problem
   problem: {
-    sectionLabel: 'La Solución',
-    title: 'Mira la Diferencia',
-    subtitle: 'Read Sidekick transforma texto confuso en un lenguaje claro y simple.',
+    sectionLabel: 'Cómo Funciona',
+    title: 'Contenido complejo, simplificado.',
+    subtitle: 'Read Sidekick reescribe texto denso y lleno de jerga en un lenguaje claro — para que captes el significado sin complicaciones.',
     beforeAfter: {
-      beforeLabel: 'Antes',
-      afterLabel: 'Después',
+      beforeLabel: 'Original',
+      afterLabel: 'Simplificado',
       beforeText: 'De conformidad con los términos y condiciones establecidos en su acuerdo de cuenta, le notificamos que se ha aplicado a su cuenta un cargo por fondos insuficientes por la cantidad de $35.00 debido a una transacción que excedió su saldo disponible. Este cargo ha sido debitado de su cuenta a partir de la fecha indicada arriba. Si considera que este cargo fue aplicado por error, comuníquese con nuestro departamento de servicio al cliente dentro de los treinta (30) días calendario para disputar este cargo.',
       afterText: 'Le cobramos $35 de su cuenta porque no tenía suficiente dinero cuando intentó hacer un pago. Si cree que es un error, llámenos dentro de 30 días.',
-      caption: 'Convertimos esto... en esto.',
+      caption: 'De esto... a esto.',
     },
     learnMode: {
-      label: 'Modo Aprender',
+      label: 'Modo Explorar',
       subtitle: '"El Análisis Profundo"',
       sentence: 'The senator decided to throw in the towel after the polls closed.',
       actorAction: {
-        title: 'El Actor y La Acción',
+        title: 'Quién hace qué',
         quote: '"The senator decided..."',
         who: 'Un funcionario del gobierno (Senador)',
         what: 'Tomaron una decisión',
-        grammarNote: 'Esto establece el sujeto y nos dice que alguien está a punto de hacer algo importante.',
+        grammarNote: '"The senator decided..." establece el sujeto y nos dice que alguien está a punto de hacer algo importante.',
       },
       hiddenMeaning: {
-        title: 'El Significado Oculto (Modismo)',
+        title: 'El significado real (Modismo)',
         quote: '"...to throw in the towel..."',
         literalMeaning: 'Lanzar un pedazo de tela',
         actualMeaning: 'Rendirse o abandonar',
         explanation: 'Esto viene del boxeo—cuando el entrenador de un peleador lanza una toalla al ring, significa que se rinden.',
       },
       timeline: {
-        title: 'La Línea de Tiempo (Secuencia)',
+        title: 'Qué pasó y cuándo (Secuencia)',
         quote: '"...after the polls closed."',
         linkWord: '"after" conecta dos eventos en el tiempo',
         eventA: 'Los centros de votación terminaron (polls closed)',
@@ -73,21 +73,21 @@ export const es: Translations = {
 
   // Confidence
   confidence: {
-    sectionLabel: 'Nuestra Promesa',
-    headline: 'Lee con Confianza, no con Confusión',
-    subheadline: 'Tu compañero de lectura sin juicios. Obtén definiciones instantáneas, explicaciones claras y apoyo guiado justo cuando lo necesitas, para que puedas abordar cualquier tema sin miedo.',
+    sectionLabel: 'Lo Que Obtienes',
+    headline: 'Tu lectura, potenciada.',
+    subheadline: 'Read Sidekick trabaja silenciosamente a tu lado — claridad instantánea para cualquier contenido, justo cuando la necesitas.',
     points: {
       masterMessage: {
-        title: 'Domina Cada Mensaje',
-        description: 'Desbloquea todo el poder de internet, las apps y las herramientas de IA sin confusión.',
+        title: 'Comprende cualquier cosa en línea',
+        description: 'Artículos, apps, documentos, herramientas de IA. Si es texto, Read Sidekick puede aclararlo.',
       },
       boostCareer: {
-        title: 'Impulsa Tu Carrera',
-        description: 'Obtén las habilidades que necesitas para el trabajo que deseas.',
+        title: 'Trabaja con confianza',
+        description: 'Maneja documentos complejos, informes y comunicaciones sin perder el ritmo.',
       },
       readConfidence: {
-        title: 'Lee con Confianza',
-        description: 'Detecta errores al instante y nunca dudes de lo que acabas de leer.',
+        title: 'Profundiza cuando quieras',
+        description: 'Explora modismos, gramática y significados — a tu ritmo, en tus términos.',
       },
     },
   },
@@ -95,23 +95,23 @@ export const es: Translations = {
   // HowItWorks
   howItWorks: {
     sectionLabel: 'Cómo Funciona',
-    title: 'Lee Cualquier Contenido.',
-    titleItalic: 'Comprende Todo.',
-    subtitle: 'Read Sidekick es una extensión de Chrome que te ayuda a leer cualquier contenido que te interese, transformando texto complejo en algo que realmente puedes entender.',
+    title: 'Cualquier texto.',
+    titleItalic: 'Tu nivel de detalle.',
+    subtitle: 'Read Sidekick es una extensión de Chrome que simplifica contenido complejo — para que pases menos tiempo descifrando y más tiempo haciendo.',
     modes: {
       easy: {
-        title: 'Modo Fácil',
-        description: 'Transforma el texto en un lenguaje más simple apropiado para lectores principiantes',
+        title: 'Simple',
+        description: 'Lo esencial. Lenguaje claro y directo que va al grano.',
         sample: 'La economía está creciendo. Más personas tienen trabajo. Los precios suben lentamente. Esto es bueno para la mayoría de las familias.',
       },
       medium: {
-        title: 'Modo Medio',
-        description: 'Ajusta la complejidad del texto para niveles de comprensión intermedios',
+        title: 'Moderado',
+        description: 'Una reescritura equilibrada que mantiene más detalle mientras mejora la claridad.',
         sample: 'La economía se está expandiendo de manera constante. Las tasas de empleo han aumentado. La inflación se mantiene moderada. Estas condiciones benefician a muchos hogares.',
       },
       hard: {
-        title: 'Modo Difícil',
-        description: 'Resume el texto a un nivel avanzado, preservando la terminología técnica y los matices para lectores que buscan una comprensión sofisticada',
+        title: 'Detallado',
+        description: 'Ediciones ligeras para mejorar la legibilidad. Lo más cercano al original.',
         sample: 'Los datos macroeconómicos apuntan a un crecimiento económico sostenido, con cifras de empleo en mejora y una inflación que se mantiene dentro de límites aceptables—indicadores positivos para la estabilidad financiera de los hogares.',
       },
     },
@@ -121,10 +121,10 @@ export const es: Translations = {
       subtitle: '"Simplifica Cualquier Texto"',
     },
     learnMode: {
-      badge: 'Modo Aprender',
+      badge: 'Modo Explorar',
       subtitle: '"El Análisis Profundo"',
-      title: 'Selecciona Tu Idioma Nativo',
-      description: 'El Modo Aprender desglosa el texto línea por línea, explicando gramática, modismos y significado en tu idioma nativo para una comprensión más profunda.',
+      title: 'Selecciona Tu Idioma Preferido',
+      description: 'Recorre cualquier texto línea por línea. Obtén modismos explicados, gramática decodificada y significados desglosados — todo en tu idioma preferido.',
       targetLanguage: 'Idioma Objetivo',
       selectedLanguage: 'Español',
       sampleLabel: 'Desglose Línea por Línea',
@@ -134,9 +134,9 @@ export const es: Translations = {
     comingSoon: {
       label: 'Próximamente',
       features: [
-        'Retroalimentación personalizada sobre vocabulario y estructuras de oraciones que encuentras desafiantes',
-        'Traductor de inglés a ASL',
-        'Seguimiento del nivel de comprensión lectora',
+        'Vocabulario personalizado e información lingüística basada en lo que lees',
+        'Traducción de inglés a ASL',
+        'Seguimiento de progreso para ver cómo crecen tus habilidades con el tiempo',
       ],
     },
   },
@@ -144,28 +144,28 @@ export const es: Translations = {
   // Methodology
   methodology: {
     sectionLabel: 'Nuestro Enfoque',
-    title: 'Basado en',
-    titleItalic: 'Ciencia del Aprendizaje Comprobada',
-    subtitle: 'Read Sidekick está fundamentado en investigaciones de destacados académicos de alfabetización, desafiando los enfoques tradicionales al enfatizar el pensamiento de alto nivel y la complejidad natural del lenguaje.',
+    title: 'Basado en investigación lingüística,',
+    titleItalic: 'no en suposiciones.',
+    subtitle: 'Read Sidekick utiliza conocimientos de investigadores líderes en desarrollo del lenguaje y comprensión para hacer que el texto complejo sea genuinamente accesible.',
     pillars: {
       first: {
-        title: 'Construir la Base Cognitiva',
-        description: 'Ayudamos a los estudiantes a desarrollar el pensamiento analítico primero en su idioma más fuerte, preparando el cerebro para textos complejos.',
+        title: 'Piensa primero en tu idioma más fuerte',
+        description: 'Las ideas complejas son más fáciles de comprender cuando partes de lo que ya sabes. Read Sidekick se basa en tu conocimiento existente.',
       },
       second: {
-        title: 'Desempacar el Código Lingüístico',
-        description: 'En lugar de evitar la gramática difícil, explicamos explícitamente cómo funciona el lenguaje académico, mostrando cómo las frases y cláusulas empaquetan significado.',
+        title: 'Observa cómo el lenguaje empaqueta significado',
+        description: 'La escritura académica y profesional esconde mucha información en frases densas. Nosotros la desempacamos para que el significado sea claro.',
       },
       third: {
-        title: 'Puente a la Lectura Independiente',
-        description: 'A través de práctica guiada, los estudiantes ven el texto en inglés no como un misterio, sino como un código que pueden descifrar usando sus habilidades existentes.',
+        title: 'Construye independencia con el tiempo',
+        description: 'Cuanto más uses Read Sidekick, más patrones reconocerás por tu cuenta. El objetivo es que nos necesites menos, no más.',
       },
     },
     research: {
       label: 'Fundamento de Investigación',
       prefix: 'Inspirado por el trabajo de ',
       marlonKuntze: 'Prof. Marlon Kuntze',
-      marlonKuntzeDetail: ' (investigación de alfabetización en ASL)',
+      marlonKuntzeDetail: ' (investigación en ASL y lenguaje)',
       and: ' y ',
       lilyWongFillmore: 'Prof. Lily Wong Fillmore',
       lilyWongFillmoreDetail: ' (desarrollo del lenguaje académico).',
@@ -177,7 +177,7 @@ export const es: Translations = {
     comingSoon: 'Próximamente',
     inDevelopment: 'En Desarrollo',
     title: 'Traducción de Inglés a ASL',
-    subtitle: 'Estamos construyendo un traductor de inglés a ASL diseñado específicamente para la comunidad sorda. Usando un enfoque logográfico inspirado en cómo funcionan los kanji japoneses, los estudiantes pueden mapear el inglés escrito directamente a señas de ASL, evitando el sonido por completo.',
+    subtitle: 'Estamos construyendo una herramienta que mapea el inglés escrito directamente a ASL — evitando el sonido por completo. Inspirado en cómo los kanji japoneses conectan la forma visual con el significado, este enfoque trata al ASL como el idioma completo que es.',
     howItWorks: 'Cómo Funciona',
     traditionalPhonics: 'Fonética Tradicional',
     aslApproach: 'Enfoque ASL',
@@ -197,7 +197,7 @@ export const es: Translations = {
   socialProof: {
     sectionLabel: 'Tracción',
     title: 'Confiado por',
-    titleItalic: 'Miles de Estudiantes',
+    titleItalic: 'Miles de Personas',
     stats: {
       uses: {
         value: '18,979+',
@@ -227,12 +227,12 @@ export const es: Translations = {
   // Founder
   founder: {
     sectionLabel: 'Sobre el Fundador',
-    title: 'Creado por Alguien',
-    titleItalic: 'Que lo Entiende',
+    title: 'Creado desde',
+    titleItalic: 'la experiencia real.',
     name: 'Hiroshi Mendoza',
     bio: [
-      'Hiroshi es un inmigrante de primera generación que creció en un hogar de habla japonesa y española en la Ciudad de México antes de mudarse a Miami a los 10 años, donde aprendió inglés a través del uso cotidiano en lugar de instrucción formal.',
-      'Con un hermano sordo, domina el Lenguaje de Señas Americano y cree firmemente en la adquisición del idioma a través de la práctica social en lugar del estudio de gramática.',
+      'Hiro creció en un hogar de habla japonesa y española en la Ciudad de México antes de mudarse a EE.UU. a los 10 años. Aprendió inglés no en un salón de clases, sino por curiosidad — leyendo libros que le encantaban con un diccionario a su lado.',
+      'Con un hermano sordo, domina el ASL y cree que las mejores herramientas no te enseñan desde arriba — trabajan contigo.',
     ],
     credentials: {
       label: 'Credenciales',
@@ -244,14 +244,14 @@ export const es: Translations = {
   // Footer
   footer: {
     cta: {
-      title: 'Comienza a Leer con',
-      titleItalic: 'Confianza',
-      subtitle: 'Únete a miles de estudiantes que usan Read Sidekick para desbloquear cualquier texto.',
+      title: 'Simplifica tu',
+      titleItalic: 'próxima lectura.',
+      subtitle: 'Miles de personas usan Read Sidekick todos los días. Pruébalo gratis.',
       button: 'Agregar a Chrome — Gratis',
       learnMore: 'Conoce más sobre nuestro enfoque',
     },
-    tagline: 'Potencia Oportunidades de Carrera',
-    description: 'Una herramienta de aprendizaje innovadora que empodera a los adultos a comprender cualquier texto.',
+    tagline: 'Simplifica cualquier texto. Al instante.',
+    description: 'Una extensión de Chrome que hace claro el contenido complejo — para todos.',
     navigate: 'Navegar',
     connect: 'Conectar',
     legal: 'Legal',
