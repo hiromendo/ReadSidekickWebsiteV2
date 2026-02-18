@@ -13,14 +13,10 @@ const samples = [
         video: "/video1Demo.mp4",
         sentence: "He attributes his success to hard work.",
     },
-    {
-        video: "/video3.mp4",
-        sentence: "He attributes his success to hard work.",
-    },
-    { video: "/video4.mp4", sentence: "Stay consistent each day." },
-    { video: "/video8.mp4", sentence: "The forecast predicts rain." },
-    { video: "/video9.mp4", sentence: "My expectation was high." },
-    { video: "/video10.mp4", sentence: "His presence calmed everyone." },
+    { video: "/video2Demo.mp4", sentence: "Stay consistent each day." },
+    { video: "/video3Demo.mp4", sentence: "The forecast predicts rain." },
+    { video: "/video4Demo.mp4", sentence: "My expectation was high." },
+    { video: "/video5Demo.mp4", sentence: "His presence calmed everyone." },
 ];
 
 export function ASLSamples() {
@@ -105,6 +101,7 @@ export function ASLSamples() {
                 >
                     <video
                         controls
+                        muted
                         className="w-full rounded-xl shadow-sm"
                         src="/ReadSidekickIntro.mov"
                     >
@@ -149,6 +146,7 @@ export function ASLSamples() {
                             <div>
                                 <video
                                     controls
+                                    muted
                                     className="w-full rounded-lg"
                                     src={sample.video}
                                 >
@@ -158,6 +156,39 @@ export function ASLSamples() {
                         </motion.div>
                     ))}
                 </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{
+                        opacity: sectionInView ? 1 : 0,
+                        y: sectionInView ? 0 : 30,
+                    }}
+                    transition={{
+                        duration: 1,
+                        delay: 0.3 + samples.length * 0.1,
+                        ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
+                >
+                    <video
+                        controls
+                        muted
+                        className="w-full rounded-xl shadow-sm"
+                        src="/FinalASLDemoPitch.mov"
+                    >
+                        Your browser does not support the video tag.
+                    </video>
+                    <div className="h-full">
+                        <iframe
+                            data-tally-src="https://tally.so/embed/RG05lP?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                            loading="lazy"
+                            width="100%"
+                            height={387}
+                            title="Request Early Access"
+                            style={{ border: 0, margin: 0 }}
+                        />
+                    </div>
+                </motion.div>
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 h-px bg-ink-800/10" />

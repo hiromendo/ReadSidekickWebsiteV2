@@ -83,7 +83,7 @@ function App() {
                             }
                         />
                         <Route
-                            path="/aslsamples"
+                            path="/aslearlyaccess"
                             element={
                                 <Layout>
                                     <ASLSamples />
