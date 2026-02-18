@@ -118,7 +118,7 @@ export const en: Translations = {
     sampleOutput: 'Sample Output',
     understandMode: {
       badge: 'Understand Mode',
-      subtitle: '"Simplify Any Text"',
+      subtitle: '"Understand Any Text"',
     },
     learnMode: {
       badge: 'Explore Mode',
@@ -250,7 +250,7 @@ export const en: Translations = {
       button: 'Add to Chrome — Free',
       learnMore: 'Learn more about our approach',
     },
-    tagline: 'Simplify any text. Instantly.',
+    tagline: 'Understand any text. Instantly.',
     description: 'A Chrome extension that makes complex content clear — for everyone.',
     navigate: 'Navigate',
     connect: 'Connect',
