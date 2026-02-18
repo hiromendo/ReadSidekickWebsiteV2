@@ -49,7 +49,7 @@ export function ASLSamples() {
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                         className="editorial-label block mb-6"
                     >
-                        Video Demonstrations
+                        ASL Translations
                     </motion.span>
 
                     <motion.h1
@@ -65,7 +65,7 @@ export function ASLSamples() {
                         }}
                         className="font-serif text-display-md md:text-display-lg text-ink-900 mb-6"
                     >
-                        ASL Samples
+                        Get Early Access
                     </motion.h1>
 
                     <motion.p
@@ -81,7 +81,12 @@ export function ASLSamples() {
                         }}
                         className="font-mono text-body-lg text-ink-700/80"
                     >
-                        English sentences paired with their ASL translations
+                        Hey everyone! Exciting news! We have a new program for
+                        you - Read Sidekick. What does it do? Highlight any text
+                        online and see it expressed in ASL, instantly, right
+                        there. It's really cool! But we really want your
+                        feedback to help us improve. Sign up here and we'll
+                        contact you.
                     </motion.p>
                 </div>
 
@@ -96,7 +101,7 @@ export function ASLSamples() {
                         delay: 0.25,
                         ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="max-w-5xl mx-auto mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
+                    className="max-w-5xl mx-auto mb-12 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
                 >
                     <video
                         controls
@@ -105,10 +110,7 @@ export function ASLSamples() {
                     >
                         Your browser does not support the video tag.
                     </video>
-                    <div>
-                        <h2 className="font-serif text-2xl text-ink-900 mb-4">
-                            Get Early Access
-                        </h2>
+                    <div className="h-full">
                         <iframe
                             data-tally-src="https://tally.so/embed/RG05lP?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
                             loading="lazy"
