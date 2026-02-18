@@ -1,7 +1,18 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
+declare global {
+    interface Window {
+        Tally?: { loadEmbeds: () => void };
+    }
+}
+
 const samples = [
+    {
+        video: "/DemoVid1.mp4",
+        sentence: "He attributes his success to hard work.",
+    },
     {
         video: "/video3.mp4",
         sentence: "He attributes his success to hard work.",
@@ -17,6 +28,10 @@ export function ASLSamples() {
         useScrollReveal<HTMLElement>({
             threshold: 0.1,
         });
+
+    useEffect(() => {
+        window.Tally?.loadEmbeds();
+    }, []);
 
     return (
         <section
@@ -81,7 +96,7 @@ export function ASLSamples() {
                         delay: 0.25,
                         ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="max-w-3xl mx-auto mb-12"
+                    className="max-w-5xl mx-auto mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
                 >
                     <video
                         controls
@@ -90,6 +105,19 @@ export function ASLSamples() {
                     >
                         Your browser does not support the video tag.
                     </video>
+                    <div>
+                        <h2 className="font-serif text-2xl text-ink-900 mb-4">
+                            Get Early Access
+                        </h2>
+                        <iframe
+                            data-tally-src="https://tally.so/embed/RG05lP?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                            loading="lazy"
+                            width="100%"
+                            height={387}
+                            title="Request Early Access"
+                            style={{ border: 0, margin: 0 }}
+                        />
+                    </div>
                 </motion.div>
 
                 <div className="max-w-5xl mx-auto flex flex-col gap-8">
