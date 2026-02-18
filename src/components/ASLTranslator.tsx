@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useLanguage } from "../i18n";
 
@@ -119,6 +120,40 @@ export function ASLTranslator() {
                     >
                         {t.aslTranslator.subtitle}
                     </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{
+                            opacity: headerInView ? 1 : 0,
+                            y: headerInView ? 0 : 20,
+                        }}
+                        transition={{
+                            duration: 1,
+                            delay: 0.6,
+                            ease: [0.16, 1, 0.3, 1],
+                        }}
+                        className="mt-8"
+                    >
+                        <Link
+                            to="/aslearlyaccess"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-teal-500 hover:bg-teal-400 text-ink-900 font-mono font-semibold rounded-lg transition-colors duration-200"
+                        >
+                            Get Early Access
+                            <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                />
+                            </svg>
+                        </Link>
+                    </motion.div>
                 </div>
 
                 {/* How It Works comparison */}

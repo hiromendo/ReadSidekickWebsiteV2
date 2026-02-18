@@ -79,27 +79,6 @@ export function ASLSamples() {
                     >
                         Get Early Access
                     </motion.h1>
-
-                    <motion.p
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{
-                            opacity: sectionInView ? 1 : 0,
-                            y: sectionInView ? 0 : 30,
-                        }}
-                        transition={{
-                            duration: 1,
-                            delay: 0.2,
-                            ease: [0.16, 1, 0.3, 1],
-                        }}
-                        className="font-mono text-body-lg text-ink-700/80 text-left"
-                    >
-                        Hey everyone! Exciting news! We have a new program for
-                        you - Read Sidekick. What does it do? Highlight any text
-                        online and see it expressed in ASL, instantly, right
-                        there. It's really cool! But we really want your
-                        feedback to help us improve. Sign up here and we'll
-                        contact you.
-                    </motion.p>
                 </div>
 
                 <motion.div
