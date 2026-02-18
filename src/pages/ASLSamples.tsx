@@ -10,7 +10,7 @@ declare global {
 
 const samples = [
     {
-        video: "/DemoVid1.mp4",
+        video: "/video1Demo.mp4",
         sentence: "He attributes his success to hard work.",
     },
     {
