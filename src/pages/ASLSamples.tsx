@@ -25,6 +25,16 @@ export function ASLSamples() {
             threshold: 0.1,
         });
 
+    const { ref: samplesRef, isInView: samplesInView } =
+        useScrollReveal<HTMLDivElement>({
+            threshold: 0.1,
+        });
+
+    const { ref: ctaRef, isInView: ctaInView } =
+        useScrollReveal<HTMLDivElement>({
+            threshold: 0.2,
+        });
+
     useEffect(() => {
         window.Tally?.loadEmbeds();
     }, []);
@@ -34,6 +44,12 @@ export function ASLSamples() {
             ref={sectionRef}
             className="relative py-editorial bg-ivory-100 overflow-hidden min-h-screen"
         >
+            <div className="absolute top-1/2 -translate-y-1/2 -right-20 pointer-events-none select-none">
+                <span className="font-serif text-[15vw] text-ink-800/[0.02] font-medium tracking-tight">
+                    ASL
+                </span>
+            </div>
+
             <div className="editorial-container">
                 <div className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
                     <motion.span
@@ -75,7 +91,7 @@ export function ASLSamples() {
                             delay: 0.2,
                             ease: [0.16, 1, 0.3, 1],
                         }}
-                        className="font-mono text-body-lg text-ink-700/80"
+                        className="font-mono text-body-lg text-ink-700/80 text-left"
                     >
                         Hey everyone! Exciting news! We have a new program for
                         you - Read Sidekick. What does it do? Highlight any text
@@ -97,12 +113,12 @@ export function ASLSamples() {
                         delay: 0.25,
                         ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="max-w-5xl mx-auto mb-12 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
+                    className="max-w-5xl mx-auto mb-16 md:mb-24 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
                 >
                     <video
                         controls
                         muted
-                        className="w-full rounded-xl shadow-sm"
+                        className="w-full rounded-xl shadow-sm border border-ink-800/10"
                         src="/ReadSidekickIntro.mov"
                     >
                         Your browser does not support the video tag.
@@ -119,27 +135,63 @@ export function ASLSamples() {
                     </div>
                 </motion.div>
 
+                <div className="max-w-5xl mx-auto mb-16 md:mb-24">
+                    <div className="h-px bg-ink-800/10" />
+                </div>
+
+                <div ref={samplesRef} className="max-w-5xl mx-auto mb-12">
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{
+                            opacity: samplesInView ? 1 : 0,
+                            y: samplesInView ? 0 : 20,
+                        }}
+                        transition={{
+                            duration: 1,
+                            ease: [0.16, 1, 0.3, 1],
+                        }}
+                        className="editorial-label block mb-4"
+                    >
+                        Sample Translations
+                    </motion.span>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{
+                            opacity: samplesInView ? 1 : 0,
+                            y: samplesInView ? 0 : 40,
+                        }}
+                        transition={{
+                            duration: 1.2,
+                            delay: 0.2,
+                            ease: [0.16, 1, 0.3, 1],
+                        }}
+                        className="font-serif text-display-sm md:text-display-md text-ink-900"
+                    >
+                        See It in Action
+                    </motion.h2>
+                </div>
+
                 <div className="max-w-5xl mx-auto flex flex-col gap-8">
                     {samples.map((sample, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 50 }}
                             animate={{
-                                opacity: sectionInView ? 1 : 0,
-                                y: sectionInView ? 0 : 50,
+                                opacity: samplesInView ? 1 : 0,
+                                y: samplesInView ? 0 : 50,
                             }}
                             transition={{
                                 duration: 1,
                                 delay: 0.3 + index * 0.1,
                                 ease: [0.16, 1, 0.3, 1],
                             }}
-                            className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center bg-white rounded-xl p-6 border border-ink-800/10 shadow-sm"
+                            className="group grid grid-cols-1 md:grid-cols-2 gap-6 items-center bg-white rounded-xl p-6 md:p-8 border border-ink-800/10 border-l-4 border-l-coral-500 shadow-sm hover:shadow-lg transition-all duration-300"
                         >
                             <div className="flex items-center">
+                                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-coral-500/10 text-coral-500 font-mono text-body-sm font-semibold mr-3 flex-shrink-0">
+                                    {index + 1}
+                                </span>
                                 <p className="font-mono text-body-lg text-ink-900">
-                                    <span className="text-ink-500 mr-2">
-                                        {index + 1}.
-                                    </span>
                                     {sample.sentence}
                                 </p>
                             </div>
@@ -147,7 +199,7 @@ export function ASLSamples() {
                                 <video
                                     controls
                                     muted
-                                    className="w-full rounded-lg"
+                                    className="w-full rounded-lg border border-ink-800/5"
                                     src={sample.video}
                                 >
                                     Your browser does not support the video tag.
@@ -157,23 +209,75 @@ export function ASLSamples() {
                     ))}
                 </div>
 
+                <div className="max-w-5xl mx-auto mt-16 md:mt-24 mb-16 md:mb-24">
+                    <div className="h-px bg-ink-800/10" />
+                </div>
+
+                <div ref={ctaRef} className="max-w-5xl mx-auto mb-12">
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{
+                            opacity: ctaInView ? 1 : 0,
+                            y: ctaInView ? 0 : 20,
+                        }}
+                        transition={{
+                            duration: 1,
+                            ease: [0.16, 1, 0.3, 1],
+                        }}
+                        className="editorial-label block mb-4"
+                    >
+                        Join the Program
+                    </motion.span>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 40 }}
+                        animate={{
+                            opacity: ctaInView ? 1 : 0,
+                            y: ctaInView ? 0 : 40,
+                        }}
+                        transition={{
+                            duration: 1.2,
+                            delay: 0.2,
+                            ease: [0.16, 1, 0.3, 1],
+                        }}
+                        className="font-serif text-display-sm md:text-display-md text-ink-900 mb-4"
+                    >
+                        Help Shape the Future of ASL Access
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{
+                            opacity: ctaInView ? 1 : 0,
+                            y: ctaInView ? 0 : 30,
+                        }}
+                        transition={{
+                            duration: 1,
+                            delay: 0.4,
+                            ease: [0.16, 1, 0.3, 1],
+                        }}
+                        className="font-mono text-body-lg text-ink-700/80 leading-relaxed max-w-2xl"
+                    >
+                        Your feedback will directly inform how Read Sidekick
+                        serves the Deaf and hard-of-hearing community.
+                    </motion.p>
+                </div>
+
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{
-                        opacity: sectionInView ? 1 : 0,
-                        y: sectionInView ? 0 : 30,
+                        opacity: ctaInView ? 1 : 0,
+                        y: ctaInView ? 0 : 30,
                     }}
                     transition={{
                         duration: 1,
-                        delay: 0.3 + samples.length * 0.1,
+                        delay: 0.5,
                         ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
+                    className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
                 >
                     <video
                         controls
                         muted
-                        className="w-full rounded-xl shadow-sm"
+                        className="w-full rounded-xl shadow-sm border border-ink-800/10"
                         src="/FinalASLDemoPitch.mov"
                     >
                         Your browser does not support the video tag.
