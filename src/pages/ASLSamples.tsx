@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { trackEvent } from "../utils/analytics";
 
 declare global {
     interface Window {
@@ -20,6 +22,8 @@ const samples = [
 ];
 
 export function ASLSamples() {
+    const location = useLocation();
+
     const { ref: sectionRef, isInView: sectionInView } =
         useScrollReveal<HTMLElement>({
             threshold: 0.1,
@@ -35,9 +39,34 @@ export function ASLSamples() {
             threshold: 0.2,
         });
 
+    const tallySrc = useMemo(() => {
+        const base =
+            "https://tally.so/embed/RG05lP?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
+        const params = new URLSearchParams(location.search);
+        const utmSource = params.get("utm_source");
+        const utmMedium = params.get("utm_medium");
+        const utmCampaign = params.get("utm_campaign");
+
+        const extra = new URLSearchParams();
+        if (utmSource) extra.set("utm_source", utmSource);
+        if (utmMedium) extra.set("utm_medium", utmMedium);
+        if (utmCampaign) extra.set("utm_campaign", utmCampaign);
+
+        const suffix = extra.toString();
+        return suffix ? `${base}&${suffix}` : base;
+    }, [location.search]);
+
     useEffect(() => {
         window.Tally?.loadEmbeds();
-    }, []);
+
+        const params = new URLSearchParams(location.search);
+        trackEvent("early_access_view", {
+            source: params.get("utm_source") || "",
+            medium: params.get("utm_medium") || "",
+            campaign: params.get("utm_campaign") || "",
+            referrer: document.referrer || "",
+        });
+    }, [location.search]);
 
     return (
         <section
@@ -104,7 +133,7 @@ export function ASLSamples() {
                     </video>
                     <div className="h-full">
                         <iframe
-                            data-tally-src="https://tally.so/embed/RG05lP?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                            data-tally-src={tallySrc}
                             loading="lazy"
                             width="100%"
                             height={387}
@@ -263,7 +292,7 @@ export function ASLSamples() {
                     </video>
                     <div className="h-full">
                         <iframe
-                            data-tally-src="https://tally.so/embed/RG05lP?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                            data-tally-src={tallySrc}
                             loading="lazy"
                             width="100%"
                             height={387}
