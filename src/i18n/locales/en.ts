@@ -244,8 +244,8 @@ export const en: Translations = {
   // Footer
   footer: {
     cta: {
-      title: 'Simplify your',
-      titleItalic: 'next read.',
+      title: 'Read anything',
+      titleItalic: 'understand everything.',
       subtitle: 'Thousands of people use Read Sidekick every day. Try it free.',
       button: 'Add to Chrome — Free',
       learnMore: 'Learn more about our approach',
