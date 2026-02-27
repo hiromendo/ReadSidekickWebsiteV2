@@ -231,8 +231,7 @@ export const es: Translations = {
     titleItalic: 'la experiencia real.',
     name: 'Hiroshi Mendoza',
     bio: [
-      'Hiro creció en un hogar de habla japonesa y española en la Ciudad de México antes de mudarse a EE.UU. a los 10 años. Aprendió inglés no en un salón de clases, sino por curiosidad — leyendo libros que le encantaban con un diccionario a su lado.',
-      'Con un hermano sordo, domina el ASL y cree que las mejores herramientas no te enseñan desde arriba — trabajan contigo.',
+      'Hiro creció en un hogar de habla japonesa y española en la Ciudad de México antes de mudarse a EE.UU. a los 10 años. Aprendió inglés no en un salón de clases, sino por curiosidad — leyendo libros que le encantaban con un diccionario a su lado.'
     ],
     credentials: {
       label: 'Credenciales',

@@ -231,8 +231,7 @@ export const en: Translations = {
     titleItalic: 'real experience.',
     name: 'Hiroshi Mendoza',
     bio: [
-      'Hiro grew up in a Japanese and Spanish-speaking household in Mexico City before moving to the U.S. at age 10. He learned English not in a classroom, but through curiosity — reading books he loved with a dictionary beside him.',
-      'With a deaf brother, he\'s fluent in ASL and believes the best tools don\'t teach at you — they work with you.',
+      'Hiro grew up in a Japanese and Spanish-speaking household in Mexico City before moving to the U.S. at age 10. He learned English through curiosity reading books he loved with a dictionary beside him.'
     ],
     credentials: {
       label: 'Credentials',
