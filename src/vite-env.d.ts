@@ -10,6 +10,7 @@ interface ImportMetaEnv {
   readonly VITE_TRANSLATION_API_URL?: string;
   readonly VITE_SHEETS_API_URL?: string;
   readonly VITE_USE_MOCK_API?: string;
+  readonly VITE_POSTHOG_KEY?: string;
 }
 
 interface ImportMeta {

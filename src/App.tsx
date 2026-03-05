@@ -14,6 +14,7 @@ import { ASLTranslator } from "./pages/ASLTranslator";
 import { Blog } from "./pages/Blog";
 import { BlogPost } from "./pages/BlogPost";
 import { ASLSamples } from "./pages/ASLSamples";
+import { Welcome } from "./pages/Welcome";
 import { trackPageView } from "./utils/analytics";
 
 function PageViewTracker() {
@@ -87,6 +88,14 @@ function App() {
                             element={
                                 <Layout>
                                     <ASLSamples />
+                                </Layout>
+                            }
+                        />
+                        <Route
+                            path="/welcome"
+                            element={
+                                <Layout>
+                                    <Welcome />
                                 </Layout>
                             }
                         />
