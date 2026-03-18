@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /login
+Disallow: /welcome
+Disallow: /englishtoasltranslator
+
+Sitemap: https://www.readsidekick.com/sitemap.xml
