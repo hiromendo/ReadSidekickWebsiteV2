@@ -2996,6 +2996,110 @@ export const blogPosts: BlogPost[] = [
             },
         ],
     },
+    {
+        slug: "read-sidekick-wins-stanford-create-ai-challenge",
+        title: "Read Sidekick Wins Stanford's Create+AI Challenge",
+        subtitle:
+            "How a reading tool born from curiosity earned recognition from Stanford and Google.org for augmenting human potential",
+        date: "March 20, 2026",
+        author: "Hiroshi",
+        readingTime: 8,
+        excerpt:
+            "Read Sidekick was selected as an awardee in the Create+AI Challenge, hosted by the Stanford Accelerator for Learning with support from Google.org — and I'm still sitting with that.",
+        tags: ["Stanford", "Awards", "ASL", "Education"],
+        content: [
+            {
+                type: "paragraph",
+                html: true,
+                content:
+                    'Something kind of unbelievable happened. <a href="https://readsidekick.com" target="_blank" rel="noopener noreferrer">Read Sidekick</a> was selected as an awardee in the <a href="https://acceleratelearning.stanford.edu/funding/create-ai-challenge/" target="_blank" rel="noopener noreferrer">Create+AI Challenge</a>, hosted by the Stanford Accelerator for Learning with support from Google.org. Out of all the incredible teams building at the intersection of AI and education, our little reading tool that started because my brother wanted to read the New York Times articles — it won. And I\'m still sitting with that.',
+            },
+            {
+                type: "paragraph",
+                content:
+                    "Perhaps what makes this feel so surreal is that the Create+AI Challenge wasn't asking the question most AI competitions ask. It wasn't about who can build the flashiest model or automate the most tasks. The challenge asked something different entirely: How can AI augment human potential? How do we keep educators and learners at the center of these tools, so as to expand access and agency and connection rather than replace them? That reframing is everything to us.",
+            },
+            { type: "separator" },
+            { type: "heading", content: "What we pitched" },
+            {
+                type: "paragraph",
+                content:
+                    "Read Sidekick is, at its core, an on-demand reading tutor. A Chrome extension that meets people wherever they encounter text that feels out of reach. You highlight something, and our AI adapts it — rewriting content at a lower complexity while preserving meaning. There's a learning mode that walks through text line-by-line, explaining vocabulary and sentence structure, essentially modernizing the dictionary through AI so that anyone can build their literacy on their own terms, on their own time, without ever having to disclose that they needed help in the first place.",
+            },
+            {
+                type: "paragraph",
+                content:
+                    "Over the past year, our current version has processed 1.2 million words with 125 installs and zero paid marketing. Those numbers might seem small by Silicon Valley standards, but in other thoughts, think about what they actually represent — real people, engaging with real text, building real confidence. That's the metric that matters.",
+            },
+            {
+                type: "quote",
+                content:
+                    "The web was built for English readers. We believe ASL deserves the same digital parity — not as an accommodation, but as a recognition that it is a complete language.",
+            },
+            {
+                type: "paragraph",
+                content:
+                    "But perhaps the part of our pitch that felt most alive was what's coming next: an English-to-ASL translator. This requires creating what amounts to a written representation of ASL — a genuinely significant technical challenge, because ASL is a spatial, visual language that has never had a standardized written form in the way English does. We've hired an ASL translator, purchased motion capture equipment to accurately record signs, and we're building the training dataset from the ground up. The goal is to provide Deaf users direct visual access to content in their native language. Not as remediation. Not as accommodation. As linguistic equity.",
+            },
+            { type: "separator" },
+            { type: "heading", content: "Why this matters" },
+            {
+                type: "paragraph",
+                content:
+                    "Read Sidekick was selected under the Augment Career Opportunities track, which focuses on AI solutions that support skill-building and pathways to meaningful work. And I think that framing captures something we've been wrestling with since the beginning — literacy isn't just about reading. It's about access. Access to information, to opportunity, to participation in the world. When someone can finally read the news, or understand a job posting, or follow instructions at work without asking for help, that's not just a reading level improvement. That's a life trajectory shift.",
+            },
+            {
+                type: "paragraph",
+                content:
+                    "In these spaces where education meets technology, there's a tendency to build for the students who already have the most support. The Create+AI Challenge pushed in the opposite direction. The other awardees — teams building AI-enhanced tools for teachers, for community college students, for children with autism, for young coders, for English learners — they all share this common thread of asking who gets left out and how do we change that.",
+            },
+            { type: "separator" },
+            { type: "heading", content: "The team" },
+            {
+                type: "bold",
+                content: "Read Sidekick — Create+AI Challenge Awardee",
+            },
+            {
+                type: "list",
+                items: [
+                    "Hiroshi Mendoza · Founder",
+                    "Christine Chelakkatu · Team",
+                    "Guadalupe Valdés · Team",
+                ],
+            },
+            {
+                type: "paragraph",
+                content:
+                    "Nothing about Read Sidekick exists without this team. Christine's work has been essential to shaping how the product actually functions in people's hands. And Guadalupe Valdés — a Stanford professor whose research on bilingualism and language education has shaped the field for decades — brings a depth of understanding about how people actually learn language that keeps us honest. Keeps us grounded in what the research says rather than what sounds good in a pitch deck. I'm deeply grateful to both of them.",
+            },
+            { type: "separator" },
+            { type: "heading", content: "What's next" },
+            {
+                type: "paragraph",
+                html: true,
+                content:
+                    'The Create+AI Challenge comes with funding, mentorship, connections with Stanford faculty and researchers, and visibility at the <a href="https://acceleratelearning.stanford.edu/funding/create-ai-challenge/" target="_blank" rel="noopener noreferrer">AI+Education Summit</a>. There\'s also a potential invitation to continue development at Stanford in a summer 2026 cohort. All of which is incredible. But perhaps the thing I\'m most excited about is simply the validation that this approach — empowerment over remediation, meeting learners where they are, treating ASL as a language deserving of digital parity — resonates with people who\'ve spent their careers thinking about how learning actually works.',
+            },
+            {
+                type: "paragraph",
+                content:
+                    "We're just getting started. The ASL translator, the reading tools, the entire vision of a web that works for everyone regardless of reading level or language — there's so much left to build. And now we get to build it with Stanford's support behind us.",
+            },
+            { type: "separator" },
+            {
+                type: "paragraph",
+                html: true,
+                content:
+                    '<strong>Try Read Sidekick → <a href="https://readsidekick.com" target="_blank" rel="noopener noreferrer">readsidekick.com</a></strong>',
+            },
+            {
+                type: "paragraph",
+                html: true,
+                content:
+                    'Learn more about the <a href="https://acceleratelearning.stanford.edu/funding/create-ai-challenge/" target="_blank" rel="noopener noreferrer">Create+AI Challenge</a> at the Stanford Accelerator for Learning. The challenge distributed $400,000 in total funding across multiple tracks, with support from Google.org.',
+            },
+        ],
+    },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
