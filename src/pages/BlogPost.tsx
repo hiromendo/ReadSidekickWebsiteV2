@@ -6,7 +6,13 @@ import { getBlogPost, BlogSection } from "../data/blogPosts";
 function renderSection(section: BlogSection, index: number) {
     switch (section.type) {
         case "heading":
-            return (
+            return section.html ? (
+                <h2
+                    key={index}
+                    className="font-serif text-display-sm text-ink-900 mt-12 mb-6 blog-html-content"
+                    dangerouslySetInnerHTML={{ __html: section.content! }}
+                />
+            ) : (
                 <h2
                     key={index}
                     className="font-serif text-display-sm text-ink-900 mt-12 mb-6"
@@ -15,7 +21,13 @@ function renderSection(section: BlogSection, index: number) {
                 </h2>
             );
         case "subheading":
-            return (
+            return section.html ? (
+                <h3
+                    key={index}
+                    className="font-serif text-xl text-ink-900 mt-8 mb-4 blog-html-content"
+                    dangerouslySetInnerHTML={{ __html: section.content! }}
+                />
+            ) : (
                 <h3
                     key={index}
                     className="font-serif text-xl text-ink-900 mt-8 mb-4"
@@ -24,7 +36,13 @@ function renderSection(section: BlogSection, index: number) {
                 </h3>
             );
         case "paragraph":
-            return (
+            return section.html ? (
+                <p
+                    key={index}
+                    className="font-mono text-body-md text-ink-700/80 leading-relaxed mb-6 blog-html-content"
+                    dangerouslySetInnerHTML={{ __html: section.content! }}
+                />
+            ) : (
                 <p
                     key={index}
                     className="font-mono text-body-md text-ink-700/80 leading-relaxed mb-6"
@@ -33,7 +51,13 @@ function renderSection(section: BlogSection, index: number) {
                 </p>
             );
         case "bold":
-            return (
+            return section.html ? (
+                <p
+                    key={index}
+                    className="font-mono text-body-md text-ink-900 font-semibold leading-relaxed mb-6 blog-html-content"
+                    dangerouslySetInnerHTML={{ __html: section.content! }}
+                />
+            ) : (
                 <p
                     key={index}
                     className="font-mono text-body-md text-ink-900 font-semibold leading-relaxed mb-6"
@@ -47,9 +71,16 @@ function renderSection(section: BlogSection, index: number) {
                     key={index}
                     className="border-l-4 border-coral-500 pl-6 py-2 my-8 bg-coral-50/50 rounded-r-lg"
                 >
-                    <p className="font-serif text-lg text-ink-700 italic leading-relaxed">
-                        {section.content}
-                    </p>
+                    {section.html ? (
+                        <p
+                            className="font-serif text-lg text-ink-700 italic leading-relaxed blog-html-content"
+                            dangerouslySetInnerHTML={{ __html: section.content! }}
+                        />
+                    ) : (
+                        <p className="font-serif text-lg text-ink-700 italic leading-relaxed">
+                            {section.content}
+                        </p>
+                    )}
                 </blockquote>
             );
         case "list":
@@ -58,15 +89,59 @@ function renderSection(section: BlogSection, index: number) {
                     key={index}
                     className="list-disc list-outside ml-6 mb-6 space-y-2"
                 >
-                    {section.items?.map((item, i) => (
-                        <li
-                            key={i}
-                            className="font-mono text-body-md text-ink-700/80 leading-relaxed"
-                        >
-                            {item}
-                        </li>
-                    ))}
+                    {section.items?.map((item, i) =>
+                        section.html ? (
+                            <li
+                                key={i}
+                                className="font-mono text-body-md text-ink-700/80 leading-relaxed blog-html-content"
+                                dangerouslySetInnerHTML={{ __html: item }}
+                            />
+                        ) : (
+                            <li
+                                key={i}
+                                className="font-mono text-body-md text-ink-700/80 leading-relaxed"
+                            >
+                                {item}
+                            </li>
+                        )
+                    )}
                 </ul>
+            );
+        case "table":
+            return (
+                <div key={index} className="my-8 overflow-x-auto rounded-lg border border-ink-800/10">
+                    <table className="w-full min-w-[640px] border-collapse">
+                        <thead>
+                            <tr className="bg-ink-900 text-white">
+                                {section.headers?.map((header, i) => (
+                                    <th
+                                        key={i}
+                                        className="font-mono text-body-sm font-semibold px-4 py-3 text-left"
+                                    >
+                                        {header}
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {section.rows?.map((row, rowIndex) => (
+                                <tr
+                                    key={rowIndex}
+                                    className={rowIndex % 2 === 0 ? "bg-ivory-100" : "bg-ivory-50"}
+                                >
+                                    {row.map((cell, cellIndex) => (
+                                        <td
+                                            key={cellIndex}
+                                            className={`font-mono text-body-sm px-4 py-3 text-ink-700/80 border-t border-ink-800/10 ${cellIndex === 0 ? "font-semibold text-ink-900" : ""}`}
+                                        >
+                                            {cell}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             );
         case "separator":
             return (
