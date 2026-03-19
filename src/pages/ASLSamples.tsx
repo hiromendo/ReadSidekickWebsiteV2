@@ -108,6 +108,62 @@ export function ASLSamples() {
                     >
                         Get Early Access
                     </motion.h1>
+
+                    <motion.nav
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{
+                            opacity: sectionInView ? 1 : 0,
+                            y: sectionInView ? 0 : 20,
+                        }}
+                        transition={{
+                            duration: 0.8,
+                            delay: 0.2,
+                            ease: [0.16, 1, 0.3, 1],
+                        }}
+                        className="text-left"
+                    >
+                        <span className="editorial-label block mb-3">
+                            In This Article
+                        </span>
+                        <ol className="list-none space-y-2 font-mono text-body-md">
+                            <li>
+                                <a
+                                    href="#early-access"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById("early-access")?.scrollIntoView({ behavior: "smooth" });
+                                    }}
+                                    className="text-coral-500 hover:text-coral-600 transition-colors"
+                                >
+                                    1. Early Access
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#sample-translations"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById("sample-translations")?.scrollIntoView({ behavior: "smooth" });
+                                    }}
+                                    className="text-coral-500 hover:text-coral-600 transition-colors"
+                                >
+                                    2. Sample Translations
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#join-the-program"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById("join-the-program")?.scrollIntoView({ behavior: "smooth" });
+                                    }}
+                                    className="text-coral-500 hover:text-coral-600 transition-colors"
+                                >
+                                    3. Join the Program
+                                </a>
+                            </li>
+                        </ol>
+                    </motion.nav>
                 </div>
 
                 <motion.div
@@ -121,6 +177,7 @@ export function ASLSamples() {
                         delay: 0.25,
                         ease: [0.16, 1, 0.3, 1],
                     }}
+                    id="early-access"
                     className="max-w-5xl mx-auto mb-16 md:mb-24 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
                 >
                     <video
@@ -147,7 +204,7 @@ export function ASLSamples() {
                     <div className="h-px bg-ink-800/10" />
                 </div>
 
-                <div ref={samplesRef} className="max-w-5xl mx-auto mb-12">
+                <div ref={samplesRef} id="sample-translations" className="max-w-5xl mx-auto mb-12">
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{
@@ -175,7 +232,7 @@ export function ASLSamples() {
                         }}
                         className="font-serif text-display-sm md:text-display-md text-ink-900"
                     >
-                        See It in Action
+                        See Read Sidekick in Action
                     </motion.h2>
                 </div>
 
@@ -221,7 +278,7 @@ export function ASLSamples() {
                     <div className="h-px bg-ink-800/10" />
                 </div>
 
-                <div ref={ctaRef} className="max-w-5xl mx-auto mb-12">
+                <div ref={ctaRef} id="join-the-program" className="max-w-5xl mx-auto mb-12">
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{
@@ -249,7 +306,7 @@ export function ASLSamples() {
                         }}
                         className="font-serif text-display-sm md:text-display-md text-ink-900 mb-4"
                     >
-                        Help Shape the Future of ASL Access
+                        Help Shape the Future of ASL Access with Read Sidekick
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 30 }}
