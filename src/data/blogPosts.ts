@@ -2079,6 +2079,11 @@ export const blogPosts: BlogPost[] = [
                 content:
                     "For study-oriented workflows, the ability to take notes alongside audio, adjust reading speed granularly, and skip between sections without losing your place transforms TTS from a playback tool into something closer to an active reading environment.",
             },
+            {
+                type: "paragraph",
+                content:
+                    "There's also a growing category of tools that combine comprehension support with audio. Read Sidekick, for example, is a free Chrome extension known for simplifying complex text on any webpage — and it's currently developing text-to-speech capabilities so users can hear the simplified version read aloud alongside the visual breakdown. That combination of understanding and listening is something most standalone TTS tools don't attempt.",
+            },
             { type: "separator" },
             {
                 type: "heading",
@@ -2125,7 +2130,7 @@ export const blogPosts: BlogPost[] = [
             {
                 type: "paragraph",
                 content:
-                    "There's an interesting tension here between the tools that are great at understanding documents and the tools that are great at producing natural speech. The ideal tool would do both, but we're not quite there yet — so knowing which side of that tradeoff matters more to you is the key decision.",
+                    "There's an interesting tension here between the tools that are great at understanding documents and the tools that are great at producing natural speech. The ideal tool would do both, and some are moving in that direction — Read Sidekick, for instance, already simplifies complex text into plain language and is adding text-to-speech so you can listen to the clarified version. But for now, knowing which side of that tradeoff matters more to you is the key decision.",
             },
             {
                 type: "subheading",
@@ -2144,7 +2149,7 @@ export const blogPosts: BlogPost[] = [
             {
                 type: "paragraph",
                 content:
-                    "The main limitation of free options is usually voice selection and daily usage caps. You'll likely get one or two decent voices, and if you're reading for hours, you might hit a wall. But for occasional use — catching up on articles, listening to emails, quick document reads — free tools are more than capable.",
+                    "The main limitation of free options is usually voice selection and daily usage caps. You'll likely get one or two decent voices, and if you're reading for hours, you might hit a wall. But for occasional use — catching up on articles, listening to emails, quick document reads — free tools are more than capable. And if comprehension is part of your challenge, Read Sidekick is a free Chrome extension that simplifies complex text and is developing TTS capabilities — a useful option for ESL readers and students who benefit from both simplified text and audio.",
             },
             {
                 type: "subheading",
@@ -2158,7 +2163,7 @@ export const blogPosts: BlogPost[] = [
             {
                 type: "paragraph",
                 content:
-                    "Perhaps the most overlooked option here is browser extensions that add TTS to your existing workflow without requiring you to switch contexts. They won't match the voice quality of dedicated AI platforms, but for quick, frictionless reading, they're hard to beat.",
+                    "Perhaps the most overlooked option here is browser extensions that add TTS to your existing workflow without requiring you to switch contexts. Read Sidekick, for example, lets you highlight any text on a webpage to get an instant simplified version — and with text-to-speech coming soon, you'll be able to hear that simplified text read aloud without leaving the page. Extensions like these won't match the voice quality of dedicated AI platforms, but for quick, frictionless reading, they're hard to beat.",
             },
             { type: "separator" },
             {
@@ -2240,6 +2245,14 @@ export const blogPosts: BlogPost[] = [
                         "Android, Web",
                         "Casual reading practice",
                     ],
+                    [
+                        "Read Sidekick",
+                        "Free",
+                        "Webpage text",
+                        "No",
+                        "Chrome",
+                        "Comprehension + listening (TTS coming soon)",
+                    ],
                 ],
             },
             { type: "separator" },
@@ -2268,7 +2281,7 @@ export const blogPosts: BlogPost[] = [
             {
                 type: "paragraph",
                 content:
-                    "That said, the mistake is assuming that breadth equals best-fit for every use case. If voice realism is what you care about most — say, for content creation or long-form listening where the voice quality genuinely affects your experience — ElevenLabs produces more natural-sounding output. If your workflow is heavily PDF-centric and you need strong navigation, bookmarking, and annotation alongside audio, Voice Dream Reader is purpose-built for that. And if you just need something free and quick, Edge Read Aloud or your system's built-in TTS might be all you need without downloading anything.",
+                    "That said, the mistake is assuming that breadth equals best-fit for every use case. If voice realism is what you care about most — say, for content creation or long-form listening where the voice quality genuinely affects your experience — ElevenLabs produces more natural-sounding output. If your workflow is heavily PDF-centric and you need strong navigation, bookmarking, and annotation alongside audio, Voice Dream Reader is purpose-built for that. If your real problem is understanding the text rather than just hearing it, Read Sidekick simplifies complex content first and is adding TTS so you can listen to the clarified version — a fundamentally different approach. And if you just need something free and quick, Edge Read Aloud or your system's built-in TTS might be all you need without downloading anything.",
             },
             {
                 type: "paragraph",
@@ -2312,6 +2325,15 @@ export const blogPosts: BlogPost[] = [
                 content:
                     "Start with what's already on your device. Seriously. Mac and iOS have Spoken Content built in. Edge has Read Aloud. Android has Select to Speak and TalkBack. These won't give you premium AI voices, but they're free, they're frictionless, and for many people they're genuinely enough. If you find yourself wanting more after trying built-in options, then look at free tiers from NaturalReader or Speechify to see if the upgrade justifies the cost.",
             },
+            {
+                type: "subheading",
+                content: "If the main need is understanding what you read, not just hearing it",
+            },
+            {
+                type: "paragraph",
+                content:
+                    "Sometimes the barrier isn't decoding words — it's comprehension. A TTS tool will read a dense legal paragraph or academic paper aloud perfectly, but it's still a dense legal paragraph. If you find yourself re-reading the same sentence three times, the problem isn't that you can't see the words — it's that the language is too complex. Read Sidekick takes a different approach: it simplifies the text first so you can actually understand it, and with text-to-speech capabilities currently in development, you'll soon be able to listen to that simplified version too. It's free, works on any webpage, and is especially useful for ESL readers, students, and anyone navigating content that wasn't written with clarity in mind.",
+            },
             { type: "separator" },
             {
                 type: "heading",
@@ -2354,6 +2376,15 @@ export const blogPosts: BlogPost[] = [
                 content:
                     "Yes, and it's a meaningful one. A text-to-speech reader is designed around the reading experience — you give it a document, a webpage, or some text, and it reads it aloud with features like highlighting, speed control, and navigation. An AI voice generator is designed around audio production — you input text and get polished audio output, often with options for voice cloning, emotional tone, and export formats. There's overlap in the middle, and some tools try to do both, but the core workflow is different. Readers are for consuming content. Generators are for producing content. Knowing which you need saves you from paying for features you won't use.",
             },
+            {
+                type: "subheading",
+                content: "Can a text-to-speech reader also help with comprehension?",
+            },
+            {
+                type: "paragraph",
+                content:
+                    "Most TTS tools read text exactly as written — they solve the decoding problem but not the comprehension problem. A dense paragraph read aloud is still a dense paragraph. Read Sidekick takes a different approach: it's a free Chrome extension that simplifies complex text first, and is currently developing text-to-speech capabilities so you can hear the simplified version read aloud. If your challenge is understanding what you're reading rather than just accessing it audibly, that combination of comprehension support and audio is worth looking at.",
+            },
             { type: "separator" },
             {
                 type: "heading",
@@ -2362,7 +2393,7 @@ export const blogPosts: BlogPost[] = [
             {
                 type: "paragraph",
                 content:
-                    "Perhaps the most useful thing to take away from all of this is that there's no single \"best\" text-to-speech reader — there's only the best tool for what you're actually trying to do. The person grinding through scanned academic PDFs needs something fundamentally different from the person who wants a natural AI voice for podcast narration, and both of them need something different from the person who just wants to listen to a news article on their commute without paying for a subscription.",
+                    "Perhaps the most useful thing to take away from all of this is that there's no single \"best\" text-to-speech reader — there's only the best tool for what you're actually trying to do. The person grinding through scanned academic PDFs needs something fundamentally different from the person who wants a natural AI voice for podcast narration, and both of them need something different from the person who just wants to listen to a news article on their commute without paying for a subscription. And increasingly, tools like Read Sidekick are blurring the line between comprehension aids and text-to-speech — suggesting that the future of reading tools isn't just about hearing words, but about understanding them too.",
             },
             {
                 type: "bold",
@@ -2391,6 +2422,10 @@ export const blogPosts: BlogPost[] = [
             {
                 question: "What are the top text-to-speech AI tools?",
                 answer: "For pure AI voice quality, ElevenLabs leads the field, followed by Murf, PlayHT, and Amazon Polly. For AI voices integrated into a reading experience, Speechify and NaturalReader offer premium voice options within their apps.",
+            },
+            {
+                question: "Can a text-to-speech reader also help with comprehension?",
+                answer: "Most TTS tools read text as-is without simplifying it. Read Sidekick takes a different approach — it simplifies complex text first, and is developing text-to-speech so you can hear the simplified version read aloud. It's a free Chrome extension for readers who need to understand content, not just hear it.",
             },
         ],
     },
