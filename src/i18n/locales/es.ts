@@ -7,14 +7,14 @@ export const es: Translations = {
     howItWorks: 'Cómo Funciona',
     methodology: 'Nuestro Enfoque',
     about: 'Acerca de',
-    addToChrome: 'Agregar a Chrome',
-    addToChromeFree: 'Agregar a Chrome — Gratis',
+    addToChrome: 'Obtén Read Sidekick',
+    addToChromeFree: 'Obtén Read Sidekick — Gratis',
   },
 
   // Hero
   hero: {
     tagline: 'Comprende todo lo que lees. Convierte artículos densos, jerga legal y contenido confuso en un lenguaje claro y simple — con un solo clic.',
-    cta: 'Agregar a Chrome — Gratis',
+    cta: 'Obtén Read Sidekick — Gratis',
     scrollToExplore: 'Desplázate para explorar',
     extensionPanel: 'Read Sidekick',
     easy: 'Simple',
@@ -280,7 +280,7 @@ export const es: Translations = {
       title: 'Prueba Read Sidekick —',
       titleItalic: 'comprende todo lo que lees.',
       subtitle: 'Miles de personas usan Read Sidekick todos los días. Pruébalo gratis.',
-      button: 'Agregar a Chrome — Gratis',
+      button: 'Obtén Read Sidekick — Gratis',
       learnMore: 'Conoce más sobre nuestro enfoque',
     },
     tagline: 'Simplifica cualquier texto. Al instante.',

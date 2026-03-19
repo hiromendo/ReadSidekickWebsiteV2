@@ -7,14 +7,14 @@ export const en: Translations = {
     howItWorks: 'How It Works',
     methodology: 'Our Approach',
     about: 'About',
-    addToChrome: 'Add to Chrome',
-    addToChromeFree: 'Add to Chrome — Free',
+    addToChrome: 'Get Read Sidekick',
+    addToChromeFree: 'Get Read Sidekick — Free',
   },
 
   // Hero
   hero: {
     tagline: 'Understand anything you read. Turn dense articles, legal jargon, and confusing content into clear, simple language — in one click.',
-    cta: 'Add to Chrome — Free',
+    cta: 'Get Read Sidekick — Free',
     scrollToExplore: 'Scroll to explore',
     extensionPanel: 'Read Sidekick',
     easy: 'Simple',
@@ -280,7 +280,7 @@ export const en: Translations = {
       title: 'Try Read Sidekick —',
       titleItalic: 'understand anything you read.',
       subtitle: 'Thousands of people use Read Sidekick every day. Try it free.',
-      button: 'Add to Chrome — Free',
+      button: 'Get Read Sidekick — Free',
       learnMore: 'Learn more about our approach',
     },
     tagline: 'Understand any text. Instantly.',
