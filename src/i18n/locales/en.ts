@@ -240,11 +240,45 @@ export const en: Translations = {
     },
   },
 
+  // FAQ
+  faq: {
+    sectionLabel: 'FAQ',
+    title: 'Frequently asked',
+    titleItalic: 'questions.',
+    subtitle: 'Everything you need to know about Read Sidekick.',
+    items: [
+      {
+        question: 'What is Read Sidekick?',
+        answer: 'Read Sidekick is a free Chrome extension that simplifies complex text — turning dense articles, legal jargon, and confusing content into clear, simple language in one click.',
+      },
+      {
+        question: 'How does Read Sidekick work?',
+        answer: 'Highlight any text on a webpage and Read Sidekick rewrites it at three detail levels — Simple, Moderate, and Detailed. Explore Mode goes deeper, breaking down idioms, grammar, and meaning line by line.',
+      },
+      {
+        question: 'Is Read Sidekick free?',
+        answer: 'Yes — Read Sidekick is completely free to use. No sign-up, no account, no credit card required. Just install it from the Chrome Web Store and start reading.',
+      },
+      {
+        question: 'What browsers does Read Sidekick support?',
+        answer: 'Read Sidekick works on Google Chrome and Chromium-based browsers like Microsoft Edge, Brave, and Arc.',
+      },
+      {
+        question: 'Who is Read Sidekick for?',
+        answer: 'Anyone who reads online — English learners, students, professionals, researchers, and anyone who encounters confusing text. If you\'ve ever re-read a paragraph three times, Read Sidekick is for you.',
+      },
+      {
+        question: 'Does Read Sidekick support other languages?',
+        answer: 'Yes — Explore Mode supports all major languages, so you can get explanations in your native language while reading English text. We\'re also building English-to-ASL translation to make content accessible for the Deaf community.',
+      },
+    ],
+  },
+
   // Footer
   footer: {
     cta: {
-      title: 'Read anything',
-      titleItalic: 'understand everything.',
+      title: 'Try Read Sidekick —',
+      titleItalic: 'understand anything you read.',
       subtitle: 'Thousands of people use Read Sidekick every day. Try it free.',
       button: 'Add to Chrome — Free',
       learnMore: 'Learn more about our approach',

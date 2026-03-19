@@ -5,6 +5,7 @@ import { HowItWorks } from '../components/HowItWorks'
 import { Methodology } from '../components/Methodology'
 import { ASLTranslator } from '../components/ASLTranslator'
 import { Founder } from '../components/Founder'
+import { FAQ } from '../components/FAQ'
 
 export function Home() {
   return (
@@ -16,6 +17,7 @@ export function Home() {
       <Methodology />
       <ASLTranslator />
       <Founder />
+      <FAQ />
     </>
   )
 }

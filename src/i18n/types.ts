@@ -188,6 +188,15 @@ export interface Translations {
     }
   }
 
+  // FAQ
+  faq: {
+    sectionLabel: string
+    title: string
+    titleItalic: string
+    subtitle: string
+    items: Array<{ question: string; answer: string }>
+  }
+
   // Footer
   footer: {
     cta: {

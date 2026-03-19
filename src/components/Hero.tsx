@@ -118,7 +118,7 @@ export function Hero() {
             <div className="editorial-container relative z-10 py-20 md:py-32">
                 {/* Main title */}
                 <div className="overflow-y-clip mb-6 md:mb-8">
-                    <h1 className="font-serif font-medium text-ink-950">
+                    <div className="font-serif font-medium text-ink-950" style={{ textWrap: 'balance', fontVariationSettings: "'SOFT' 100, 'WONK' 1" }}>
                         <span className="flex flex-wrap gap-x-6">
                             {["Read", "Sidekick"].map((word, i) => (
                                 <motion.span
@@ -133,7 +133,7 @@ export function Hero() {
                                 </motion.span>
                             ))}
                         </span>
-                    </h1>
+                    </div>
                 </div>
 
                 {/* Tagline */}
@@ -147,9 +147,9 @@ export function Hero() {
                     }}
                     className="max-w-3xl mb-8 md:mb-12"
                 >
-                    <p className="font-mono text-body-lg md:text-xl text-ink-700 leading-relaxed">
+                    <h1 className="font-mono text-body-lg md:text-xl text-ink-700 leading-relaxed">
                         {t.hero.tagline}
-                    </p>
+                    </h1>
                 </motion.div>
 
                 {/* CTA Button */}
