@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "./i18n";
 import { AuthProvider } from "./auth/AuthContext";
 import { Layout } from "./components/Layout";
@@ -29,6 +30,7 @@ function PageViewTracker() {
 
 function App() {
     return (
+        <HelmetProvider>
         <BrowserRouter>
             <PageViewTracker />
             <ScrollToTop />
@@ -112,6 +114,7 @@ function App() {
                 </LanguageProvider>
             </AuthProvider>
         </BrowserRouter>
+        </HelmetProvider>
     );
 }
 
