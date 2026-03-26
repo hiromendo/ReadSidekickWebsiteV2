@@ -41,45 +41,6 @@ export function Blog() {
             threshold: 0.1,
         });
 
-    const blogSchema = {
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        name: "Read Sidekick Blog",
-        description:
-            "Tips on reading comprehension, AI-powered reading tools, and guides to understanding complex text.",
-        url: "https://www.readsidekick.com/blog",
-        publisher: {
-            "@type": "Organization",
-            name: "Read Sidekick",
-            url: "https://www.readsidekick.com",
-            logo: "https://www.readsidekick.com/logo.png",
-        },
-        blogPost: blogPosts.map((post) => ({
-            "@type": "BlogPosting",
-            headline: post.title,
-            description: post.excerpt,
-            datePublished: post.date,
-            author: {
-                "@type": "Person",
-                name: post.author,
-            },
-            url: `https://www.readsidekick.com/blog/${post.slug}`,
-        })),
-    };
-
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: blogFaqItems.map((item) => ({
-            "@type": "Question",
-            name: item.question,
-            acceptedAnswer: {
-                "@type": "Answer",
-                text: item.answer,
-            },
-        })),
-    };
-
     return (
         <section
             ref={sectionRef}
@@ -95,19 +56,6 @@ export function Blog() {
                     content="Explore the Read Sidekick blog for reading comprehension tips, AI-powered reading tools, and guides to understanding complex text."
                 />
             </Helmet>
-
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(blogSchema),
-                }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(faqSchema),
-                }}
-            />
 
             <div className="editorial-container">
                 <div className="max-w-5xl mx-auto">

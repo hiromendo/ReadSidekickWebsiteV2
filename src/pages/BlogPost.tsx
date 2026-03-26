@@ -207,42 +207,6 @@ export function BlogPost() {
 
     const headings = post.content.filter((s) => s.type === "heading" && s.content);
 
-    const blogPostingSchema = {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        headline: post.title,
-        description: post.excerpt,
-        datePublished: post.date,
-        author: {
-            "@type": "Person",
-            name: post.author,
-        },
-        publisher: {
-            "@type": "Organization",
-            name: "Read Sidekick",
-            url: "https://www.readsidekick.com",
-            logo: "https://www.readsidekick.com/logo.png",
-        },
-        url: `https://www.readsidekick.com/blog/${post.slug}`,
-        keywords: post.tags.join(", "),
-    };
-
-    const faqSchema =
-        post.faq && post.faq.length > 0
-            ? {
-                  "@context": "https://schema.org",
-                  "@type": "FAQPage",
-                  mainEntity: post.faq.map((item) => ({
-                      "@type": "Question",
-                      name: item.question,
-                      acceptedAnswer: {
-                          "@type": "Answer",
-                          text: item.answer,
-                      },
-                  })),
-              }
-            : null;
-
     return (
         <section
             ref={sectionRef}
@@ -252,21 +216,6 @@ export function BlogPost() {
                 <title>{post.title} | Read Sidekick Blog</title>
                 <meta name="description" content={post.excerpt} />
             </Helmet>
-
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(blogPostingSchema),
-                }}
-            />
-            {faqSchema && (
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(faqSchema),
-                    }}
-                />
-            )}
 
             <div className="editorial-container">
                 <div className="max-w-3xl mx-auto">
