@@ -891,61 +891,6 @@ export const blogPosts: BlogPost[] = [
             { type: "separator" },
             {
                 type: "heading",
-                content: "FAQ",
-            },
-            {
-                type: "subheading",
-                content: "What is the best free reading comprehension tool?",
-            },
-            {
-                type: "paragraph",
-                html: true,
-                content:
-                    'ReadTheory offers the strongest free tier for structured comprehension practice, with adaptive exercises for grades K–12 and ESL students. For understanding complex text on the open web rather than pre-selected passages, <a href="https://www.readsidekick.com" target="_blank" rel="noopener noreferrer">Read Sidekick</a> is a free Chrome extension that deconstructs any highlighted text at multiple reading levels.',
-            },
-            {
-                type: "subheading",
-                content: "Do text-to-speech tools improve reading comprehension?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "TTS tools can support comprehension by removing the decoding bottleneck — letting a reader listen to text they cannot yet decode independently. However, TTS does not simplify language or explain meaning. A reader who struggles with sentence complexity or vocabulary will still struggle whether they read or hear the text. Tools like Read Sidekick address the comprehension side directly.",
-            },
-            {
-                type: "subheading",
-                content:
-                    "What reading tools work for ESL and multilingual learners?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Most traditional tools assume English fluency. Read Sidekick is designed to bridge that gap — deconstructing English text and presenting it at a level that connects to the reader's existing language knowledge. Some comprehension tools like ReadTheory also support ESL learners, and TTS tools like Speechify offer multi-language voice support.",
-            },
-            {
-                type: "subheading",
-                content:
-                    "What is the difference between reading assessment and reading comprehension tools?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Assessment tools measure where a student is performing and whether they are growing. Comprehension tools provide practice designed to improve reading ability. One produces data for decisions; the other produces learning experiences. Schools typically need both — plus an access tool (TTS or Read Sidekick) for students who need help engaging with text above their current independent level.",
-            },
-            {
-                type: "subheading",
-                content:
-                    "Can one tool handle comprehension, assessment, and access?",
-            },
-            {
-                type: "paragraph",
-                html: true,
-                content:
-                    'No single product does all three well. The <a href="https://www.cast.org/what-we-do/universal-design-for-learning/" target="_blank" rel="noopener noreferrer">Universal Design for Learning framework from CAST</a> supports the principle that learner variability is the norm, and schools should plan for multiple means of engagement, representation, and action. Most schools that take literacy seriously use at least two tools from different categories — and increasingly, a fourth tool like Read Sidekick that helps readers understand the real-world text they encounter every day.',
-            },
-            { type: "separator" },
-            {
-                type: "heading",
                 content: "Conclusion",
             },
             {
@@ -1264,75 +1209,6 @@ export const blogPosts: BlogPost[] = [
                 html: true,
                 content:
                     'Parents working with struggling readers at home face the hardest version of this problem. Without diagnostic information, choosing the right reading material and knowing whether it is working is pure guesswork. <a href="https://www.readsidekick.com/" target="_blank" rel="noopener noreferrer">Read Sidekick</a> connects reading assessment directly to adjusted content and comprehension practice, giving parents structure they can act on even without a background in reading instruction.',
-            },
-            { type: "separator" },
-            {
-                type: "heading",
-                content: "Frequently Asked Questions",
-            },
-            {
-                type: "subheading",
-                content: "What is an AI reading program?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "An AI reading program uses machine learning to assess reading skills, adjust text complexity, and deliver comprehension support matched to each student's profile. Screening and diagnostic data drive what a student sees and does, rather than offering one uniform experience. The strongest programs connect assessment results to text simplification and comprehension scaffolds in a single workflow so the assessment actually changes the experience, not just produces a score.",
-            },
-            {
-                type: "subheading",
-                content: "How does AI text simplification work for struggling readers?",
-            },
-            {
-                type: "paragraph",
-                html: true,
-                content:
-                    'AI text simplification reduces sentence complexity and replaces low frequency vocabulary to make grade level content more accessible while preserving core meaning, academic vocabulary, and text structure. A science passage about tectonic plates should still teach plate tectonics after simplification. <a href="https://www.readsidekick.com/" target="_blank" rel="noopener noreferrer">Read Sidekick</a> offers multiple reading levels on the same content so students can toggle between a simplified version and the original, keeping the scaffold temporary rather than permanently routing students to easier material.',
-            },
-            {
-                type: "subheading",
-                content: "What reading assessments should an AI reading program include?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Three types: universal screening to identify students at risk, diagnostic assessment to pinpoint the source of difficulty (decoding, fluency, vocabulary, comprehension), and progress monitoring to track whether support is producing growth. Programs that screen without diagnosing, or assess without connecting results to instruction, leave critical gaps. If a program cannot tell you why a student is struggling, it cannot adjust support in a meaningful way.",
-            },
-            {
-                type: "subheading",
-                content: "Can an AI reading program replace a reading specialist?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "No. AI handles assessment logistics, text preparation, and data reporting efficiently, but it does not replicate the instructional judgment, strategy modeling, guided discussion, and responsive feedback that a skilled reading specialist provides. The strongest approach uses AI to handle administrative load so specialists can spend more time on teaching that produces measurable gains.",
-            },
-            {
-                type: "subheading",
-                content: "How do I know if an AI reading program is actually helping my child?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Look for progress data showing growth over time, not a single score after each session. Useful reporting breaks performance into components: decoding accuracy, fluency rate, comprehension accuracy, inferencing. If you can see that inferencing improved from 45% to 68% over six weeks while literal comprehension held steady, you know where to focus next. A program that only shows \"82% today\" is not giving you enough to act on.",
-            },
-            {
-                type: "subheading",
-                content: "What is the difference between adaptive reading software and leveled reading libraries?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Leveled libraries sort texts by difficulty but do not change based on individual assessment data. A student gets assigned to Level M and stays there until someone manually reassesses. Adaptive reading software uses screening and diagnostic results to modify both the text (through AI simplification) and the supports (through targeted comprehension scaffolds) for each student, adjusting continuously as new data comes in.",
-            },
-            {
-                type: "subheading",
-                content: "Are AI reading programs appropriate for students with learning disabilities?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "They can be a valuable part of the support plan, especially for students with mixed reading profiles spanning decoding, fluency, and comprehension. The key question is whether the program assesses multiple components and adjusts accordingly, because a program addressing only one dimension will miss the complexity of most learning disability profiles. These tools work best alongside specialized instruction from a qualified reading specialist, not as a standalone.",
             },
             { type: "separator" },
             {
@@ -1890,83 +1766,6 @@ export const blogPosts: BlogPost[] = [
             },
             { type: "separator" },
             {
-                type: "heading",
-                content: "FAQ",
-            },
-            {
-                type: "bold",
-                content: "What is an AI text simplifier?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "An AI text simplifier is a tool that rewrites complex text into clearer, more accessible language while preserving the original meaning. It's designed to help readers engage with content that would otherwise be too difficult for them to understand independently.",
-            },
-            {
-                type: "bold",
-                content: "What is the best AI text simplifier for legal documents?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "The best tool for legal documents is one that simplifies language while preserving key terms and important qualifiers. Look for a tool that adjusts reading level without stripping out the meaning that matters, and always treat simplified legal text as a reading aid rather than a legal interpretation.",
-            },
-            {
-                type: "bold",
-                content: "Can AI help struggling readers?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Yes. AI text simplification can reduce the barriers that keep struggling readers from engaging with grade-level content. By rewriting text at an appropriate complexity level while preserving meaning, these tools give readers a way to access ideas they'd otherwise miss.",
-            },
-            {
-                type: "bold",
-                content: "What is the best reading comprehension app for struggling readers?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "The best app combines text simplification with comprehension support — not just audio playback. Look for features like reading level adjustment, vocabulary help, and comprehension checks that keep students actively engaged with meaning.",
-            },
-            {
-                type: "bold",
-                content: "How does an AI reading tutor help middle school students?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Middle school students face a sharp increase in reading complexity across all subjects. An AI reading tutor simplifies grade-level text so students can engage with the same content as their peers, supports homework and independent reading, and builds comprehension skills without lowering expectations.",
-            },
-            {
-                type: "bold",
-                content: "What is the difference between an AI text reader and an AI reading app?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "An AI text reader reads content aloud without changing it. An AI reading app typically includes multiple features — simplification, audio, vocabulary support, and comprehension tools — that work together to help the reader understand the text, not just hear it.",
-            },
-            {
-                type: "bold",
-                content: "Can AI simplify difficult school texts without changing the meaning?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Good AI simplification preserves the core meaning, arguments, and key vocabulary of a passage while making the language more accessible. The ideas stay intact. What changes is how they're expressed.",
-            },
-            {
-                type: "bold",
-                content: "Is AI text simplification useful for teachers?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Yes. Teachers can use simplified text to support differentiated instruction, provide accessible versions of grade-level content, and help students build comprehension skills across subjects — all without having to manually rewrite materials.",
-            },
-            { type: "separator" },
-            {
                 type: "paragraph",
                 content:
                     "Reading shouldn't be a gatekeeping mechanism. Complex text is everywhere — in classrooms, in documents, in the everyday information people need to navigate their lives. AI text simplification doesn't lower the bar. It builds the ramp. And when students can actually access the content in front of them, they don't just read better. They learn better, they persist longer, and they start to see themselves as the kind of person who reads.",
@@ -2337,57 +2136,6 @@ export const blogPosts: BlogPost[] = [
             { type: "separator" },
             {
                 type: "heading",
-                content: "FAQ",
-            },
-            {
-                type: "subheading",
-                content: "What is the best free text-to-speech reader?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "It depends on what you're reading and where. For web content, Microsoft Edge's Read Aloud is probably the strongest free option — natural voices, solid pacing, no account required. For system-wide listening on Apple devices, Spoken Content is excellent and built right in. For a cross-platform free tier with more features, NaturalReader's web version is a reasonable starting point. The best free reader is the one that fits where you already read.",
-            },
-            {
-                type: "subheading",
-                content: "Which text readers work with PDF documents?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Speechify, NaturalReader, Voice Dream Reader, and Adobe Acrobat all support PDFs directly. For scanned PDFs — meaning image-based files without selectable text — you need OCR support, which Speechify and some NaturalReader plans offer. Most free and built-in TTS tools don't handle PDFs natively, so if documents are your primary use case, this is where it's worth investing in a dedicated tool.",
-            },
-            {
-                type: "subheading",
-                content: "What are the top text-to-speech AI tools?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "For pure AI voice quality, ElevenLabs leads the field right now, followed by platforms like Murf, PlayHT, and Amazon Polly. These are primarily voice generation platforms rather than document readers. For AI voices integrated into a reading experience, Speechify and NaturalReader offer premium voice options within their apps. The distinction matters — AI voice tools and document readers serve different workflows even when they use similar underlying technology.",
-            },
-            {
-                type: "subheading",
-                content:
-                    "Is there a difference between a text reader and an AI voice generator?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Yes, and it's a meaningful one. A text-to-speech reader is designed around the reading experience — you give it a document, a webpage, or some text, and it reads it aloud with features like highlighting, speed control, and navigation. An AI voice generator is designed around audio production — you input text and get polished audio output, often with options for voice cloning, emotional tone, and export formats. There's overlap in the middle, and some tools try to do both, but the core workflow is different. Readers are for consuming content. Generators are for producing content. Knowing which you need saves you from paying for features you won't use.",
-            },
-            {
-                type: "subheading",
-                content: "Can a text-to-speech reader also help with comprehension?",
-            },
-            {
-                type: "paragraph",
-                content:
-                    "Most TTS tools read text exactly as written — they solve the decoding problem but not the comprehension problem. A dense paragraph read aloud is still a dense paragraph. Read Sidekick takes a different approach: it's a free Chrome extension that simplifies complex text first, and is currently developing text-to-speech capabilities so you can hear the simplified version read aloud. If your challenge is understanding what you're reading rather than just accessing it audibly, that combination of comprehension support and audio is worth looking at.",
-            },
-            { type: "separator" },
-            {
-                type: "heading",
                 content: "Conclusion",
             },
             {
@@ -2562,61 +2310,6 @@ export const blogPosts: BlogPost[] = [
                 html: true,
                 content:
                     '<a href="https://azure.microsoft.com/en-us/products/ai-services/ai-immersive-reader" target="_blank" rel="noopener noreferrer">Azure AI Immersive Reader</a> enhances reading accessibility by offering text-to-speech, translation, line focus, picture dictionaries, parts-of-speech highlighting, syllable breakdown, and customizable formatting. It supports readers across varying ability levels, languages, and needs by making the reading experience more adaptive and less visually overwhelming. In other thoughts, it\'s one of the more comprehensive enterprise-level solutions for organizations that need to support diverse reading populations — though for individual readers who want something lighter-weight and more immediate, a browser extension like <a href="https://www.readsidekick.com" target="_blank" rel="noopener noreferrer">Read Sidekick</a> might be a better fit.',
-            },
-            { type: "separator" },
-            {
-                type: "heading",
-                content: "FAQ",
-            },
-            {
-                type: "bold",
-                content: "What are the best tools to improve reading comprehension?",
-            },
-            {
-                type: "paragraph",
-                html: true,
-                content:
-                    'Tools like <a href="https://www.readsidekick.com" target="_blank" rel="noopener noreferrer">Read Sidekick</a>, Azure AI Immersive Reader, and Taskade improve reading comprehension by simplifying complex text, providing AI-powered Q&A, and offering multisensory reading supports. Read Sidekick stands out by letting you adjust reading level on any webpage without leaving your browser — making it perhaps the most frictionless option for everyday reading.',
-            },
-            {
-                type: "bold",
-                content: "How can technology make reading comprehension easier?",
-            },
-            {
-                type: "paragraph",
-                html: true,
-                content:
-                    'AI tools simplify complex text by rewriting it at different reading levels, summarizing key ideas, generating comprehension questions, and providing real-time translation. <a href="https://www.readsidekick.com" target="_blank" rel="noopener noreferrer">Read Sidekick</a> takes this further by placing the complexity on the content rather than the reader — so the text adjusts to you, not the other way around.',
-            },
-            {
-                type: "bold",
-                content: "Can AI text simplification tools help with understanding what you read?",
-            },
-            {
-                type: "paragraph",
-                html: true,
-                content:
-                    'Yes. AI-powered simplification, like <a href="https://www.readsidekick.com" target="_blank" rel="noopener noreferrer">Read Sidekick\'s</a> Quick Read mode, reduces the cognitive load of dense writing while preserving meaning. Combined with learning features that teach complex sentence structures through strategies like "Juicy Sentences," these tools help build lasting comprehension skills — not just short-term workarounds.',
-            },
-            {
-                type: "bold",
-                content: "Are reading comprehension tools good for students and adults alike?",
-            },
-            {
-                type: "paragraph",
-                html: true,
-                content:
-                    'Absolutely. Tools like Amira Learning and ProjectRead.ai are built for K-8 students building foundational skills, while <a href="https://www.readsidekick.com" target="_blank" rel="noopener noreferrer">Read Sidekick</a> is designed to work for anyone — adults navigating workplace documents, multilingual readers processing English content, or Deaf readers accessing text through ASL translation. The best tools don\'t assume who you are or why you need them.',
-            },
-            {
-                type: "bold",
-                content: "What is an AI text simplification tool?",
-            },
-            {
-                type: "paragraph",
-                html: true,
-                content:
-                    'An AI text simplification tool uses artificial intelligence to rewrite complex content at a more accessible reading level while preserving the original meaning. <a href="https://www.readsidekick.com" target="_blank" rel="noopener noreferrer">Read Sidekick\'s</a> Chrome extension does this on any webpage — offering Quick Read, Standard, and Full Detail levels so you can choose the depth that works for your context, whether that\'s skimming the news or studying a research paper.',
             },
         ],
         faq: [
