@@ -32,23 +32,14 @@ Generate a JSON object with exactly this structure:
       "meaning": "string — what this phrase means",
       "context": "string — the surrounding text where this phrase appears"
     }
-  ],
-  "comprehension": [
-    {
-      "question": "string — a comprehension question about the text",
-      "answer": "string — the correct answer",
-      "textExcerpt": "string — the relevant excerpt from the text"
-    }
   ]
 }
 
 Guidelines:
 - Generate 8-15 vocabulary cards, focusing on words that are useful for language learners
 - Generate 5-10 phrase cards, focusing on idiomatic or notable expressions
-- Generate 5-8 comprehension questions that test understanding of the text
-- Use exact quotes from the text for exampleSentence, context, and textExcerpt
+- Use exact quotes from the text for exampleSentence and context
 - Vary difficulty levels across vocabulary cards
-- Make comprehension questions range from factual recall to inferential understanding
 
 TEXTS:
 `;
@@ -66,7 +57,7 @@ async function generateFlashcards(texts) {
         try {
             const parsed = JSON.parse(text);
             // Basic validation
-            if (parsed.vocabulary && parsed.phrases && parsed.comprehension) {
+            if (parsed.vocabulary && parsed.phrases) {
                 return parsed;
             }
             console.warn(`Attempt ${attempt + 1}: Response missing required fields, retrying...`);

@@ -35,6 +35,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSavedItems = getSavedItems;
 exports.saveFlashcardSet = saveFlashcardSet;
+exports.getSavedItemsFull = getSavedItemsFull;
 exports.getLatestFlashcardSet = getLatestFlashcardSet;
 const admin = __importStar(require("firebase-admin"));
 async function getSavedItems(uid) {
@@ -59,8 +60,7 @@ async function getSavedItems(uid) {
 async function saveFlashcardSet(uid, content, sourceItems) {
     const db = admin.firestore();
     const totalCards = content.vocabulary.length +
-        content.phrases.length +
-        content.comprehension.length;
+        content.phrases.length;
     const set = {
         content,
         createdAt: admin.firestore.Timestamp.now(),
@@ -70,6 +70,25 @@ async function saveFlashcardSet(uid, content, sourceItems) {
     };
     await db.collection('users').doc(uid).collection('flashcards').add(set);
     return set;
+}
+async function getSavedItemsFull(uid) {
+    const db = admin.firestore();
+    const snap = await db
+        .collection('users')
+        .doc(uid)
+        .collection('savedItems')
+        .orderBy('timestamp', 'desc')
+        .get();
+    return snap.docs.map((doc) => {
+        const data = doc.data();
+        return {
+            id: doc.id,
+            text: data.text ?? '',
+            sourceUrl: data.sourceUrl ?? '',
+            sourceTitle: data.sourceTitle ?? '',
+            timestamp: data.timestamp,
+        };
+    });
 }
 async function getLatestFlashcardSet(uid) {
     const db = admin.firestore();

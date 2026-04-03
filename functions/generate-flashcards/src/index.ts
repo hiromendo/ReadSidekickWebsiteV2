@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin';
-import { getSavedItems, saveFlashcardSet, getLatestFlashcardSet } from './firestore';
+import { getSavedItems, getSavedItemsFull, saveFlashcardSet, getLatestFlashcardSet } from './firestore';
 import { generateFlashcards } from './gemini';
 import { FlashcardContent } from './types';
 
@@ -54,11 +54,23 @@ export async function generateFlashcardsHandler(req: HttpRequest, res: HttpRespo
   // GET — return saved item count + latest flashcard set
   if (req.method === 'GET') {
     try {
-      const [items, latestFlashcardSet] = await Promise.all([
+      const [items, latestFlashcardSet, savedItemsFull] = await Promise.all([
         getSavedItems(uid),
         getLatestFlashcardSet(uid),
+        getSavedItemsFull(uid),
       ]);
-      res.json({ success: true, savedItemCount: items.length, latestFlashcardSet });
+      res.json({
+        success: true,
+        savedItemCount: items.length,
+        latestFlashcardSet,
+        savedItems: savedItemsFull.map((item) => ({
+          id: item.id,
+          text: item.text,
+          sourceUrl: item.sourceUrl,
+          sourceTitle: item.sourceTitle,
+          timestamp: item.timestamp?.toMillis() ?? 0,
+        })),
+      });
     } catch (error) {
       console.error('Fetch memory data error:', error);
       res.status(500).json({ success: false, error: 'Failed to fetch memory data' });

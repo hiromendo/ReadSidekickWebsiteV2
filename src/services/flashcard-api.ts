@@ -1,4 +1,4 @@
-import type { FlashcardSet } from './flashcard-types'
+import type { FlashcardSet, SavedItem } from './flashcard-types'
 
 const API_URL = import.meta.env.VITE_FLASHCARD_API_URL
 
@@ -23,6 +23,7 @@ export async function generateFlashcards(idToken: string): Promise<FlashcardSet>
 export async function fetchMemoryData(idToken: string): Promise<{
   savedItemCount: number
   latestFlashcardSet: FlashcardSet | null
+  savedItems: SavedItem[]
 }> {
   const res = await fetch(API_URL, {
     method: 'GET',
@@ -40,5 +41,6 @@ export async function fetchMemoryData(idToken: string): Promise<{
   return {
     savedItemCount: data.savedItemCount ?? 0,
     latestFlashcardSet: data.latestFlashcardSet ?? null,
+    savedItems: data.savedItems ?? [],
   }
 }

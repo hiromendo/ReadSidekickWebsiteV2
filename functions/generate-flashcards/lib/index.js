@@ -70,11 +70,23 @@ async function generateFlashcardsHandler(req, res) {
     // GET — return saved item count + latest flashcard set
     if (req.method === 'GET') {
         try {
-            const [items, latestFlashcardSet] = await Promise.all([
+            const [items, latestFlashcardSet, savedItemsFull] = await Promise.all([
                 (0, firestore_1.getSavedItems)(uid),
                 (0, firestore_1.getLatestFlashcardSet)(uid),
+                (0, firestore_1.getSavedItemsFull)(uid),
             ]);
-            res.json({ success: true, savedItemCount: items.length, latestFlashcardSet });
+            res.json({
+                success: true,
+                savedItemCount: items.length,
+                latestFlashcardSet,
+                savedItems: savedItemsFull.map((item) => ({
+                    id: item.id,
+                    text: item.text,
+                    sourceUrl: item.sourceUrl,
+                    sourceTitle: item.sourceTitle,
+                    timestamp: item.timestamp?.toMillis() ?? 0,
+                })),
+            });
         }
         catch (error) {
             console.error('Fetch memory data error:', error);

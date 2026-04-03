@@ -6,6 +6,14 @@ export interface SavedItemText {
   text: string;
 }
 
+export interface SavedItemFull {
+  id: string;
+  text: string;
+  sourceUrl: string;
+  sourceTitle: string;
+  timestamp: admin.firestore.Timestamp;
+}
+
 export async function getSavedItems(uid: string): Promise<SavedItemText[]> {
   const db = admin.firestore();
   const snap = await db.collection('users').doc(uid).collection('savedItems').get();
@@ -48,6 +56,27 @@ export async function saveFlashcardSet(
 
   await db.collection('users').doc(uid).collection('flashcards').add(set);
   return set;
+}
+
+export async function getSavedItemsFull(uid: string): Promise<SavedItemFull[]> {
+  const db = admin.firestore();
+  const snap = await db
+    .collection('users')
+    .doc(uid)
+    .collection('savedItems')
+    .orderBy('timestamp', 'desc')
+    .get();
+
+  return snap.docs.map((doc) => {
+    const data = doc.data();
+    return {
+      id: doc.id,
+      text: data.text ?? '',
+      sourceUrl: data.sourceUrl ?? '',
+      sourceTitle: data.sourceTitle ?? '',
+      timestamp: data.timestamp,
+    } as SavedItemFull;
+  });
 }
 
 export async function getLatestFlashcardSet(uid: string): Promise<FlashcardSet | null> {

@@ -10,15 +10,9 @@ export interface PhraseCard {
     meaning: string;
     context: string;
 }
-export interface ComprehensionCard {
-    question: string;
-    answer: string;
-    textExcerpt: string;
-}
 export interface FlashcardContent {
     vocabulary: VocabularyCard[];
     phrases: PhraseCard[];
-    comprehension: ComprehensionCard[];
 }
 export interface FlashcardSet {
     content: FlashcardContent;

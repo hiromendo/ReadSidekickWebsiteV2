@@ -23,3 +23,11 @@ export interface FlashcardSet {
   sourceItemIds: string[]
   totalCards: number
 }
+
+export interface SavedItem {
+  id: string
+  text: string
+  sourceUrl: string
+  sourceTitle: string
+  timestamp: number
+}

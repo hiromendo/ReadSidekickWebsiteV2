@@ -10,6 +10,7 @@ import type {
   FlashcardSet,
   VocabularyCard,
   PhraseCard,
+  SavedItem,
 } from '../services/flashcard-types'
 
 type Category = 'vocabulary' | 'phrases'
@@ -26,6 +27,8 @@ export function Memory() {
   const { user, isLoading: authLoading, signInWithGoogle, signOut } = useAuth()
 
   const [savedItemCount, setSavedItemCount] = useState(0)
+  const [savedItems, setSavedItems] = useState<SavedItem[]>([])
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set())
   const [flashcardSet, setFlashcardSet] = useState<FlashcardSet | null>(null)
   const [loading, setLoading] = useState(false)
   const [loadingMsg, setLoadingMsg] = useState(0)
@@ -41,8 +44,9 @@ export function Memory() {
   const fetchInitialData = useCallback(async (user: { uid: string; getIdToken: () => Promise<string> }) => {
     try {
       const token = await user.getIdToken()
-      const { savedItemCount, latestFlashcardSet } = await fetchMemoryData(token)
+      const { savedItemCount, latestFlashcardSet, savedItems } = await fetchMemoryData(token)
       setSavedItemCount(savedItemCount)
+      setSavedItems(savedItems)
       if (latestFlashcardSet) setFlashcardSet(latestFlashcardSet)
     } catch (err) {
       console.error('Failed to fetch memory data:', err)
@@ -57,6 +61,8 @@ export function Memory() {
   useEffect(() => {
     if (!user) {
       setSavedItemCount(0)
+      setSavedItems([])
+      setExpandedItems(new Set())
       setFlashcardSet(null)
       setInitialFetch(false)
     }
@@ -542,6 +548,68 @@ export function Memory() {
                   </svg>
                   Regenerate with latest readings
                 </button>
+              </div>
+            </motion.div>
+          )}
+          {/* Saved Highlights */}
+          {initialFetch && !loading && savedItems.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-16"
+            >
+              <h2 className="font-serif text-display-sm text-ink-900 mb-6">
+                Saved <span className="italic">Highlights</span>
+              </h2>
+              <div className="space-y-4">
+                {savedItems.map((item) => {
+                  const isExpanded = expandedItems.has(item.id)
+                  const needsTruncation = item.text.length > 200
+                  const displayText = needsTruncation && !isExpanded
+                    ? item.text.slice(0, 200) + '...'
+                    : item.text
+                  return (
+                    <div
+                      key={item.id}
+                      className="bg-white rounded-xl p-6 border border-ink-800/10 shadow-sm"
+                    >
+                      <p className="font-mono text-body-md text-ink-900/80 leading-relaxed whitespace-pre-line">
+                        {displayText}
+                      </p>
+                      {needsTruncation && (
+                        <button
+                          onClick={() => setExpandedItems((prev) => {
+                            const next = new Set(prev)
+                            if (next.has(item.id)) next.delete(item.id)
+                            else next.add(item.id)
+                            return next
+                          })}
+                          className="font-mono text-body-sm text-coral-500 hover:text-coral-600 transition-colors duration-200 mt-2"
+                        >
+                          {isExpanded ? 'Show less' : 'Show more'}
+                        </button>
+                      )}
+                      {item.sourceUrl && (
+                        <div className="mt-3 pt-3 border-t border-ink-800/5">
+                          <a
+                            href={item.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 font-mono text-body-sm text-coral-500 hover:text-coral-600 transition-colors duration-200"
+                          >
+                            {item.sourceTitle || item.sourceUrl}
+                            <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                              <polyline points="15 3 21 3 21 9" />
+                              <line x1="10" y1="14" x2="21" y2="3" />
+                            </svg>
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
             </motion.div>
           )}
