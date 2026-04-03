@@ -1,242 +1,217 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { collection, doc, getDoc, getDocs, Timestamp } from 'firebase/firestore'
-import { db } from '../auth/firebase'
 import { useAuth } from '../auth/AuthContext'
-import { useScrollReveal } from '../hooks/useScrollReveal'
+import {
+  generateFlashcards,
+  fetchMemoryData,
+} from '../services/flashcard-api'
+import type {
+  FlashcardSet,
+  VocabularyCard,
+  PhraseCard,
+  ComprehensionCard,
+} from '../services/flashcard-types'
 
-interface FirestoreData {
-  [key: string]: unknown
-}
+type Category = 'vocabulary' | 'phrases' | 'comprehension'
+type AnyCard = VocabularyCard | PhraseCard | ComprehensionCard
 
-interface CollectionResult {
-  name: string
-  docs: { id: string; data: FirestoreData }[]
-}
-
-function formatTimestamp(ts: Timestamp): string {
-  return ts.toDate().toLocaleString()
-}
-
-function DataValue({ value }: { value: unknown }) {
-  if (value === null || value === undefined) {
-    return <span className="text-ink-700/40 italic">null</span>
-  }
-
-  if (value instanceof Timestamp) {
-    return <span className="text-ink-700/70">{formatTimestamp(value)}</span>
-  }
-
-  if (typeof value === 'boolean') {
-    return (
-      <span className={value ? 'text-green-600' : 'text-red-500'}>
-        {value.toString()}
-      </span>
-    )
-  }
-
-  if (typeof value === 'number') {
-    return <span className="text-blue-600">{value}</span>
-  }
-
-  if (typeof value === 'string') {
-    return <span className="text-ink-700/80">{value}</span>
-  }
-
-  if (Array.isArray(value)) {
-    if (value.length === 0) {
-      return <span className="text-ink-700/40 italic">[]</span>
-    }
-    return (
-      <div className="ml-4 border-l-2 border-ink-800/10 pl-3 mt-1 space-y-1">
-        {value.map((item, i) => (
-          <div key={i} className="flex gap-2">
-            <span className="text-ink-700/40 text-xs mt-0.5">{i}.</span>
-            <DataValue value={item} />
-          </div>
-        ))}
-      </div>
-    )
-  }
-
-  if (typeof value === 'object') {
-    const entries = Object.entries(value as Record<string, unknown>)
-    if (entries.length === 0) {
-      return <span className="text-ink-700/40 italic">{'{}'}</span>
-    }
-    return (
-      <div className="ml-4 border-l-2 border-ink-800/10 pl-3 mt-1 space-y-1">
-        {entries.map(([k, v]) => (
-          <div key={k}>
-            <span className="text-ink-900 font-medium text-sm">{k}: </span>
-            <DataValue value={v} />
-          </div>
-        ))}
-      </div>
-    )
-  }
-
-  return <span className="text-ink-700/70">{String(value)}</span>
-}
-
-function DocumentCard({ id, data }: { id: string; data: FirestoreData }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const entries = Object.entries(data)
-
-  return (
-    <div className="border border-ink-800/10 rounded-lg bg-white overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between px-4 py-3 text-left group hover:bg-ivory-100/50 transition-colors duration-200"
-      >
-        <span className="font-mono text-body-sm text-ink-900 truncate pr-4">
-          {id}
-        </span>
-        <motion.span
-          animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="flex-shrink-0 w-5 h-5 flex items-center justify-center text-ink-700/50 group-hover:text-coral-500 transition-colors duration-200"
-        >
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <line x1="8" y1="2" x2="8" y2="14" />
-            <line x1="2" y1="8" x2="14" y2="8" />
-          </svg>
-        </motion.span>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="px-4 pb-4 space-y-2 border-t border-ink-800/10 pt-3">
-              {entries.map(([key, value]) => (
-                <div key={key} className="font-mono text-body-sm">
-                  <span className="text-ink-900 font-medium">{key}: </span>
-                  <DataValue value={value} />
-                </div>
-              ))}
-              {entries.length === 0 && (
-                <p className="font-mono text-body-sm text-ink-700/40 italic">Empty document</p>
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  )
-}
-
-function CollectionCard({ result }: { result: CollectionResult }) {
-  const [isOpen, setIsOpen] = useState(true)
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="bg-white rounded-xl border border-ink-800/10 shadow-sm overflow-hidden"
-    >
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between px-6 py-4 text-left group hover:bg-ivory-100/30 transition-colors duration-200"
-      >
-        <div className="flex items-center gap-3">
-          <span className="font-serif text-lg text-ink-900">{result.name}</span>
-          <span className="font-mono text-body-xs text-ink-700/50 bg-ivory-100 px-2 py-0.5 rounded-full">
-            {result.docs.length} {result.docs.length === 1 ? 'doc' : 'docs'}
-          </span>
-        </div>
-        <motion.span
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="flex-shrink-0 text-ink-700/50 group-hover:text-coral-500 transition-colors duration-200"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </motion.span>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 pb-4 space-y-2">
-              {result.docs.map((d) => (
-                <DocumentCard key={d.id} id={d.id} data={d.data} />
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  )
-}
+const LOADING_MESSAGES = [
+  'Reading your saved texts...',
+  'Identifying key vocabulary...',
+  'Finding notable phrases...',
+  'Crafting comprehension questions...',
+  'Building your flashcard deck...',
+]
 
 export function Memory() {
   const { user, isLoading: authLoading, signInWithGoogle, signOut } = useAuth()
-  const [collections, setCollections] = useState<CollectionResult[]>([])
-  const [fetching, setFetching] = useState(false)
-  const [fetched, setFetched] = useState(false)
 
-  const { ref: sectionRef, isInView: sectionInView } = useScrollReveal<HTMLElement>({
-    threshold: 0.1,
-  })
+  const [savedItemCount, setSavedItemCount] = useState(0)
+  const [flashcardSet, setFlashcardSet] = useState<FlashcardSet | null>(null)
+  const [loading, setLoading] = useState(false)
+  const [loadingMsg, setLoadingMsg] = useState(0)
+  const [error, setError] = useState<string | null>(null)
+  const [initialFetch, setInitialFetch] = useState(false)
 
-  const fetchData = useCallback(async (uid: string) => {
-    setFetching(true)
-    const results: CollectionResult[] = []
+  // Flashcard navigation state
+  const [category, setCategory] = useState<Category>('vocabulary')
+  const [cardIndex, setCardIndex] = useState(0)
+  const [flipped, setFlipped] = useState(false)
 
-    // 1. Saved items from Chrome extension: users/{uid}/savedItems
+  // Fetch saved item count + latest flashcard set on mount
+  const fetchInitialData = useCallback(async (user: { uid: string; getIdToken: () => Promise<string> }) => {
     try {
-      const snap = await getDocs(collection(db, 'users', uid, 'savedItems'))
-      if (!snap.empty) {
-        results.push({
-          name: 'Saved Items',
-          docs: snap.docs.map((d) => ({ id: d.id, data: d.data() as FirestoreData })),
-        })
-      }
-    } catch {
-      // permission-denied — skip
+      const token = await user.getIdToken()
+      const { savedItemCount, latestFlashcardSet } = await fetchMemoryData(token)
+      setSavedItemCount(savedItemCount)
+      if (latestFlashcardSet) setFlashcardSet(latestFlashcardSet)
+    } catch (err) {
+      console.error('Failed to fetch memory data:', err)
     }
-
-    // 2. User profile doc: users/{uid}
-    try {
-      const snap = await getDoc(doc(db, 'users', uid))
-      if (snap.exists()) {
-        results.push({ name: 'Profile', docs: [{ id: snap.id, data: snap.data() as FirestoreData }] })
-      }
-    } catch {
-      // permission-denied — skip
-    }
-
-    setCollections(results)
-    setFetched(true)
-    setFetching(false)
+    setInitialFetch(true)
   }, [])
 
   useEffect(() => {
-    if (user && !fetched && !fetching) {
-      fetchData(user.uid)
-    }
-  }, [user, fetched, fetching, fetchData])
+    if (user && !initialFetch) fetchInitialData(user)
+  }, [user, initialFetch, fetchInitialData])
 
-  // Reset when user signs out
   useEffect(() => {
     if (!user) {
-      setCollections([])
-      setFetched(false)
+      setSavedItemCount(0)
+      setFlashcardSet(null)
+      setInitialFetch(false)
     }
   }, [user])
+
+  // Cycle loading messages
+  useEffect(() => {
+    if (!loading) return
+    setLoadingMsg(0)
+    const id = setInterval(() => {
+      setLoadingMsg((i) => (i + 1) % LOADING_MESSAGES.length)
+    }, 3000)
+    return () => clearInterval(id)
+  }, [loading])
+
+  // Reset card index & flip when category changes
+  useEffect(() => {
+    setCardIndex(0)
+    setFlipped(false)
+  }, [category])
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!flashcardSet) return
+    const handler = (e: KeyboardEvent) => {
+      const cards = flashcardSet.content[category]
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault()
+        setFlipped(false)
+        setCardIndex((i) => Math.min(i + 1, cards.length - 1))
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault()
+        setFlipped(false)
+        setCardIndex((i) => Math.max(i - 1, 0))
+      } else if (e.key === ' ') {
+        e.preventDefault()
+        setFlipped((f) => !f)
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [flashcardSet, category])
+
+  const handleGenerate = async () => {
+    if (!user) return
+    setLoading(true)
+    setError(null)
+    try {
+      const token = await user.getIdToken()
+      const set = await generateFlashcards(token)
+      setFlashcardSet(set)
+      setCategory('vocabulary')
+      setCardIndex(0)
+      setFlipped(false)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Something went wrong')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const currentCards: AnyCard[] = flashcardSet ? flashcardSet.content[category] : []
+  const currentCard: AnyCard | undefined = currentCards[cardIndex]
+
+  function renderFront(card: AnyCard) {
+    if (category === 'vocabulary') {
+      const c = card as VocabularyCard
+      return (
+        <>
+          <DifficultyBadge level={c.difficulty} />
+          <p className="font-serif text-display-sm md:text-display-md text-ink-900 mb-3">
+            {c.word}
+          </p>
+          <p className="font-mono text-body-sm text-ink-700/50">Tap to see definition</p>
+        </>
+      )
+    }
+    if (category === 'phrases') {
+      const c = card as PhraseCard
+      return (
+        <>
+          <p className="font-serif text-xl md:text-2xl text-ink-900 mb-3 italic">
+            "{c.phrase}"
+          </p>
+          <p className="font-mono text-body-sm text-ink-700/50">Tap to see meaning</p>
+        </>
+      )
+    }
+    const c = card as ComprehensionCard
+    return (
+      <>
+        <p className="font-serif text-xl md:text-2xl text-ink-900 mb-3">
+          {c.question}
+        </p>
+        <p className="font-mono text-body-sm text-ink-700/50">Tap to see answer</p>
+      </>
+    )
+  }
+
+  function renderBack(card: AnyCard) {
+    if (category === 'vocabulary') {
+      const c = card as VocabularyCard
+      return (
+        <>
+          <p className="font-mono text-body-md text-ink-900 font-medium mb-4">
+            {c.definition}
+          </p>
+          <div className="bg-ivory-100 rounded-lg p-4">
+            <p className="font-mono text-body-xs text-ink-700/50 uppercase tracking-wider mb-1">
+              Example
+            </p>
+            <p className="font-mono text-body-sm text-ink-700/80 italic">
+              "{c.exampleSentence}"
+            </p>
+          </div>
+        </>
+      )
+    }
+    if (category === 'phrases') {
+      const c = card as PhraseCard
+      return (
+        <>
+          <p className="font-mono text-body-md text-ink-900 font-medium mb-4">
+            {c.meaning}
+          </p>
+          <div className="bg-ivory-100 rounded-lg p-4">
+            <p className="font-mono text-body-xs text-ink-700/50 uppercase tracking-wider mb-1">
+              Context
+            </p>
+            <p className="font-mono text-body-sm text-ink-700/80 italic">
+              "{c.context}"
+            </p>
+          </div>
+        </>
+      )
+    }
+    const c = card as ComprehensionCard
+    return (
+      <>
+        <p className="font-mono text-body-md text-ink-900 font-medium mb-4">
+          {c.answer}
+        </p>
+        <div className="bg-ivory-100 rounded-lg p-4">
+          <p className="font-mono text-body-xs text-ink-700/50 uppercase tracking-wider mb-1">
+            From the text
+          </p>
+          <p className="font-mono text-body-sm text-ink-700/80 italic">
+            "{c.textExcerpt}"
+          </p>
+        </div>
+      </>
+    )
+  }
 
   // Auth loading
   if (authLoading) {
@@ -291,7 +266,6 @@ export function Memory() {
   // Authenticated
   return (
     <section
-      ref={sectionRef}
       className="relative py-editorial bg-ivory-100 overflow-hidden min-h-screen"
     >
       <Helmet>
@@ -304,7 +278,7 @@ export function Memory() {
           {/* User info bar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-center justify-between bg-white rounded-xl px-6 py-4 mb-8 border border-ink-800/10 shadow-sm"
           >
@@ -336,7 +310,7 @@ export function Memory() {
           <div className="text-center mb-12 md:mb-16">
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 40 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="font-serif text-display-md md:text-display-lg text-ink-900 mb-4"
             >
@@ -344,48 +318,282 @@ export function Memory() {
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: sectionInView ? 1 : 0, y: sectionInView ? 0 : 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="font-mono text-body-lg text-ink-700/80 max-w-2xl mx-auto"
             >
-              Data saved by the Read Sidekick extension.
+              {flashcardSet
+                ? 'Review your flashcards to reinforce what you\'ve read.'
+                : 'Turn your saved readings into interactive flashcards.'}
             </motion.p>
           </div>
 
-          {/* Content */}
-          {fetching && (
+          {/* Content area */}
+          {!initialFetch && (
             <div className="flex items-center justify-center py-20">
               <div className="animate-spin w-8 h-8 border-2 border-coral-500 border-t-transparent rounded-full" />
             </div>
           )}
 
-          {fetched && !fetching && collections.length === 0 && (
+          {/* Loading state during generation */}
+          {loading && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-20"
+            >
+              <div className="animate-spin w-10 h-10 border-2 border-coral-500 border-t-transparent rounded-full mx-auto mb-6" />
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={loadingMsg}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4 }}
+                  className="font-mono text-body-md text-ink-700/70"
+                >
+                  {LOADING_MESSAGES[loadingMsg]}
+                </motion.p>
+              </AnimatePresence>
+            </motion.div>
+          )}
+
+          {/* Error state */}
+          {error && !loading && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-red-50 border border-red-200 rounded-xl p-6 text-center mb-8"
+            >
+              <p className="font-mono text-body-md text-red-700 mb-3">{error}</p>
+              <button
+                onClick={handleGenerate}
+                className="font-mono text-body-sm text-red-600 underline hover:text-red-800 transition-colors"
+              >
+                Try again
+              </button>
+            </motion.div>
+          )}
+
+          {/* Empty state — no flashcards yet */}
+          {initialFetch && !loading && !flashcardSet && !error && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="text-center py-20"
+              className="text-center py-16"
             >
-              <p className="font-mono text-body-lg text-ink-700/50">
-                No saved data found for your account.
-              </p>
-              <p className="font-mono text-body-sm text-ink-700/40 mt-2">
-                Use the Read Sidekick extension to save data, then come back here to view it.
-              </p>
+              {savedItemCount > 0 ? (
+                <>
+                  <p className="font-mono text-body-lg text-ink-700/70 mb-2">
+                    You have {savedItemCount} saved reading{savedItemCount !== 1 ? 's' : ''}.
+                  </p>
+                  <p className="font-mono text-body-md text-ink-700/50 mb-8">
+                    Generate flashcards to start learning.
+                  </p>
+                  <button
+                    onClick={handleGenerate}
+                    className="inline-flex items-center gap-2 bg-coral-500 text-white font-mono text-body-md font-medium px-8 py-3 rounded-full hover:bg-coral-600 transition-colors duration-300 shadow-sm"
+                  >
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                    Generate Flashcards
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p className="font-mono text-body-lg text-ink-700/50">
+                    No saved readings found.
+                  </p>
+                  <p className="font-mono text-body-sm text-ink-700/40 mt-2">
+                    Use the Read Sidekick extension to save texts, then come back to generate flashcards.
+                  </p>
+                </>
+              )}
             </motion.div>
           )}
 
-          {fetched && !fetching && collections.length > 0 && (
-            <div className="space-y-4">
-              {collections.map((result) => (
-                <CollectionCard key={result.name} result={result} />
-              ))}
-            </div>
+          {/* Flashcard deck */}
+          {flashcardSet && !loading && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Category tabs */}
+              <div className="flex justify-center gap-2 mb-8">
+                {(['vocabulary', 'phrases', 'comprehension'] as Category[]).map((cat) => {
+                  const count = flashcardSet.content[cat].length
+                  const isActive = category === cat
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => setCategory(cat)}
+                      className={`font-mono text-body-sm font-medium px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 ${
+                        isActive
+                          ? 'bg-ink-900 text-white shadow-sm'
+                          : 'bg-white text-ink-700/70 hover:text-ink-900 border border-ink-800/10'
+                      }`}
+                    >
+                      {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                      <span
+                        className={`text-body-xs px-1.5 py-0.5 rounded-full ${
+                          isActive ? 'bg-white/20' : 'bg-ivory-100'
+                        }`}
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  )
+                })}
+              </div>
+
+              {/* Card area */}
+              {currentCards.length === 0 ? (
+                <p className="text-center font-mono text-body-md text-ink-700/50 py-12">
+                  No {category} cards in this set.
+                </p>
+              ) : (
+                <>
+                  {/* Progress */}
+                  <p className="text-center font-mono text-body-xs text-ink-700/50 mb-4">
+                    Card {cardIndex + 1} of {currentCards.length}
+                  </p>
+
+                  {/* Flip card */}
+                  <div className="flex items-center justify-center gap-4 mb-8">
+                    {/* Prev arrow */}
+                    <button
+                      onClick={() => {
+                        setFlipped(false)
+                        setCardIndex((i) => Math.max(i - 1, 0))
+                      }}
+                      disabled={cardIndex === 0}
+                      className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-ink-800/10 text-ink-700/60 hover:text-coral-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 shadow-sm flex-shrink-0"
+                    >
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="15 18 9 12 15 6" />
+                      </svg>
+                    </button>
+
+                    {/* Card */}
+                    <div
+                      className="w-full max-w-lg cursor-pointer"
+                      style={{ perspective: '1000px' }}
+                      onClick={() => setFlipped((f) => !f)}
+                    >
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={`${category}-${cardIndex}`}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <motion.div
+                            animate={{ rotateY: flipped ? 180 : 0 }}
+                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            style={{ transformStyle: 'preserve-3d' }}
+                            className="relative"
+                          >
+                            {/* Front */}
+                            <div
+                              className="bg-white rounded-2xl p-8 md:p-12 border border-ink-800/10 shadow-sm min-h-[280px] flex flex-col items-center justify-center text-center"
+                              style={{ backfaceVisibility: 'hidden' }}
+                            >
+                              {currentCard && renderFront(currentCard)}
+                            </div>
+
+                            {/* Back */}
+                            <div
+                              className="bg-white rounded-2xl p-8 md:p-12 border border-ink-800/10 shadow-sm min-h-[280px] flex flex-col justify-center absolute inset-0"
+                              style={{
+                                backfaceVisibility: 'hidden',
+                                transform: 'rotateY(180deg)',
+                              }}
+                            >
+                              {currentCard && renderBack(currentCard)}
+                            </div>
+                          </motion.div>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Next arrow */}
+                    <button
+                      onClick={() => {
+                        setFlipped(false)
+                        setCardIndex((i) => Math.min(i + 1, currentCards.length - 1))
+                      }}
+                      disabled={cardIndex === currentCards.length - 1}
+                      className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-ink-800/10 text-ink-700/60 hover:text-coral-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 shadow-sm flex-shrink-0"
+                    >
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="9 18 15 12 9 6" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Progress dots */}
+                  <div className="flex justify-center gap-1.5 mb-8">
+                    {currentCards.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => {
+                          setFlipped(false)
+                          setCardIndex(i)
+                        }}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          i === cardIndex
+                            ? 'bg-coral-500 w-6'
+                            : 'bg-ink-800/15 hover:bg-ink-800/30'
+                        }`}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Keyboard hint */}
+                  <p className="text-center font-mono text-body-xs text-ink-700/40 mb-8">
+                    Use arrow keys to navigate, space to flip
+                  </p>
+                </>
+              )}
+
+              {/* Regenerate button */}
+              <div className="text-center pt-4 border-t border-ink-800/10">
+                <button
+                  onClick={handleGenerate}
+                  className="inline-flex items-center gap-2 font-mono text-body-sm text-ink-700/60 hover:text-coral-500 transition-colors duration-200 mt-4"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="23 4 23 10 17 10" />
+                    <polyline points="1 20 1 14 7 14" />
+                    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+                  </svg>
+                  Regenerate with latest readings
+                </button>
+              </div>
+            </motion.div>
           )}
         </div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-ink-800/10" />
     </section>
+  )
+}
+
+function DifficultyBadge({ level }: { level: 1 | 2 | 3 }) {
+  const config = {
+    1: { label: 'Beginner', cls: 'bg-teal-100 text-teal-700' },
+    2: { label: 'Intermediate', cls: 'bg-amber-100 text-amber-700' },
+    3: { label: 'Advanced', cls: 'bg-orange-100 text-orange-700' },
+  }
+  const { label, cls } = config[level]
+  return (
+    <span className={`font-mono text-body-xs font-medium px-2.5 py-0.5 rounded-full mb-4 inline-block ${cls}`}>
+      {label}
+    </span>
   )
 }
