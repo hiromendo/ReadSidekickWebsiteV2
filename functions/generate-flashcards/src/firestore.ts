@@ -36,8 +36,7 @@ export async function saveFlashcardSet(
   const db = admin.firestore();
   const totalCards =
     content.vocabulary.length +
-    content.phrases.length +
-    content.comprehension.length;
+    content.phrases.length;
 
   const set: FlashcardSet = {
     content,

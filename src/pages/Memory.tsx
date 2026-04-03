@@ -10,17 +10,15 @@ import type {
   FlashcardSet,
   VocabularyCard,
   PhraseCard,
-  ComprehensionCard,
 } from '../services/flashcard-types'
 
-type Category = 'vocabulary' | 'phrases' | 'comprehension'
-type AnyCard = VocabularyCard | PhraseCard | ComprehensionCard
+type Category = 'vocabulary' | 'phrases'
+type AnyCard = VocabularyCard | PhraseCard
 
 const LOADING_MESSAGES = [
   'Reading your saved texts...',
   'Identifying key vocabulary...',
   'Finding notable phrases...',
-  'Crafting comprehension questions...',
   'Building your flashcard deck...',
 ]
 
@@ -136,24 +134,13 @@ export function Memory() {
         </>
       )
     }
-    if (category === 'phrases') {
-      const c = card as PhraseCard
-      return (
-        <>
-          <p className="font-serif text-xl md:text-2xl text-ink-900 mb-3 italic">
-            "{c.phrase}"
-          </p>
-          <p className="font-mono text-body-sm text-ink-700/50">Tap to see meaning</p>
-        </>
-      )
-    }
-    const c = card as ComprehensionCard
+    const c = card as PhraseCard
     return (
       <>
-        <p className="font-serif text-xl md:text-2xl text-ink-900 mb-3">
-          {c.question}
+        <p className="font-serif text-xl md:text-2xl text-ink-900 mb-3 italic">
+          "{c.phrase}"
         </p>
-        <p className="font-mono text-body-sm text-ink-700/50">Tap to see answer</p>
+        <p className="font-mono text-body-sm text-ink-700/50">Tap to see meaning</p>
       </>
     )
   }
@@ -177,36 +164,18 @@ export function Memory() {
         </>
       )
     }
-    if (category === 'phrases') {
-      const c = card as PhraseCard
-      return (
-        <>
-          <p className="font-mono text-body-md text-ink-900 font-medium mb-4">
-            {c.meaning}
-          </p>
-          <div className="bg-ivory-100 rounded-lg p-4">
-            <p className="font-mono text-body-xs text-ink-700/50 uppercase tracking-wider mb-1">
-              Context
-            </p>
-            <p className="font-mono text-body-sm text-ink-700/80 italic">
-              "{c.context}"
-            </p>
-          </div>
-        </>
-      )
-    }
-    const c = card as ComprehensionCard
+    const c = card as PhraseCard
     return (
       <>
         <p className="font-mono text-body-md text-ink-900 font-medium mb-4">
-          {c.answer}
+          {c.meaning}
         </p>
         <div className="bg-ivory-100 rounded-lg p-4">
           <p className="font-mono text-body-xs text-ink-700/50 uppercase tracking-wider mb-1">
-            From the text
+            Context
           </p>
           <p className="font-mono text-body-sm text-ink-700/80 italic">
-            "{c.textExcerpt}"
+            "{c.context}"
           </p>
         </div>
       </>
@@ -423,7 +392,7 @@ export function Memory() {
             >
               {/* Category tabs */}
               <div className="flex justify-center gap-2 mb-8">
-                {(['vocabulary', 'phrases', 'comprehension'] as Category[]).map((cat) => {
+                {(['vocabulary', 'phrases'] as Category[]).map((cat) => {
                   const count = flashcardSet.content[cat].length
                   const isActive = category === cat
                   return (
