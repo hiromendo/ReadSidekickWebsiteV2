@@ -16,6 +16,7 @@ import { Blog } from "./pages/Blog";
 import { BlogPost } from "./pages/BlogPost";
 import { ASLSamples } from "./pages/ASLSamples";
 import { Welcome } from "./pages/Welcome";
+import { Memory } from "./pages/Memory";
 import { trackPageView } from "./utils/analytics";
 
 function PageViewTracker() {
@@ -98,6 +99,14 @@ function App() {
                             element={
                                 <Layout>
                                     <Welcome />
+                                </Layout>
+                            }
+                        />
+                        <Route
+                            path="/memory"
+                            element={
+                                <Layout>
+                                    <Memory />
                                 </Layout>
                             }
                         />
