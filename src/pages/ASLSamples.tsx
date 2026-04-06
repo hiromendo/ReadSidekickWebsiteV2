@@ -131,7 +131,11 @@ export function ASLSamples() {
                                     href="#early-access"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        document.getElementById("early-access")?.scrollIntoView({ behavior: "smooth" });
+                                        document
+                                            .getElementById("early-access")
+                                            ?.scrollIntoView({
+                                                behavior: "smooth",
+                                            });
                                     }}
                                     className="text-coral-500 hover:text-coral-600 transition-colors"
                                 >
@@ -143,7 +147,13 @@ export function ASLSamples() {
                                     href="#sample-translations"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        document.getElementById("sample-translations")?.scrollIntoView({ behavior: "smooth" });
+                                        document
+                                            .getElementById(
+                                                "sample-translations",
+                                            )
+                                            ?.scrollIntoView({
+                                                behavior: "smooth",
+                                            });
                                     }}
                                     className="text-coral-500 hover:text-coral-600 transition-colors"
                                 >
@@ -155,7 +165,11 @@ export function ASLSamples() {
                                     href="#join-the-program"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        document.getElementById("join-the-program")?.scrollIntoView({ behavior: "smooth" });
+                                        document
+                                            .getElementById("join-the-program")
+                                            ?.scrollIntoView({
+                                                behavior: "smooth",
+                                            });
                                     }}
                                     className="text-coral-500 hover:text-coral-600 transition-colors"
                                 >
@@ -204,7 +218,11 @@ export function ASLSamples() {
                     <div className="h-px bg-ink-800/10" />
                 </div>
 
-                <div ref={samplesRef} id="sample-translations" className="max-w-5xl mx-auto mb-12">
+                <div
+                    ref={samplesRef}
+                    id="sample-translations"
+                    className="max-w-5xl mx-auto mb-12"
+                >
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{
@@ -278,7 +296,11 @@ export function ASLSamples() {
                     <div className="h-px bg-ink-800/10" />
                 </div>
 
-                <div ref={ctaRef} id="join-the-program" className="max-w-5xl mx-auto mb-12">
+                <div
+                    ref={ctaRef}
+                    id="join-the-program"
+                    className="max-w-5xl mx-auto mb-12"
+                >
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{
@@ -339,14 +361,14 @@ export function ASLSamples() {
                     }}
                     className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
                 >
-                    <video
+                    {/* <video
                         controls
                         muted
                         className="w-full rounded-xl shadow-sm border border-ink-800/10"
                         src="/FinalASLDemoPitch.mov"
                     >
                         Your browser does not support the video tag.
-                    </video>
+                    </video> */}
                     <div className="h-full">
                         <iframe
                             data-tally-src={tallySrc}
