@@ -215,6 +215,12 @@ export function Footer() {
                 >
                   Blog
                 </Link>
+                <Link
+                  to="/pricing"
+                  className="block font-mono text-body-sm text-ivory-100/60 hover:text-ivory-100 transition-colors duration-300"
+                >
+                  Pricing
+                </Link>
               </nav>
             </motion.div>
 

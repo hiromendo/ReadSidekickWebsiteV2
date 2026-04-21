@@ -17,6 +17,7 @@ import { BlogPost } from "./pages/BlogPost";
 import { ASLSamples } from "./pages/ASLSamples";
 import { Welcome } from "./pages/Welcome";
 import { Memory } from "./pages/Memory";
+import { Pricing } from "./pages/Pricing";
 import { trackPageView } from "./utils/analytics";
 
 function PageViewTracker() {
@@ -107,6 +108,14 @@ function App() {
                             element={
                                 <Layout>
                                     <Memory />
+                                </Layout>
+                            }
+                        />
+                        <Route
+                            path="/pricing"
+                            element={
+                                <Layout>
+                                    <Pricing />
                                 </Layout>
                             }
                         />

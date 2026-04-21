@@ -503,6 +503,7 @@ function generateSitemap(): string {
             changefreq: "monthly" as const,
             priority: "0.6",
         })),
+        { loc: `${SITE}/pricing`, changefreq: "monthly", priority: "0.7" },
         { loc: `${SITE}/privacy`, changefreq: "yearly", priority: "0.3" },
         { loc: `${SITE}/terms`, changefreq: "yearly", priority: "0.3" },
         { loc: `${SITE}/feedback`, changefreq: "monthly", priority: "0.5" },
