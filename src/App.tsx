@@ -18,6 +18,7 @@ import { ASLSamples } from "./pages/ASLSamples";
 import { Welcome } from "./pages/Welcome";
 import { Memory } from "./pages/Memory";
 import { Pricing } from "./pages/Pricing";
+import { VerifyEmail } from "./pages/VerifyEmail";
 import { trackPageView } from "./utils/analytics";
 
 function PageViewTracker() {
@@ -120,6 +121,7 @@ function App() {
                             }
                         />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/verify-email" element={<VerifyEmail />} />
                         <Route
                             path="/englishtoasltranslator"
                             element={
