@@ -39,6 +39,12 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
+function normalizePathname(pathname: string): string {
+  if (!pathname) return '/';
+  const normalized = pathname.replace(/\/+$/, '');
+  return normalized || '/';
+}
+
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -86,7 +92,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setUser(firebaseUser);
       setAuthMethod(detectAuthMethod(firebaseUser));
 
-      if (firebaseUser && window.location.pathname !== '/verify-email') {
+      const pathname = normalizePathname(window.location.pathname);
+
+      if (firebaseUser && pathname !== '/verify-email') {
         const authorized = await checkAuthorization(firebaseUser);
         setIsAuthorized(authorized);
       } else {

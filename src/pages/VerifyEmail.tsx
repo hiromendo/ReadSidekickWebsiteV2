@@ -112,7 +112,7 @@ export function VerifyEmail() {
 
     try {
       const callable = httpsCallable<{ anonUid: string }, { ok: boolean }>(
-        getFunctions(app),
+        getFunctions(app, 'us-central1'),
         'linkVerifiedEmail',
       );
       await callable({ anonUid });
@@ -147,6 +147,12 @@ export function VerifyEmail() {
           subtext: 'Re-open the link from your email.',
         });
         return;
+      }
+      if (code === 'functions/internal') {
+        console.error(
+          '[verify-email] linkVerifiedEmail failed; this is often an outdated CORS deployment for the callable',
+          err,
+        );
       }
       console.error('[verify-email] linkVerifiedEmail failed', err);
       setStatus({
