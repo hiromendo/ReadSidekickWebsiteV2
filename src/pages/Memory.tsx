@@ -48,8 +48,10 @@ export function Memory() {
       setSavedItemCount(savedItemCount)
       setSavedItems(savedItems)
       if (latestFlashcardSet) setFlashcardSet(latestFlashcardSet)
+      setError(null)
     } catch (err) {
       console.error('Failed to fetch memory data:', err)
+      setError(err instanceof Error ? err.message : 'Could not load your memory data. Please try again.')
     }
     setInitialFetch(true)
   }, [])
@@ -342,7 +344,15 @@ export function Memory() {
             >
               <p className="font-mono text-body-md text-red-700 mb-3">{error}</p>
               <button
-                onClick={handleGenerate}
+                onClick={() => {
+                  setError(null)
+                  if (flashcardSet) {
+                    handleGenerate()
+                  } else if (user) {
+                    setInitialFetch(false)
+                    fetchInitialData(user)
+                  }
+                }}
                 className="font-mono text-body-sm text-red-600 underline hover:text-red-800 transition-colors"
               >
                 Try again
