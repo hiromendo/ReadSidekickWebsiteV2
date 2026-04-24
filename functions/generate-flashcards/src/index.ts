@@ -54,22 +54,29 @@ export async function generateFlashcardsHandler(req: HttpRequest, res: HttpRespo
   // GET — return saved item count + latest flashcard set
   if (req.method === 'GET') {
     try {
-      const [items, latestFlashcardSet, savedItemsFull] = await Promise.all([
-        getSavedItems(uid),
+      const [latestFlashcardSet, savedItemsFull] = await Promise.all([
         getLatestFlashcardSet(uid),
         getSavedItemsFull(uid),
       ]);
       res.json({
         success: true,
-        savedItemCount: items.length,
+        savedItemCount: savedItemsFull.length,
         latestFlashcardSet,
-        savedItems: savedItemsFull.map((item) => ({
-          id: item.id,
-          text: item.text,
-          sourceUrl: item.sourceUrl,
-          sourceTitle: item.sourceTitle,
-          timestamp: item.timestamp?.toMillis() ?? 0,
-        })),
+        savedItems: savedItemsFull.map((item) => {
+          const ts = item.timestamp as
+            | { toMillis?: () => number; seconds?: number }
+            | null;
+          let millis = 0;
+          if (ts && typeof ts.toMillis === 'function') millis = ts.toMillis();
+          else if (ts && typeof ts.seconds === 'number') millis = ts.seconds * 1000;
+          return {
+            id: item.id,
+            text: item.text,
+            sourceUrl: item.sourceUrl,
+            sourceTitle: item.sourceTitle,
+            timestamp: millis,
+          };
+        }),
       });
     } catch (error) {
       console.error('Fetch memory data error:', error);

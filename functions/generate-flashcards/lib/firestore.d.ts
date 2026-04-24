@@ -9,7 +9,7 @@ export interface SavedItemFull {
     text: string;
     sourceUrl: string;
     sourceTitle: string;
-    timestamp: admin.firestore.Timestamp;
+    timestamp: admin.firestore.Timestamp | null;
 }
 export declare function getSavedItems(uid: string): Promise<SavedItemText[]>;
 export declare function saveFlashcardSet(uid: string, content: FlashcardContent, sourceItems: SavedItemText[]): Promise<FlashcardSet>;

@@ -38,21 +38,32 @@ exports.saveFlashcardSet = saveFlashcardSet;
 exports.getSavedItemsFull = getSavedItemsFull;
 exports.getLatestFlashcardSet = getLatestFlashcardSet;
 const admin = __importStar(require("firebase-admin"));
+function extractLongText(data) {
+    const texts = [];
+    for (const [, value] of Object.entries(data)) {
+        if (typeof value === 'string' && value.length > 50) {
+            texts.push(value);
+        }
+    }
+    return texts.join('\n\n');
+}
+function readTimestampMillis(ts) {
+    if (!ts)
+        return 0;
+    if (typeof ts.toMillis === 'function') {
+        return ts.toMillis();
+    }
+    const seconds = ts.seconds;
+    return typeof seconds === 'number' ? seconds * 1000 : 0;
+}
 async function getSavedItems(uid) {
     const db = admin.firestore();
     const snap = await db.collection('users').doc(uid).collection('savedItems').get();
     const items = [];
     for (const doc of snap.docs) {
-        const data = doc.data();
-        // Scan all string fields > 50 chars to extract text content
-        const texts = [];
-        for (const [, value] of Object.entries(data)) {
-            if (typeof value === 'string' && value.length > 50) {
-                texts.push(value);
-            }
-        }
-        if (texts.length > 0) {
-            items.push({ id: doc.id, text: texts.join('\n\n') });
+        const text = extractLongText(doc.data());
+        if (text.length > 0) {
+            items.push({ id: doc.id, text });
         }
     }
     return items;
@@ -73,22 +84,27 @@ async function saveFlashcardSet(uid, content, sourceItems) {
 }
 async function getSavedItemsFull(uid) {
     const db = admin.firestore();
-    const snap = await db
-        .collection('users')
-        .doc(uid)
-        .collection('savedItems')
-        .orderBy('timestamp', 'desc')
-        .get();
-    return snap.docs.map((doc) => {
+    // No orderBy: Firestore silently excludes docs missing the sort field,
+    // so older savedItems written without a `timestamp` would disappear.
+    const snap = await db.collection('users').doc(uid).collection('savedItems').get();
+    const items = [];
+    for (const doc of snap.docs) {
         const data = doc.data();
-        return {
+        const text = (typeof data.text === 'string' && data.text.length > 0)
+            ? data.text
+            : extractLongText(data);
+        if (!text)
+            continue;
+        items.push({
             id: doc.id,
-            text: data.text ?? '',
-            sourceUrl: data.sourceUrl ?? '',
-            sourceTitle: data.sourceTitle ?? '',
-            timestamp: data.timestamp,
-        };
-    });
+            text,
+            sourceUrl: typeof data.sourceUrl === 'string' ? data.sourceUrl : '',
+            sourceTitle: typeof data.sourceTitle === 'string' ? data.sourceTitle : '',
+            timestamp: data.timestamp ?? null,
+        });
+    }
+    items.sort((a, b) => readTimestampMillis(b.timestamp) - readTimestampMillis(a.timestamp));
+    return items;
 }
 async function getLatestFlashcardSet(uid) {
     const db = admin.firestore();
