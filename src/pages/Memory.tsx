@@ -14,9 +14,14 @@ import type {
   PhraseCard,
   SavedItem,
 } from '../services/flashcard-types'
+import { getPostHog, initPostHog } from '../utils/posthog'
 
 type Category = 'vocabulary' | 'phrases'
 type AnyCard = VocabularyCard | PhraseCard
+
+function captureEvent(event: string, properties?: Record<string, unknown>) {
+  getPostHog()?.capture(event, properties)
+}
 
 const LOADING_MESSAGES = [
   'Reading your saved texts...',
@@ -51,9 +56,16 @@ export function Memory() {
       setSavedItems(savedItems)
       if (latestFlashcardSet) setFlashcardSet(latestFlashcardSet)
       setError(null)
+      captureEvent('memory_initial_data_loaded', {
+        savedItemCount,
+        hasLatestFlashcardSet: Boolean(latestFlashcardSet),
+      })
     } catch (err) {
       console.error('Failed to fetch memory data:', err)
       setError(err instanceof Error ? err.message : 'Could not load your memory data. Please try again.')
+      captureEvent('memory_initial_data_load_failed', {
+        message: err instanceof Error ? err.message : String(err),
+      })
     }
     setInitialFetch(true)
   }, [])
@@ -61,6 +73,9 @@ export function Memory() {
   const handleDeleteItem = useCallback(async (itemId: string) => {
     if (!user) return
     if (!window.confirm('Delete this saved highlight?')) return
+    const item = savedItems.find((i) => i.id === itemId)
+    const textLength = item?.text.length ?? 0
+    const hasSourceUrl = Boolean(item?.sourceUrl)
     try {
       const token = await user.getIdToken()
       await deleteSavedItem(token, itemId)
@@ -73,15 +88,42 @@ export function Memory() {
         return next
       })
       setError(null)
+      captureEvent('memory_highlight_deleted', { itemId, textLength, hasSourceUrl })
     } catch (err) {
       console.error('Failed to delete saved item:', err)
       setError(err instanceof Error ? err.message : 'Could not delete that highlight. Please try again.')
+      captureEvent('memory_highlight_delete_failed', {
+        itemId,
+        message: err instanceof Error ? err.message : String(err),
+      })
     }
-  }, [user])
+  }, [user, savedItems])
 
   useEffect(() => {
     if (user && !initialFetch) fetchInitialData(user)
   }, [user, initialFetch, fetchInitialData])
+
+  // Identify user in PostHog with the same shape the Chrome extension uses,
+  // so web and extension activity merge into one person.
+  useEffect(() => {
+    if (!user?.uid) return
+    const uid = user.uid
+    const email = user.email || undefined
+    const displayName = user.displayName || undefined
+    let cancelled = false
+    void (async () => {
+      const posthog = await initPostHog()
+      if (!posthog || cancelled) return
+      posthog.identify(uid, {
+        ...(email && { $email: email }),
+        ...(displayName && { $name: displayName }),
+      })
+      posthog.capture('memory_page_viewed')
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [user?.uid, user?.email, user?.displayName])
 
   useEffect(() => {
     if (!user) {
@@ -117,22 +159,54 @@ export function Memory() {
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         e.preventDefault()
         setFlipped(false)
-        setCardIndex((i) => Math.min(i + 1, cards.length - 1))
+        setCardIndex((i) => {
+          const toIndex = Math.min(i + 1, cards.length - 1)
+          if (toIndex !== i) {
+            captureEvent('memory_card_navigated', {
+              category,
+              method: 'keyboard',
+              direction: 'next',
+              toIndex,
+              totalCards: cards.length,
+            })
+          }
+          return toIndex
+        })
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         e.preventDefault()
         setFlipped(false)
-        setCardIndex((i) => Math.max(i - 1, 0))
+        setCardIndex((i) => {
+          const toIndex = Math.max(i - 1, 0)
+          if (toIndex !== i) {
+            captureEvent('memory_card_navigated', {
+              category,
+              method: 'keyboard',
+              direction: 'prev',
+              toIndex,
+              totalCards: cards.length,
+            })
+          }
+          return toIndex
+        })
       } else if (e.key === ' ') {
         e.preventDefault()
-        setFlipped((f) => !f)
+        setFlipped((f) => {
+          captureEvent('memory_card_flipped', {
+            category,
+            cardIndex,
+            method: 'keyboard',
+          })
+          return !f
+        })
       }
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [flashcardSet, category])
+  }, [flashcardSet, category, cardIndex])
 
-  const handleGenerate = async () => {
+  const handleGenerate = async (trigger: 'empty_state' | 'regenerate' | 'retry') => {
     if (!user) return
+    captureEvent('memory_flashcards_generate_clicked', { trigger })
     setLoading(true)
     setError(null)
     try {
@@ -142,8 +216,14 @@ export function Memory() {
       setCategory('vocabulary')
       setCardIndex(0)
       setFlipped(false)
+      captureEvent('memory_flashcards_generate_succeeded', {
+        vocabularyCount: set.content.vocabulary.length,
+        phraseCount: set.content.phrases.length,
+      })
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Something went wrong')
+      const message = e instanceof Error ? e.message : 'Something went wrong'
+      setError(message)
+      captureEvent('memory_flashcards_generate_failed', { message })
     } finally {
       setLoading(false)
     }
@@ -247,7 +327,10 @@ export function Memory() {
             Sign in to view your saved data from the Read Sidekick extension.
           </p>
           <button
-            onClick={signInWithGoogle}
+            onClick={() => {
+              captureEvent('memory_sign_in_clicked')
+              signInWithGoogle()
+            }}
             className="inline-flex items-center gap-2 bg-coral-500 text-white font-mono text-body-md font-medium px-8 py-3 rounded-full hover:bg-coral-600 transition-colors duration-300"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -299,7 +382,10 @@ export function Memory() {
               </div>
             </div>
             <button
-              onClick={signOut}
+              onClick={() => {
+                captureEvent('memory_sign_out_clicked')
+                signOut()
+              }}
               className="font-mono text-body-sm text-ink-700/60 hover:text-coral-500 transition-colors duration-200"
             >
               Sign out
@@ -368,9 +454,11 @@ export function Memory() {
               <p className="font-mono text-body-md text-red-700 mb-3">{error}</p>
               <button
                 onClick={() => {
+                  const retryType = flashcardSet ? 'regenerate' : 'refetch'
+                  captureEvent('memory_error_retry_clicked', { retryType })
                   setError(null)
                   if (flashcardSet) {
-                    handleGenerate()
+                    handleGenerate('retry')
                   } else if (user) {
                     setInitialFetch(false)
                     fetchInitialData(user)
@@ -400,7 +488,7 @@ export function Memory() {
                     Generate flashcards to start learning.
                   </p>
                   <button
-                    onClick={handleGenerate}
+                    onClick={() => handleGenerate('empty_state')}
                     className="inline-flex items-center gap-2 bg-coral-500 text-white font-mono text-body-md font-medium px-8 py-3 rounded-full hover:bg-coral-600 transition-colors duration-300 shadow-sm"
                   >
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -437,7 +525,15 @@ export function Memory() {
                   return (
                     <button
                       key={cat}
-                      onClick={() => setCategory(cat)}
+                      onClick={() => {
+                        if (cat !== category) {
+                          captureEvent('memory_category_changed', {
+                            category: cat,
+                            previousCategory: category,
+                          })
+                        }
+                        setCategory(cat)
+                      }}
                       className={`font-mono text-body-sm font-medium px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 ${
                         isActive
                           ? 'bg-ink-900 text-white shadow-sm'
@@ -474,6 +570,15 @@ export function Memory() {
                     {/* Prev arrow */}
                     <button
                       onClick={() => {
+                        if (cardIndex > 0) {
+                          captureEvent('memory_card_navigated', {
+                            category,
+                            method: 'click',
+                            direction: 'prev',
+                            toIndex: cardIndex - 1,
+                            totalCards: currentCards.length,
+                          })
+                        }
                         setFlipped(false)
                         setCardIndex((i) => Math.max(i - 1, 0))
                       }}
@@ -489,7 +594,14 @@ export function Memory() {
                     <div
                       className="w-full max-w-lg cursor-pointer"
                       style={{ perspective: '1000px' }}
-                      onClick={() => setFlipped((f) => !f)}
+                      onClick={() => {
+                        captureEvent('memory_card_flipped', {
+                          category,
+                          cardIndex,
+                          method: 'click',
+                        })
+                        setFlipped((f) => !f)
+                      }}
                     >
                       <AnimatePresence mode="wait">
                         <motion.div
@@ -531,6 +643,15 @@ export function Memory() {
                     {/* Next arrow */}
                     <button
                       onClick={() => {
+                        if (cardIndex < currentCards.length - 1) {
+                          captureEvent('memory_card_navigated', {
+                            category,
+                            method: 'click',
+                            direction: 'next',
+                            toIndex: cardIndex + 1,
+                            totalCards: currentCards.length,
+                          })
+                        }
                         setFlipped(false)
                         setCardIndex((i) => Math.min(i + 1, currentCards.length - 1))
                       }}
@@ -549,6 +670,15 @@ export function Memory() {
                       <button
                         key={i}
                         onClick={() => {
+                          if (i !== cardIndex) {
+                            captureEvent('memory_card_navigated', {
+                              category,
+                              method: 'click',
+                              direction: 'jump',
+                              toIndex: i,
+                              totalCards: currentCards.length,
+                            })
+                          }
                           setFlipped(false)
                           setCardIndex(i)
                         }}
@@ -571,7 +701,7 @@ export function Memory() {
               {/* Regenerate button */}
               <div className="text-center pt-4 border-t border-ink-800/10">
                 <button
-                  onClick={handleGenerate}
+                  onClick={() => handleGenerate('regenerate')}
                   className="inline-flex items-center gap-2 font-mono text-body-sm text-ink-700/60 hover:text-coral-500 transition-colors duration-200 mt-4"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -614,12 +744,18 @@ export function Memory() {
                           </p>
                           {needsTruncation && (
                             <button
-                              onClick={() => setExpandedItems((prev) => {
-                                const next = new Set(prev)
-                                if (next.has(item.id)) next.delete(item.id)
-                                else next.add(item.id)
-                                return next
-                              })}
+                              onClick={() => {
+                                captureEvent('memory_highlight_expand_toggled', {
+                                  itemId: item.id,
+                                  expandedTo: !isExpanded,
+                                })
+                                setExpandedItems((prev) => {
+                                  const next = new Set(prev)
+                                  if (next.has(item.id)) next.delete(item.id)
+                                  else next.add(item.id)
+                                  return next
+                                })
+                              }}
                               className="font-mono text-body-sm text-coral-500 hover:text-coral-600 transition-colors duration-200 mt-2"
                             >
                               {isExpanded ? 'Show less' : 'Show more'}
@@ -640,6 +776,13 @@ export function Memory() {
                             href={item.sourceUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => {
+                              captureEvent('memory_highlight_source_clicked', {
+                                itemId: item.id,
+                                sourceUrl: item.sourceUrl,
+                                sourceTitle: item.sourceTitle,
+                              })
+                            }}
                             className="inline-flex items-center gap-1.5 font-mono text-body-sm text-coral-500 hover:text-coral-600 transition-colors duration-200"
                           >
                             {item.sourceTitle || item.sourceUrl}
