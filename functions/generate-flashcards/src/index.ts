@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin';
-import { getSavedItems, getSavedItemsFull, saveFlashcardSet, getLatestFlashcardSet } from './firestore';
+import { getSavedItems, getSavedItemsFull, saveFlashcardSet, getLatestFlashcardSet, deleteSavedItem } from './firestore';
 import { generateFlashcards } from './gemini';
 import { FlashcardContent } from './types';
 
@@ -9,6 +9,7 @@ interface HttpRequest {
   method: string;
   headers: Record<string, string | undefined>;
   body?: unknown;
+  query?: Record<string, string | string[] | undefined>;
 }
 
 interface HttpResponse {
@@ -21,7 +22,7 @@ interface HttpResponse {
 export async function generateFlashcardsHandler(req: HttpRequest, res: HttpResponse) {
   // CORS
   res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
   res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
   if (req.method === 'OPTIONS') {
@@ -29,7 +30,7 @@ export async function generateFlashcardsHandler(req: HttpRequest, res: HttpRespo
     return;
   }
 
-  if (req.method !== 'GET' && req.method !== 'POST') {
+  if (req.method !== 'GET' && req.method !== 'POST' && req.method !== 'DELETE') {
     res.status(405).json({ success: false, error: 'Method not allowed' });
     return;
   }
@@ -81,6 +82,24 @@ export async function generateFlashcardsHandler(req: HttpRequest, res: HttpRespo
     } catch (error) {
       console.error('Fetch memory data error:', error);
       res.status(500).json({ success: false, error: 'Failed to fetch memory data' });
+    }
+    return;
+  }
+
+  // DELETE — remove a single saved item
+  if (req.method === 'DELETE') {
+    const itemIdRaw = req.query?.itemId;
+    const itemId = typeof itemIdRaw === 'string' ? itemIdRaw : undefined;
+    if (!itemId) {
+      res.status(400).json({ success: false, error: 'Missing itemId' });
+      return;
+    }
+    try {
+      await deleteSavedItem(uid, itemId);
+      res.json({ success: true });
+    } catch (error) {
+      console.error('Delete saved item error:', error);
+      res.status(500).json({ success: false, error: 'Failed to delete saved item' });
     }
     return;
   }

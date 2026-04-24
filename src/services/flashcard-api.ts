@@ -20,6 +20,21 @@ export async function generateFlashcards(idToken: string): Promise<FlashcardSet>
   return data.flashcardSet as FlashcardSet
 }
 
+export async function deleteSavedItem(idToken: string, itemId: string): Promise<void> {
+  const url = `${API_URL}?itemId=${encodeURIComponent(itemId)}`
+  const res = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${idToken}`,
+    },
+  })
+
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new Error(body.error || `Request failed with status ${res.status}`)
+  }
+}
+
 export async function fetchMemoryData(idToken: string): Promise<{
   savedItemCount: number
   latestFlashcardSet: FlashcardSet | null

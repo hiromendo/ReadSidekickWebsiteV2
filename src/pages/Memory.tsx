@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
+import { Trash2 } from 'lucide-react'
 import { useAuth } from '../auth/AuthContext'
 import {
   generateFlashcards,
   fetchMemoryData,
+  deleteSavedItem,
 } from '../services/flashcard-api'
 import type {
   FlashcardSet,
@@ -55,6 +57,27 @@ export function Memory() {
     }
     setInitialFetch(true)
   }, [])
+
+  const handleDeleteItem = useCallback(async (itemId: string) => {
+    if (!user) return
+    if (!window.confirm('Delete this saved highlight?')) return
+    try {
+      const token = await user.getIdToken()
+      await deleteSavedItem(token, itemId)
+      setSavedItems((prev) => prev.filter((i) => i.id !== itemId))
+      setSavedItemCount((c) => Math.max(0, c - 1))
+      setExpandedItems((prev) => {
+        if (!prev.has(itemId)) return prev
+        const next = new Set(prev)
+        next.delete(itemId)
+        return next
+      })
+      setError(null)
+    } catch (err) {
+      console.error('Failed to delete saved item:', err)
+      setError(err instanceof Error ? err.message : 'Could not delete that highlight. Please try again.')
+    }
+  }, [user])
 
   useEffect(() => {
     if (user && !initialFetch) fetchInitialData(user)
@@ -584,22 +607,33 @@ export function Memory() {
                       key={item.id}
                       className="bg-white rounded-xl p-6 border border-ink-800/10 shadow-sm"
                     >
-                      <p className="font-mono text-body-md text-ink-900/80 leading-relaxed whitespace-pre-line">
-                        {displayText}
-                      </p>
-                      {needsTruncation && (
+                      <div className="flex items-start gap-4">
+                        <div className="flex-1 min-w-0">
+                          <p className="font-mono text-body-md text-ink-900/80 leading-relaxed whitespace-pre-line">
+                            {displayText}
+                          </p>
+                          {needsTruncation && (
+                            <button
+                              onClick={() => setExpandedItems((prev) => {
+                                const next = new Set(prev)
+                                if (next.has(item.id)) next.delete(item.id)
+                                else next.add(item.id)
+                                return next
+                              })}
+                              className="font-mono text-body-sm text-coral-500 hover:text-coral-600 transition-colors duration-200 mt-2"
+                            >
+                              {isExpanded ? 'Show less' : 'Show more'}
+                            </button>
+                          )}
+                        </div>
                         <button
-                          onClick={() => setExpandedItems((prev) => {
-                            const next = new Set(prev)
-                            if (next.has(item.id)) next.delete(item.id)
-                            else next.add(item.id)
-                            return next
-                          })}
-                          className="font-mono text-body-sm text-coral-500 hover:text-coral-600 transition-colors duration-200 mt-2"
+                          onClick={() => handleDeleteItem(item.id)}
+                          aria-label="Delete saved highlight"
+                          className="flex-shrink-0 text-ink-700/40 hover:text-coral-500 transition-colors duration-200 -mr-1 -mt-1 p-1"
                         >
-                          {isExpanded ? 'Show less' : 'Show more'}
+                          <Trash2 className="w-4 h-4" />
                         </button>
-                      )}
+                      </div>
                       {item.sourceUrl && (
                         <div className="mt-3 pt-3 border-t border-ink-800/5">
                           <a
