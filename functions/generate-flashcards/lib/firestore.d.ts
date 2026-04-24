@@ -14,4 +14,5 @@ export interface SavedItemFull {
 export declare function getSavedItems(uid: string): Promise<SavedItemText[]>;
 export declare function saveFlashcardSet(uid: string, content: FlashcardContent, sourceItems: SavedItemText[]): Promise<FlashcardSet>;
 export declare function getSavedItemsFull(uid: string): Promise<SavedItemFull[]>;
+export declare function deleteSavedItem(uid: string, itemId: string): Promise<void>;
 export declare function getLatestFlashcardSet(uid: string): Promise<FlashcardSet | null>;

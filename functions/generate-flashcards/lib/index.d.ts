@@ -2,6 +2,7 @@ interface HttpRequest {
     method: string;
     headers: Record<string, string | undefined>;
     body?: unknown;
+    query?: Record<string, string | string[] | undefined>;
 }
 interface HttpResponse {
     set(key: string, value: string): void;

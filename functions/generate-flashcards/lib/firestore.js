@@ -36,6 +36,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSavedItems = getSavedItems;
 exports.saveFlashcardSet = saveFlashcardSet;
 exports.getSavedItemsFull = getSavedItemsFull;
+exports.deleteSavedItem = deleteSavedItem;
 exports.getLatestFlashcardSet = getLatestFlashcardSet;
 const admin = __importStar(require("firebase-admin"));
 function extractLongText(data) {
@@ -105,6 +106,10 @@ async function getSavedItemsFull(uid) {
     }
     items.sort((a, b) => readTimestampMillis(b.timestamp) - readTimestampMillis(a.timestamp));
     return items;
+}
+async function deleteSavedItem(uid, itemId) {
+    const db = admin.firestore();
+    await db.collection('users').doc(uid).collection('savedItems').doc(itemId).delete();
 }
 async function getLatestFlashcardSet(uid) {
     const db = admin.firestore();

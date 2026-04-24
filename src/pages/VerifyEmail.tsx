@@ -36,6 +36,7 @@ export function VerifyEmail() {
 
     const params = new URLSearchParams(window.location.search);
     anonUidRef.current = params.get('anonUid');
+    const emailFromUrl = params.get('email')?.trim() || null;
 
     if (!isSignInWithEmailLink(auth, window.location.href)) {
       setStatus({
@@ -48,8 +49,9 @@ export function VerifyEmail() {
     }
 
     const stored = window.localStorage.getItem('emailForSignIn');
-    if (stored) {
-      void completeSignIn(stored);
+    const candidate = emailFromUrl || stored;
+    if (candidate) {
+      void completeSignIn(candidate);
     } else {
       setStatus({ kind: 'needs-email' });
     }

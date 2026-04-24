@@ -28,7 +28,7 @@ export async function generateFlashcards(idToken: string): Promise<FlashcardSet>
 }
 
 export async function deleteSavedItem(idToken: string, itemId: string): Promise<void> {
-  const url = `${API_URL}?itemId=${encodeURIComponent(itemId)}`
+  const url = `${requireApiUrl()}?itemId=${encodeURIComponent(itemId)}`
   const res = await fetch(url, {
     method: 'DELETE',
     headers: {
