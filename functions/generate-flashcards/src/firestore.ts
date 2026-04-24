@@ -99,6 +99,11 @@ export async function getSavedItemsFull(uid: string): Promise<SavedItemFull[]> {
   return items;
 }
 
+export async function deleteSavedItem(uid: string, itemId: string): Promise<void> {
+  const db = admin.firestore();
+  await db.collection('users').doc(uid).collection('savedItems').doc(itemId).delete();
+}
+
 export async function getLatestFlashcardSet(uid: string): Promise<FlashcardSet | null> {
   const db = admin.firestore();
   const snap = await db
