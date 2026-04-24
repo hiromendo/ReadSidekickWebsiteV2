@@ -12,11 +12,6 @@ const PLAN_FEATURES = [
       'Save highlights from any article and auto-generate vocabulary and phrase flashcards to reinforce what you read.',
   },
   {
-    title: 'Chat conversation',
-    description:
-      'Ask follow-up questions right on the page to clarify anything unclear in the text.',
-  },
-  {
     title: 'One-click simplification',
     description:
       'Rewrite dense paragraphs, legal jargon, and academic prose into clear, simple language.',
@@ -37,12 +32,12 @@ const FAQ_ITEMS = [
   {
     question: 'What\'s the difference between the free extension and the paid plans?',
     answer:
-      'The Read Sidekick extension itself is free to install. The paid plans unlock Memory (saved highlights and flashcards) and Chat conversation (asking follow-up questions about any text on the page).',
+      'The Read Sidekick extension itself is free to install. The paid plans unlock Memory (saved highlights and flashcards) and one-click simplification for dense text.',
   },
   {
     question: 'Why is the yearly plan cheaper?',
     answer:
-      'Paying yearly works out to about $4.17/month — roughly two months free compared to paying monthly. If you read regularly, it\'s the better deal.',
+      'Paying yearly works out to about $2.50/month — roughly two months free compared to paying monthly. If you read regularly, it\'s the better deal.',
   },
 ]
 
@@ -53,13 +48,13 @@ export function Pricing() {
         <title>Pricing — Read Sidekick</title>
         <meta
           name="description"
-          content="Simple pricing for Read Sidekick. $4.99/month or $50/year — both plans include Memory (saved highlights and flashcards) and Chat conversation to clarify any text."
+          content="Simple pricing for Read Sidekick. $2.99/month or $29.99/year — both plans include Memory (saved highlights and flashcards) and one-click simplification."
         />
         <link rel="canonical" href="https://www.readsidekick.com/pricing" />
         <meta property="og:title" content="Pricing — Read Sidekick" />
         <meta
           property="og:description"
-          content="Simple pricing for Read Sidekick. $4.99/month or $50/year — both plans include Memory and Chat conversation."
+          content="Simple pricing for Read Sidekick. $2.99/month or $29.99/year — both plans include Memory and one-click simplification."
         />
         <meta property="og:url" content="https://www.readsidekick.com/pricing" />
       </Helmet>
@@ -90,8 +85,8 @@ export function Pricing() {
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="font-mono text-body-lg text-ink-700/80 max-w-2xl mx-auto"
             >
-              One plan, two ways to pay. Both include Memory and Chat conversation
-              to ask for clarification on anything you read.
+              One plan, two ways to pay. Both include Memory and one-click
+              simplification for anything you read.
             </motion.p>
           </div>
 
@@ -115,7 +110,7 @@ export function Pricing() {
               <div className="mb-8">
                 <div className="flex items-baseline gap-2">
                   <span className="font-serif text-display-lg text-ink-900">
-                    $4.99
+                    $2.99
                   </span>
                   <span className="font-mono text-body-md text-ink-700/60">
                     / month
@@ -147,7 +142,7 @@ export function Pricing() {
               className="relative bg-white rounded-2xl p-8 md:p-10 border border-coral-500/30 shadow-xl flex flex-col"
             >
               <span className="absolute -top-3 left-8 md:left-10 font-mono text-caption uppercase tracking-wider text-white bg-coral-500 px-3 py-1 rounded-full">
-                Save ~17%
+                Save ~16%
               </span>
               <div className="mb-8">
                 <h2 className="font-serif text-display-sm text-ink-900 mb-2">
@@ -160,14 +155,14 @@ export function Pricing() {
               <div className="mb-8">
                 <div className="flex items-baseline gap-2">
                   <span className="font-serif text-display-lg text-ink-900">
-                    $50
+                    $29.99
                   </span>
                   <span className="font-mono text-body-md text-ink-700/60">
                     / year
                   </span>
                 </div>
                 <p className="font-mono text-body-sm text-ink-700/50 mt-2">
-                  Just $4.17/month, billed annually. Roughly two months free.
+                  Just $2.50/month, billed annually. Roughly two months free.
                 </p>
               </div>
               <PlanFeatureList />
