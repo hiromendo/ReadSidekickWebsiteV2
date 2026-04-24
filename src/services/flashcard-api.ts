@@ -2,8 +2,15 @@ import type { FlashcardSet, SavedItem } from './flashcard-types'
 
 const API_URL = import.meta.env.VITE_FLASHCARD_API_URL
 
+function requireApiUrl(): string {
+  if (!API_URL) {
+    throw new Error('Memory service is not configured. Please try again later.')
+  }
+  return API_URL
+}
+
 export async function generateFlashcards(idToken: string): Promise<FlashcardSet> {
-  const res = await fetch(API_URL, {
+  const res = await fetch(requireApiUrl(), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -40,7 +47,7 @@ export async function fetchMemoryData(idToken: string): Promise<{
   latestFlashcardSet: FlashcardSet | null
   savedItems: SavedItem[]
 }> {
-  const res = await fetch(API_URL, {
+  const res = await fetch(requireApiUrl(), {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${idToken}`,
