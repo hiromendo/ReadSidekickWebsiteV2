@@ -1,0 +1,44 @@
+/* ============================================================
+   Design System — Semantic tokens (dark theme)
+   Activated by <html data-theme="dark"> or Tailwind's `dark:` variant
+   (configured as `darkMode: ['class', '[data-theme="dark"]']`).
+   Same keys as semantic-light.css; values inverted/adjusted.
+   ============================================================ */
+
+[data-theme='dark'] {
+  /* -- Surfaces ------------------------------------------- */
+  --color-surface: var(--palette-ink-950);             /* deep page bg */
+  --color-surface-raised: var(--palette-ink-900);      /* cards */
+  --color-surface-sunken: var(--palette-ink-950);
+  --color-surface-inverse: var(--palette-ivory-50);
+
+  /* -- Text ----------------------------------------------- */
+  --color-text: var(--palette-ivory-100);              /* headings */
+  --color-text-body: var(--palette-ivory-200);         /* body */
+  --color-text-muted: var(--palette-ivory-300);
+  --color-text-inverse: var(--palette-ink-900);
+  --color-text-on-brand: var(--palette-ivory-50);
+
+  /* -- Brand & accents ------------------------------------
+     Lighten brand on dark backgrounds for AA contrast on
+     filled buttons + readable links. */
+  --color-brand: var(--palette-blue-400);
+  --color-brand-hover: var(--palette-blue-300);
+  --color-brand-subtle: var(--palette-blue-800);
+
+  --color-accent: var(--palette-marigold-300);
+  --color-accent-hover: var(--palette-marigold-200);
+  --color-accent-strong: var(--palette-marigold-400);
+
+  --color-accent-hot: var(--palette-coral-400);
+  --color-accent-hot-hover: var(--palette-coral-300);
+
+  /* -- Borders & focus ------------------------------------ */
+  --color-border: var(--palette-ivory-100);            /* used with /10 alpha */
+  --color-border-strong: var(--palette-ivory-100);     /* used with /20 alpha */
+  --color-focus-ring: var(--palette-blue-400);
+
+  /* -- State colors --------------------------------------- */
+  --color-success: var(--palette-marigold-400);
+  --color-danger: var(--palette-coral-400);
+}

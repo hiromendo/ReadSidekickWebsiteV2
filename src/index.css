@@ -1,3 +1,8 @@
+/* Token layers — load before Tailwind so utilities can resolve them. */
+@import './design-system/tokens/primitives.css';
+@import './design-system/tokens/semantic-light.css';
+@import './design-system/tokens/semantic-dark.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,18 +22,18 @@
   }
 
   body {
-    @apply bg-ivory-100 text-ink-700 font-mono;
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    @apply bg-surface text-fg-body font-body;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
     overflow-x: hidden;
   }
 
   /* Selection styling */
   ::selection {
-    @apply bg-coral-500 text-white;
+    @apply bg-brand text-fg-on-brand;
   }
 
   ::-moz-selection {
-    @apply bg-coral-500 text-white;
+    @apply bg-brand text-fg-on-brand;
   }
 
   /* Scrollbar styling - minimal and elegant */
@@ -37,33 +42,33 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-ivory-200;
+    @apply bg-surface-sunken;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-ink-700 rounded-full;
+    @apply bg-fg/40 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-ink-900;
+    @apply bg-fg/70;
   }
 
   /* Editorial heading styles */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-medium;
+    @apply font-display font-medium text-fg;
     text-wrap: balance;
-    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+    font-variation-settings: var(--font-display-variation-settings);
   }
 
   /* Paragraph rhythm */
   p {
-    @apply font-mono font-light;
+    @apply font-body font-light;
     text-wrap: pretty;
   }
 
   /* Link base styling */
   a {
-    @apply transition-colors duration-500 ease-editorial;
+    @apply transition-colors duration-slow ease-editorial;
   }
 }
 
@@ -83,40 +88,24 @@
 
   /* Display text with architectural presence */
   .display-text {
-    @apply font-serif font-medium tracking-tight;
+    @apply font-display font-medium tracking-tight;
     line-height: 0.9;
-    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+    font-variation-settings: var(--font-display-variation-settings);
   }
 
-  /* Editorial label - small caps feel */
+  /* Editorial label - small caps feel.
+     Kept as a class for components not yet migrated to <EditorialLabel>. */
   .editorial-label {
-    @apply font-mono text-caption uppercase tracking-widest text-ink-700/60;
+    @apply font-body text-caption uppercase tracking-widest text-fg-muted/60;
   }
 
   /* Decorative line element */
   .editorial-line {
-    @apply h-px bg-ink-800/20;
+    @apply h-px bg-border-strong/20;
   }
 
   .editorial-line-vertical {
-    @apply w-px bg-ink-800/20;
-  }
-
-  /* Bold accent block */
-  .accent-block {
-    @apply absolute;
-  }
-
-  .accent-block-crimson {
-    @apply bg-crimson-500;
-  }
-
-  .accent-block-electric {
-    @apply bg-electric-500;
-  }
-
-  .accent-block-ochre {
-    @apply bg-ochre-400;
+    @apply w-px bg-border-strong/20;
   }
 
   /* Hover underline animation */
@@ -126,7 +115,7 @@
 
   .editorial-link::after {
     content: '';
-    @apply absolute left-0 bottom-0 w-0 h-px bg-current transition-all duration-700 ease-editorial;
+    @apply absolute left-0 bottom-0 w-0 h-px bg-current transition-all duration-slow ease-editorial;
   }
 
   .editorial-link:hover::after {
@@ -140,11 +129,11 @@
 
   .editorial-image::before {
     content: '';
-    @apply absolute inset-0 border border-ink-800/10 pointer-events-none z-10;
+    @apply absolute inset-0 border border-border/10 pointer-events-none z-10;
   }
 
   .editorial-image img {
-    @apply w-full h-full object-cover transition-transform duration-1200 ease-editorial;
+    @apply w-full h-full object-cover transition-transform duration-slower ease-editorial;
   }
 
   .editorial-image:hover img {
@@ -153,14 +142,15 @@
 
   /* Pull quote styling */
   .pull-quote {
-    @apply font-serif italic text-display-sm md:text-display-md leading-tight;
+    @apply font-display italic text-display-sm md:text-display-md leading-tight;
     text-indent: -0.5em;
-    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+    font-variation-settings: var(--font-display-variation-settings);
   }
 
-  /* Section divider with number */
+  /* Section divider with number.
+     Kept as a class for components not yet migrated to <SectionNumber>. */
   .section-number {
-    @apply font-mono text-body-sm text-ink-700/40;
+    @apply font-body text-body-sm text-fg-muted/40;
   }
 
   /* Reveal animation container */
@@ -169,17 +159,17 @@
   }
 
   .reveal-content {
-    @apply transition-transform duration-1200 ease-editorial;
+    @apply transition-transform duration-slower ease-editorial;
   }
 
   .blog-html-content a {
-    @apply text-coral-500 underline decoration-coral-500/30 underline-offset-2
-           hover:text-coral-600 hover:decoration-coral-500
-           transition-colors duration-500 ease-editorial;
+    @apply text-brand underline decoration-brand/30 underline-offset-2
+           hover:text-brand-hover hover:decoration-brand
+           transition-colors duration-slow ease-editorial;
   }
 
   .blog-html-content strong {
-    @apply font-semibold text-ink-900;
+    @apply font-semibold text-fg;
   }
 }
 
@@ -279,7 +269,7 @@
     cursor: default;
   }
 
-  a, button, [role="button"] {
+  a, button, [role='button'] {
     cursor: pointer;
   }
 }

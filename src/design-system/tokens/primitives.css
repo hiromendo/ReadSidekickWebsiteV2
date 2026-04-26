@@ -1,0 +1,126 @@
+/* ============================================================
+   Design System — Primitive tokens
+   Raw values. Never reference these directly from components.
+   Components consume the SEMANTIC tokens in semantic-*.css.
+
+   COLOR FORMAT: space-separated R G B triples (e.g. "66 89 168").
+   This enables Tailwind's `rgb(var(--color-x) / <alpha-value>)`
+   substitution for opacity utilities like `bg-brand/10`.
+   A comma here silently breaks alpha — keep the format strict.
+   ============================================================ */
+
+:root {
+  /* -- Palette: blue / indigo (brand) ----------------------- */
+  --palette-blue-50: 239 242 255;   /* #EFF2FF */
+  --palette-blue-100: 224 231 255;  /* #E0E7FF */
+  --palette-blue-200: 198 206 235;  /* #C6CEEB */
+  --palette-blue-300: 163 177 219;  /* #A3B1DB */
+  --palette-blue-400: 116 140 208;  /* #748CD0 */
+  --palette-blue-500: 66 89 168;    /* #4259A8 */
+  --palette-blue-600: 53 74 143;    /* #354A8F */
+  --palette-blue-700: 42 61 118;    /* #2A3D76 */
+  --palette-blue-800: 33 45 84;     /* #212D54 */
+  --palette-blue-900: 26 36 68;     /* #1A2444 */
+  --palette-blue-950: 15 22 41;     /* #0F1629 */
+
+  /* -- Palette: marigold (secondary accent) ---------------- */
+  --palette-marigold-50: 255 251 235;
+  --palette-marigold-100: 254 243 199;
+  --palette-marigold-200: 253 230 138;
+  --palette-marigold-300: 252 211 77;
+  --palette-marigold-400: 255 179 71;   /* #FFB347 */
+  --palette-marigold-500: 245 158 11;
+  --palette-marigold-600: 217 119 6;
+  --palette-marigold-700: 180 83 9;
+  --palette-marigold-800: 146 64 14;
+  --palette-marigold-900: 120 53 15;
+
+  /* -- Palette: coral (tertiary / hot accent) -------------- */
+  --palette-coral-300: 255 184 165;
+  --palette-coral-400: 255 140 105;     /* #FF8C69 */
+  --palette-coral-500: 240 103 69;
+  --palette-coral-600: 220 74 37;
+
+  /* -- Neutrals: ink (text scale) -------------------------- */
+  --palette-ink-700: 74 85 104;     /* #4A5568 */
+  --palette-ink-800: 33 45 84;      /* #212D54 */
+  --palette-ink-900: 26 36 68;      /* #1A2444 */
+  --palette-ink-950: 15 22 41;      /* #0F1629 */
+
+  /* -- Neutrals: ivory (surface scale) --------------------- */
+  --palette-ivory-50: 255 255 255;  /* pure white */
+  --palette-ivory-100: 239 242 255;
+  --palette-ivory-200: 224 231 255;
+  --palette-ivory-300: 198 206 235;
+  --palette-ivory-400: 163 177 219;
+
+  /* -- Type families -------------------------------------- */
+  --font-display: '"Fraunces"', 'Georgia', 'serif';
+  --font-ui: '"Inter"', 'system-ui', 'sans-serif';
+  --font-body: '"JetBrains Mono"', 'Menlo', 'monospace';
+
+  /* Fraunces optical-axis settings used on display headings */
+  --font-display-variation-settings: 'SOFT' 100, 'WONK' 1;
+
+  /* -- Type scale (size + line-height + tracking) --------- */
+  --text-display-2xl: 8rem;
+  --text-display-2xl--line-height: 0.85;
+  --text-display-2xl--letter-spacing: -0.04em;
+
+  --text-display-xl: 6rem;
+  --text-display-xl--line-height: 0.9;
+  --text-display-xl--letter-spacing: -0.03em;
+
+  --text-display-lg: 4.5rem;
+  --text-display-lg--line-height: 0.95;
+  --text-display-lg--letter-spacing: -0.025em;
+
+  --text-display-md: 3rem;
+  --text-display-md--line-height: 1;
+  --text-display-md--letter-spacing: -0.02em;
+
+  --text-display-sm: 2rem;
+  --text-display-sm--line-height: 1.1;
+  --text-display-sm--letter-spacing: -0.015em;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.75;
+  --text-body-lg--letter-spacing: 0.01em;
+
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.8;
+  --text-body-md--letter-spacing: 0.015em;
+
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.7;
+  --text-body-sm--letter-spacing: 0.02em;
+
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.1em;
+
+  /* -- Radii ---------------------------------------------- */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* -- Shadows -------------------------------------------- */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* -- Motion: durations ---------------------------------- */
+  --motion-duration-fast: 200ms;
+  --motion-duration-base: 300ms;
+  --motion-duration-slow: 800ms;
+  --motion-duration-slower: 1200ms;
+  --motion-duration-slowest: 2000ms;
+
+  /* -- Motion: easings ------------------------------------ */
+  --motion-ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}

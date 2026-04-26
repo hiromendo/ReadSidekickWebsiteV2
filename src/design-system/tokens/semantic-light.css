@@ -1,0 +1,43 @@
+/* ============================================================
+   Design System — Semantic tokens (light / editorial theme)
+   This is the layer components consume.
+   To ship a different design, write a new semantic file —
+   primitives don't have to change.
+   ============================================================ */
+
+:root,
+[data-theme='light'] {
+  /* -- Surfaces ------------------------------------------- */
+  --color-surface: var(--palette-ivory-100);          /* page background */
+  --color-surface-raised: var(--palette-ivory-50);    /* cards */
+  --color-surface-sunken: var(--palette-ivory-200);   /* alt sections */
+  --color-surface-inverse: var(--palette-ink-900);    /* dark blocks */
+
+  /* -- Text ----------------------------------------------- */
+  --color-text: var(--palette-ink-900);               /* headings */
+  --color-text-body: var(--palette-ink-700);          /* body */
+  --color-text-muted: var(--palette-ink-700);         /* muted (used with /60 alpha) */
+  --color-text-inverse: var(--palette-ivory-50);      /* on dark surfaces */
+  --color-text-on-brand: var(--palette-ivory-50);
+
+  /* -- Brand & accents ------------------------------------ */
+  --color-brand: var(--palette-blue-500);
+  --color-brand-hover: var(--palette-blue-600);
+  --color-brand-subtle: var(--palette-blue-100);
+
+  --color-accent: var(--palette-marigold-400);
+  --color-accent-hover: var(--palette-marigold-500);
+  --color-accent-strong: var(--palette-marigold-600);
+
+  --color-accent-hot: var(--palette-coral-400);
+  --color-accent-hot-hover: var(--palette-coral-500);
+
+  /* -- Borders & focus ------------------------------------ */
+  --color-border: var(--palette-ink-800);              /* used with /10 alpha */
+  --color-border-strong: var(--palette-ink-800);       /* used with /20 alpha */
+  --color-focus-ring: var(--palette-blue-500);
+
+  /* -- State colors --------------------------------------- */
+  --color-success: var(--palette-marigold-600);
+  --color-danger: var(--palette-coral-600);
+}
