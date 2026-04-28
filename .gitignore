@@ -70,6 +70,12 @@ web_modules/
 .env.*
 !.env.example
 
+# Cloud Function env files (contain secrets — never commit)
+.env.yaml
+**/.env.yaml
+!.env.yaml.example
+!**/.env.yaml.example
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
